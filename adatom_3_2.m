@@ -14,6 +14,18 @@ StringReplace["JK_Range[i,f,d]",{"i"->i,"f"->f,"d"->\[Delta]}]];
 
 
 (* ::Subsection:: *)
+(*Launching Kernel *)
+
+
+Print["Before Starting Kernels"];
+Needs["ClusterIntegration`"];
+(*kernels = aunchKernels[SGE["micro4", 10]];*)
+(*Quiet[kernels = LaunchKernels[]];*)
+kernels = LaunchKernels[]
+Print["Starting Kernels"];
+
+
+(* ::Subsection:: *)
 (*preamble*)
 
 
@@ -80,3 +92,14 @@ AbsoluteTiming@dataWrite[dataName,HamCoupling,Simp,{Lx,Ly},eValues]];
 
 
 
+
+
+(* ::Subsection:: *)
+(*Closing Kernels*)
+
+
+Print[];
+Print["Closing Kernels"];
+
+
+CloseKernels[];
