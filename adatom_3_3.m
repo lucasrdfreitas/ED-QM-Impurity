@@ -31,7 +31,7 @@ impuritySpin     = {1/2};
 gs               = {1};
 KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
-klevels          = 5;
+klevels          = 1;
 
 
 (* ::Subsection:: *)
@@ -75,8 +75,11 @@ Print["H0 sum timing=",AbsoluteTiming[H0=HK+HJ+HZ;
 
 Print[" "];
 
+Print@N[10^-9  MemoryInUse[] ];
+
 eValues={};
 Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
+	Print@N[10^-9  MemoryInUse[] ];
 	JK=KondoCouplings[[j]];
 	Himp=H0+JK HI;
 	ev=Sort@Eigenvalues[N@ Himp,2klevels];
