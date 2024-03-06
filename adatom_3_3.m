@@ -18,7 +18,7 @@ StringReplace["JK_Range[i,f,d]",{"i"->i,"f"->f,"d"->\[Delta]}]];
 
 
 If[ $FrontEnd != Null, SetDirectory[NotebookDirectory[]] ];
-
+$FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
 Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
