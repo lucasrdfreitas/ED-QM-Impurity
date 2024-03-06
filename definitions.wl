@@ -1,7 +1,7 @@
 (* ::Package:: *)
 
 (* ::Title:: *)
-(*Quantum Magnets + Adatom impurity*)
+(*Quantum Magnets + Impurity*)
 
 
 (* ::Text:: *)
@@ -9,11 +9,8 @@
 (*	> we will focus mainly in two materials:  Subscript[RuCl, 3]  (e.g. 1706.06113 ) and Subscript[CrI, 3] (e.g. 1704.03849 )*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsection:: *)
 (*System files*)
-
-
-NbName=StringSplit[ FileNameSplit[ NotebookFileName[] ][[-1]]  ,"."][[1]];
 
 
 (* ::Text:: *)
@@ -21,7 +18,11 @@ NbName=StringSplit[ FileNameSplit[ NotebookFileName[] ][[-1]]  ,"."][[1]];
 
 
 If[ FileNames@NotebookDirectory[]!=FileNames@Directory[],SetDirectory[NotebookDirectory[]] ];
-dataFolder=FileNameJoin[{Directory[],"data",NbName }]
+
+NbName=StringSplit[ FileNameSplit[ NotebookFileName[] ][[-1]]  ,"."][[1]];
+
+dataFolder=FileNameJoin[{Directory[],"data",NbName }];
+
 If[Length@FileNames[dataFolder]==0,CreateDirectory@File@dataFolder];
 
 
@@ -29,15 +30,48 @@ If[Length@FileNames[dataFolder]==0,CreateDirectory@File@dataFolder];
 (*functions to load and write data*)
 
 
-dataPath[dataName_,Ham_,Simp_,Lx_,Ly_]:= Module[{folderName,folderPath,dataPath},
-folderName=StringJoin[Ham,"_size=(",ToString@Lx,",",ToString@Ly,")_2Simp=",ToString@Round[2 Simp] ];
+createDirectory[path_] :=Module[ {l=Length@FileNames[path]},
+	If[ l==0, CreateDirectory@File@path; ,Null] ];
+
+
+dataPath[dataName_,Ham_,Simp_,L_]:= Module[{folderName,folderPath,dataPath},
+folderName=StringJoin[Ham,"_size=(",ToString@L[[1]],",",ToString@L[[2]],")_2Simp=",ToString@Round[2 Simp] ];
 folderPath=FileNameJoin[{ dataFolder,folderName }];
 dataPath=FileNameJoin[{ folderPath, dataName }];   
 {folderPath,dataPath}
 ];
 
 
-(* ::Subsubsection::Closed:: *)
+dataWrite[dataName_,Ham_,Simp_,L_,data_] :=
+Module[ {folderPath,dataPath0,auxStream},	
+	{folderPath,dataPath0}=dataPath[dataName,Ham,Simp,L];
+	createDirectory@folderPath;
+	auxStream = OpenWrite[dataPath0];
+	Write[auxStream, data];
+	Close[auxStream];                ];
+
+
+dataAppend[dataName_,Ham_,Simp_,L_,data_] :=
+Module[ {folderPath,dataPath0,auxStream},	
+	{folderPath,dataPath0}=dataPath[dataName,Ham,Simp,L];
+	createDirectory@folderPath;
+	auxStream = OpenAppend[dataPath0];
+	Write[auxStream, data];
+	Close[auxStream];                ];
+
+
+dataRead[datapath_]:=
+Module[ {auxStream,data},
+	auxStream = OpenRead[datapath];
+	If[auxStream==$Failed, Print["Failed to OpenRead file at: "]; 
+	Print[ datapath ]; Abort[] ];
+	data=ReadList[auxStream];
+	Close[auxStream];			
+	data[[-1]]
+];
+
+
+(* ::Subsection::Closed:: *)
 (*Basic definitions *)
 
 
@@ -62,19 +96,32 @@ Sz=SparseArray[{ {i_,i_}:>(S+1-i)},{n,n},0];
 SparseArray/@N@{S0,Sx,Sy,Sz} ];
 
 
+(* ::Subsection:: *)
+(*Adatom Hamiltonian *)
+
+
+(* ::Text:: *)
+(*	Kitaev FM + AFM Kondo adatom impurity with N0=2LxLy bulk spins  *)
+
+
+AdatomHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_]:=
+AdatomKitaev[K,Simp,Lx,Ly]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]+AdatomZeeman[h,Simp,g,2Lx Ly]+AdatomImp[JK,Simp,2Lx Ly];
+
+
+(* ::Text:: *)
+(*Note on optimization - if one want to vary some parameter (e.g. JK, h) don't use this function,  rather*)
+(*first compute each Hamiltonian matrix and then sum them. To avoid compute the same matrix Hamiltonian over and over.*)
+
+
+(* ::Text:: *)
+(*Couplings -- K<0 = FM, K>0 AFM  (similarly for J, JK)*)
+(*J=(Jx,Jy,Jz) Isotropic NN Heisenberg *)
+(*\[Lambda]n=\[Lambda] (nx,ny,nz)  anisotropy \[Lambda] of Heisenberg coupling along the n direction*)
+(* K=(Kx,Ky,Kz) Kitaev coupling  *)
+
+
 (* ::Subsubsection:: *)
-(*Hamiltonian *)
-
-
-(* ::Text:: *)
-(*	Kitaev FM + AFM Kondo adatom impurity with Subscript[N, 0]=8 bulk spins  *)
-
-
-HK8[K_,h_,JK_,Simp_,g_:1]:=HKitaev[K,Simp,2,2]+HZeeman[h,Simp,g,8]+Himp[JK,Simp,8];
-
-
-(* ::Text:: *)
-(*Note on optimization - if one want to vary some parameter (e.g. JK, h), first compute each Hamiltonian matrix and then sum them.*)
+(*Zeeman Hamiltonian*)
 
 
 (* ::Text:: *)
@@ -87,7 +134,7 @@ HK8[K_,h_,JK_,Simp_,g_:1]:=HKitaev[K,Simp,2,2]+HZeeman[h,Simp,g,8]+Himp[JK,Simp,
 (* [Most of the computational time goes in the KroneckerProduct. Using SparseArrays (i.e. spinmatrix) makes the computation 2 or 3 orders of magnitude faster.]*)
 
 
-HZeeman[h_,Simp_,g_,N0_:8]:=Module[{s,S,bulk,imp}, 
+AdatomZeeman[h_,Simp_,g_,N0_]:=Module[{s,S,bulk,imp}, 
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bulk = Table[  KroneckerProduct@@Join[PadRight[  {s[[\[Alpha]+1]]}, N0, {s[[1]]}, i-1], {S[[1]]}     ]  ,{i,1,N0},{\[Alpha],1,3}];
@@ -97,11 +144,15 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 ];
 
 
+(* ::Subsubsection::Closed:: *)
+(*Impurity Hamiltonian*)
+
+
 (* ::Text:: *)
 (*Adatom impurity couples the 8th bulk spin to the impurity spin (the 9th slot in the tensor product) with AFM Heisenberg with coupling Subscript[J, K]*)
 
 
-Himp[JK_,Simp_,N0_:8]:=Module[{s,S,sS}, 
+AdatomImp[JK_,Simp_,N0_]:=Module[{s,S,sS}, 
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 
@@ -117,6 +168,10 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
+(* ::Subsubsection::Closed:: *)
+(*Kitaev Hamiltonian*)
+
+
 (* ::Text:: *)
 (*Bulk Kitaev Hamiltonian  - *)
 (*	> for the Honeycomb lattice consider Lx times Ly triangular lattice with N0=2LxLy bulk spins*)
@@ -125,7 +180,7 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*The Kitaev interactions happens between the positions  bonds[[\[Alpha],r]]  *)
 (*	> x-bonds:    (2r-1,2rx);         rx=Mod[ m+1,Lx]+ n Lx+1                                    e.g. for Lx=Ly=2:  (1,4), (3,2), (5,8), (7,6)*)
 (*	> y-bonds:    (2r-1,2ry);         ry=m+Mod[ n+1,Ly] Lx+1                                                                        (1,6), (3,8), (5,2), (7,4)*)
-(*	> z-bonds:    (2r-1,2r );                                                                                                                                       (1,2), (3,4), (5,6), (7,8)*)
+(*	> z-bonds:    (2r-1,2r );                                                                                                                                      (1,2), (3,4), (5,6), (7,8)*)
 
 
 Bonds[Lx_,Ly_]:=Transpose@Flatten[#,1]&@Table[ 
@@ -140,7 +195,7 @@ Bonds[Lx_,Ly_]:=Transpose@Flatten[#,1]&@Table[
 (*Let us denote by Subscript[H, \[Alpha]]  the terms in the Kitaev Hamiltonian for \[Alpha]-bonds.*)
 
 
-HKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
+AdatomKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
 N0=2 Lx Ly;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
@@ -157,20 +212,28 @@ Hx+Hy+Hz
 (*AbsoluteTiming@HKitaev[{1,1,1},1/2,3,3]*)
 
 
+(* ::Subsubsection::Closed:: *)
+(*Heisenberg Hamiltonian*)
+
+
 (* ::Text:: *)
 (*Bulk anisotropic Heisenberg Hamiltonian  - *)
 (*	> follows the same structure as the Kitaev Hamiltonian, but each Subscript[H, \[Alpha]] has a additional sum over spin indices *)
 (*	> we will also consider an anisotropy of strength \[Lambda] along the n axis *)
 
 
-HHeisenberg[J_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
+AdatomHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
 N0=2 Lx Ly;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
+\[Lambda]=Norm[\[Lambda]n];
+n=\[Lambda]n/\[Lambda];
+sn=s[[2;;4]] . n;
 bonds=Bonds[Lx,Ly];
 
-{Hx,Hy,Hz} = Table[  J[[\[Alpha]]] Sum[ 
-KroneckerProduct@@Join[ Insert[s[[\[Beta]+1]],Max@bonds[[\[Alpha],r]][[2]] ]@Insert[s[[\[Beta]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]}  ]  
-,{r,1,Lx Ly},{\[Beta],1,3}],{\[Alpha],1,3}];
+HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[Insert[s[[\[Beta]+1]],Max@bonds[[\[Alpha],r]][[2]]]@Insert[s[[\[Beta]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
+,{r,1,Lx Ly},{\[Beta],1,3},{\[Alpha],1,3}];
+H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[Insert[sn,Max@bonds[[\[Alpha],r]][[2]]]@Insert[sn,Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
+,{r,1,Lx Ly},{\[Alpha],1,3}];
 
-Hx+Hy+Hz]
+HJ+H\[Lambda]]
