@@ -31,7 +31,7 @@ impuritySpin     = {1/2};
 gs               = {1};
 KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
-klevels          = 50;
+klevels          = 5;
 
 
 (* ::Subsection:: *)

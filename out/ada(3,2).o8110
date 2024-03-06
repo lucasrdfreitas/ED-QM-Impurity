@@ -1,0 +1,13 @@
+adatom_3_2
+Before Starting Kernels
+Starting Kernels
+H Kitaev timing={0.273564, {8192, 8192}}
+H Heisenberg timing={0.000018, {}}
+H Zeeman timing={0.061963, {8192, 8192}}
+H imp timing={0.019807, {8192, 8192}}
+H0 sum timing={0.051179, {8192, 8192}}
+ 
+Loop timing={68.226513, Null}
+Write timing={0.006354, Null}
+
+Closing Kernels

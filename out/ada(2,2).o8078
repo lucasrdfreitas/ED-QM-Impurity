@@ -1,0 +1,15 @@
+adatom_2_2
+Before Starting Kernels
+
+CloudConnect::verr: This version of Mathematica is no longer supported for use with the Wolfram Cloud beginning Wed 1 Dec 2021. Please Hyperlink[upgrade your license, https://store.wolfram.com/view/app/mathematica/upgrade?license=L2373-6553] or Hyperlink[contact us, https://www.wolfram.com/contact-us?description=L2373-6553+is+no+longer+supported+for+use+with+the+Wolfram+Cloud+beginning+Wed+1+Dec+2021.].
+Starting Kernels
+H Kitaev timing={0.014453, {512, 512}}
+H Heisenberg timing={7.*^-6, {}}
+H Zeeman timing={0.008474, {512, 512}}
+H imp timing={0.006229, {512, 512}}
+H0 sum timing={0.001626, {512, 512}}
+ 
+Loop timing={7.32281, Null}
+Write timing={0.005188, Null}
+
+Closing Kernels
