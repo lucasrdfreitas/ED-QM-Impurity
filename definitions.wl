@@ -33,28 +33,53 @@ createDirectory[path_] :=Module[ {l=Length@FileNames[path]},
 	If[ l==0, CreateDirectory@File@path; ,Null] ];
 
 
-dataPath[dataName_,Ham_,Simp_,L_]:= Module[{folderName,folderPath,dataPath},
+dataPath[dataName_,Ham_,Simp_,L_,dataFolder_:dataFolder]:= Module[{folderName,folderPath,dataPath},
 folderName=StringJoin[Ham,"_size=(",ToString@L[[1]],",",ToString@L[[2]],")_2Simp=",ToString@Round[2 Simp] ];
 folderPath=FileNameJoin[{ dataFolder,folderName }];
 dataPath=FileNameJoin[{ folderPath, dataName }];   
-{folderPath,dataPath}
+dataPath
 ];
 
 
-dataWrite[dataName_,Ham_,Simp_,L_,data_] :=
-Module[ {folderPath,dataPath0,auxStream},	
-	{folderPath,dataPath0}=dataPath[dataName,Ham,Simp,L];
-	createDirectory@folderPath;
-	auxStream = OpenWrite[dataPath0];
+dataZipExport[datapath_,data_] :=Module[ {dirpath,auxStream,path},	
+	dirpath=DirectoryName[datapath];
+	createDirectory@dirpath;
+	auxStream = OpenWrite[datapath];
+	Write[auxStream, data];
+	Close[auxStream];  
+	CreateArchive[FindFile[datapath],dirpath,".zip"];
+	(* delete uncompressed data *) 
+	             ];
+
+
+dataZipImport[datapath_] := Module[ {auxStream,data,dirpath},
+	dirpath=DirectoryName[datapath];
+	ExtractArchive[StringJoin[datapath,".zip"],dirpath];
+	auxStream = OpenRead[datapath];
+	If[auxStream==$Failed, Print["Failed to OpenRead file at: "]; 
+	Print[ datapath ]; Abort[] ];
+	data=ReadList[auxStream];
+	Close[auxStream];
+	(* delete uncompressed data *)
+
+	path=StringJoin[datapath,".zip"];
+	Import[path,"ZIP"]			
+	data[[-1]]
+	];
+
+
+dataWrite[datapath_,data_] :=
+Module[ {auxStream},	
+	createDirectory@DirectoryName[datapath];
+	auxStream = OpenWrite[datapath];
 	Write[auxStream, data];
 	Close[auxStream];                ];
 
 
-dataAppend[dataName_,Ham_,Simp_,L_,data_] :=
-Module[ {folderPath,dataPath0,auxStream},	
-	{folderPath,dataPath0}=dataPath[dataName,Ham,Simp,L];
-	createDirectory@folderPath;
-	auxStream = OpenAppend[dataPath0];
+dataAppend[datapath_,data_] :=
+Module[ {auxStream},	
+	createDirectory@DirectoryName[datapath];
+	auxStream = OpenAppend[datapath];
 	Write[auxStream, data];
 	Close[auxStream];                ];
 
