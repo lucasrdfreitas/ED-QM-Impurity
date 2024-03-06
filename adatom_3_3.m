@@ -38,11 +38,11 @@ klevels          = 1;
 (*Launching Kernel *)
 
 
-Print["Before Starting Kernels"];
+(*Print["Before Starting Kernels"];
 Needs["ClusterIntegration`"];
 (*kernels = LaunchKernels[SGE["micro4", 10]];*)
 Quiet[kernels = LaunchKernels[]];
-Print["Starting Kernels"];
+Print["Starting Kernels"];*)
 
 
 (* ::Subsection:: *)
@@ -53,33 +53,44 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 
+
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 Print["H Kitaev timing=",AbsoluteTiming[  
 	HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]]; 
 	Dimensions@HK
 ] ];
+
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 Print["H Heisenberg timing=", AbsoluteTiming[  
 	HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];
 	Dimensions@HJ
 ] ];
+
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 Print["H Zeeman timing=", AbsoluteTiming[  
 	HZ=If[Norm[h]==0,0,N@AdatomZeeman[h,Simp,g,2 Lx Ly]];
 	Dimensions@HZ
 ] ];
+
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 Print["H imp timing=", AbsoluteTiming[  
 	HI=N@AdatomImp[1,Simp,2 Lx Ly];
 	Dimensions@HI]
 ];
 
+
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 Print["H0 sum timing=",AbsoluteTiming[H0=HK+HJ+HZ;
 	Dimensions@H0] ]; 
 
 Print[" "];
 
-Print@N[10^-9  MemoryInUse[] ];
+Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
 eValues={};
 Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
-	Print@N[10^-9  MemoryInUse[] ];
+	
+	Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 	JK=KondoCouplings[[j]];
 	Himp=H0+JK HI;
 	ev=Sort@Eigenvalues[N@ Himp,2klevels];
@@ -100,8 +111,6 @@ AbsoluteTiming@dataWrite[dataName,HamCoupling,Simp,{Lx,Ly},eValues]];
 (*Closing Kernels*)
 
 
-Print[];
+(*Print[];
 Print["Closing Kernels"];
-
-
-CloseKernels[];
+CloseKernels[];*)
