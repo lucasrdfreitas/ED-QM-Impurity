@@ -18,16 +18,21 @@
 
 
 If[ $FrontEnd != Null, SetDirectory[NotebookDirectory[]] ];
-
 Print[Directory[] ];
 
 NbPath =  If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
-
 Print[NbPath];
 
 NbName = FileBaseName[NbPath];      (*StringSplit[ FileNameSplit[ NbPath ][[-1]]  ,"."][[1]];*)
-
 Print[NbName];
+
+NbPath =  If[$FrontEnd === Null, $FileName, NotebookFileName[] ];
+Print[NbPath];
+
+NbName = FileBaseName[NbPath];      
+Print[NbName];
+
+
 Abort[];
 
 dataFolder=FileNameJoin[{Directory[],"data",NbName }];
