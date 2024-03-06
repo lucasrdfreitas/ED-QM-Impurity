@@ -17,9 +17,18 @@
 (*create data folder *)
 
 
-If[ FileNames@NotebookDirectory[]!=FileNames@Directory[],SetDirectory[NotebookDirectory[]] ];
+If[ $FrontEnd != Null, SetDirectory[NotebookDirectory[]] ];
 
-NbName=StringSplit[ FileNameSplit[ NotebookFileName[] ][[-1]]  ,"."][[1]];
+Print[Directory[] ];
+
+NbPath =  If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
+
+Print[NbPath];
+
+NbName = FileBaseName[NbPath];      (*StringSplit[ FileNameSplit[ NbPath ][[-1]]  ,"."][[1]];*)
+
+Print[NbName];
+Abort[];
 
 dataFolder=FileNameJoin[{Directory[],"data",NbName }];
 
