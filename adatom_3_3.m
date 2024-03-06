@@ -64,14 +64,14 @@ path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"
 If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["Compressed data not found - Computing Hamiltonian matrix "];
 	Print[];
-	Print["Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
+	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
 	Print["H Kitaev timing=",     AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]]; Dimensions@HK ] ];
 	Print["H Heisenberg timing=", AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];Dimensions@HJ] ];
 	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@AdatomZeeman[h,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
 	Print["H imp timing=",        AbsoluteTiming[HI=N@AdatomImp[1,Simp,2 Lx Ly]; Dimensions@HI] ];
 	H0=HK+HJ+HZ;
 	Clear[HK,HJ,HZ];
-	Print["Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
+	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
 	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HI}] ;]     ];
 	,
 	Print["Compressed data found - Skipping to compute eigenvalues"]
@@ -105,15 +105,16 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info},
 	path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
 	Print["Uncompress time=", AbsoluteTiming[ {H0,HI}=dataZipImport[path]; ]];
 	Print[" "];
-	Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
+	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
-
-Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
-	Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
+Print["Starting JK Loop"];
+Print["Loop timing=",AbsoluteTiming@ParallelDo[Module[{Himp,ev,JK },
 	JK=KondoCouplings[[j]];
 	Himp=H0+JK HI;
 	ev=Sort@Eigenvalues[N@ Himp,2 klevels];
 	AppendTo[eValues,{JK,ev}];
+	Print["j=",j,"/",Length@KondoCouplings];
+	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 ],{j,1,Length@KondoCouplings}] ];
 
 Print["Write timing=",
