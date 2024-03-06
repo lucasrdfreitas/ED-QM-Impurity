@@ -14,18 +14,6 @@ StringReplace["JK_Range[i,f,d]",{"i"->i,"f"->f,"d"->\[Delta]}]];
 
 
 (* ::Subsection:: *)
-(*Launching Kernel *)
-
-
-Print["Before Starting Kernels"];
-Needs["ClusterIntegration`"];
-(*kernels = aunchKernels[SGE["micro4", 10]];*)
-(*Quiet[kernels = LaunchKernels[]];*)
-kernels = LaunchKernels[]
-Print["Starting Kernels"];
-
-
-(* ::Subsection:: *)
 (*preamble*)
 
 
@@ -44,6 +32,17 @@ gs               = {1};
 KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
 klevels          = 50;
+
+
+(* ::Subsection:: *)
+(*Launching Kernel *)
+
+
+Print["Before Starting Kernels"];
+Needs["ClusterIntegration`"];
+(*kernels = LaunchKernels[SGE["micro4", 10]];*)
+Quiet[kernels = LaunchKernels[]];
+Print["Starting Kernels"];
 
 
 (* ::Subsection:: *)

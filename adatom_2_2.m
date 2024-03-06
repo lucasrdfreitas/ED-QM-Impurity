@@ -40,9 +40,8 @@ klevels          = 50;
 
 Print["Before Starting Kernels"];
 Needs["ClusterIntegration`"];
-(*kernels = aunchKernels[SGE["micro4", 10]];*)
-(*Quiet[kernels = LaunchKernels[]];*)
-kernels = LaunchKernels[]
+(*kernels = LaunchKernels[SGE["micro4", 10]];*)
+Quiet[kernels = LaunchKernels[]];
 Print["Starting Kernels"];
 
 

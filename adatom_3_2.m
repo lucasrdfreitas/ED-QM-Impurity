@@ -14,18 +14,6 @@ StringReplace["JK_Range[i,f,d]",{"i"->i,"f"->f,"d"->\[Delta]}]];
 
 
 (* ::Subsection:: *)
-(*Launching Kernel *)
-
-
-Print["Before Starting Kernels"];
-Needs["ClusterIntegration`"];
-(*kernels = aunchKernels[SGE["micro4", 10]];*)
-(*Quiet[kernels = LaunchKernels[]];*)
-kernels = LaunchKernels[]
-Print["Starting Kernels"];
-
-
-(* ::Subsection:: *)
 (*preamble*)
 
 
@@ -44,6 +32,17 @@ gs               = {1};
 KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
 klevels          = 50;
+
+
+(* ::Subsection:: *)
+(*Launching Kernel *)
+
+
+Print["Before Starting Kernels"];
+Needs["ClusterIntegration`"];
+(*kernels = LaunchKernels[SGE["micro4", 10]];*)
+Quiet[kernels = LaunchKernels[]];
+Print["Starting Kernels"];
 
 
 (* ::Subsection:: *)
@@ -77,7 +76,7 @@ Print["H0 sum timing=",AbsoluteTiming[H0=HK+HJ+HZ;
 Print[" "];
 
 eValues={};
-Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
+Print["Loop timing=",AbsoluteTiming@ParallelDo[Module[{Himp,ev,JK },
 	JK=KondoCouplings[[j]];
 	Himp=H0+JK HI;
 	ev=Sort@Eigenvalues[N@ Himp,2klevels];
@@ -85,7 +84,7 @@ Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
 ],{j,1,Length@KondoCouplings}] ];
 
 Print["Write timing=",
-AbsoluteTiming@dataWrite[dataName,HamCoupling,Simp,{Lx,Ly},eValues]];
+AbsoluteTiming@dataWrite[dataName,HamCoupling,Simp,{Lx,Ly},Sort@eValues]];
 
 
 ];
