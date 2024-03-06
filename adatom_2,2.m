@@ -4,7 +4,7 @@
 (*Adatom  -- varying Kondo coupling JK*)
 (*	-compute eigenvalues for first "k" levels*)
 (*	-compute eigenvector for the ground state*)
-(*Coupling: Kitaev FM*)
+(*Coupling: Kitaev FM  *)
 (*dataName: KondoCoupling ranging from JKi to JKf with spacing \[Delta]J*)
 
 
