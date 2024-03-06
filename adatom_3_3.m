@@ -26,7 +26,7 @@ impuritySpin     = {1/2};
 gs               = {1};
 KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
-klevels          = 50;
+klevels          = 20;
 
 HamCoupling="Kitaev_FM";
 
@@ -75,7 +75,8 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HI}] ;]     ];
 	,
 	Print["Compressed data found - Skipping to compute eigenvalues"]
-];(*Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
+];
+(*Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
 	Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 	JK=KondoCouplings[[j]];
 	Himp=H0+JK HI;
@@ -108,10 +109,10 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info},
 	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
 Print["Starting JK Loop"];
-Print["Loop timing=",AbsoluteTiming@ParallelDo[Module[{Himp,ev,JK },
+Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
 	JK=KondoCouplings[[j]];
-	Himp=H0+JK HI;
-	ev=Sort@Eigenvalues[N@ Himp,2 klevels];
+	Himp=N[1/(Lx Ly) (H0+JK HI)];
+	ev=Sort@Eigenvalues[Himp,2 klevels];
 	AppendTo[eValues,{JK,ev}];
 	Print["j=",j,"/",Length@KondoCouplings];
 	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
