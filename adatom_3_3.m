@@ -24,7 +24,7 @@ anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = Range[.2,.8,.1];
+KondoCouplings   = Range[0,1,.1];
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
 klevels          = 50;
 
@@ -39,11 +39,13 @@ StringReplace["JK=Range[i,f,d]_k=K",{"i"->i,"f"->f,"d"->\[Delta],"K"->k}]  ];
 (*Launching Kernel *)
 
 
-Print["Before Starting Kernels"];
-Needs["ClusterIntegration`"];
-(*kernels = LaunchKernels[SGE["micro4", 10]];*)
-Quiet[kernels = LaunchKernels[]];
-Print["Starting Kernels"];
+If[ ($FrontEnd===Null),
+	Print["Before Starting Kernels"];
+	Needs["ClusterIntegration`"];
+	(*kernels = LaunchKernels[SGE["micro4", 10]];*)
+	Quiet[kernels = LaunchKernels[]];
+	Print["Starting Kernels"];
+];
 
 
 (* ::Subsection:: *)
@@ -59,7 +61,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompre
 info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
 path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
 
-If[ FindFile[StringJoin[path,".zip"]]==$Failed,
+If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["Compressed data not found - Computing Hamiltonian matrix "];
 	Print[];
 	Print["Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
@@ -124,6 +126,8 @@ AbsoluteTiming@dataWrite[dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder],
 (*Closing Kernels*)
 
 
-Print[];
-Print["Closing Kernels"];
-CloseKernels[];
+If[ ($FrontEnd===Null), 
+	Print[];
+	Print["Closing Kernels"];
+	CloseKernels[];
+];

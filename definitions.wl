@@ -47,23 +47,25 @@ dataZipExport[datapath_,data_] :=Module[ {dirpath,auxStream,path},
 	auxStream = OpenWrite[datapath];
 	Write[auxStream, data];
 	Close[auxStream];  
-	CreateArchive[FindFile[datapath],dirpath,".zip"];
+	CreateArchive[datapath,StringJoin[datapath,".zip"],
+	OverwriteTarget->True];
 	(* delete uncompressed data *) 
+	DeleteFile[datapath];
 	             ];
 
 
 dataZipImport[datapath_] := Module[ {auxStream,data,dirpath},
 	dirpath=DirectoryName[datapath];
-	ExtractArchive[StringJoin[datapath,".zip"],dirpath];
+	ExtractArchive[StringJoin[datapath,".zip"],dirpath,
+	OverwriteTarget->True];
+	
 	auxStream = OpenRead[datapath];
 	If[auxStream==$Failed, Print["Failed to OpenRead file at: "]; 
 	Print[ datapath ]; Abort[] ];
 	data=ReadList[auxStream];
 	Close[auxStream];
 	(* delete uncompressed data *)
-
-	path=StringJoin[datapath,".zip"];
-	Import[path,"ZIP"]			
+	DeleteFile[datapath];
 	data[[-1]]
 	];
 

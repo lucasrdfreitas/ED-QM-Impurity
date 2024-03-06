@@ -1,9 +1,0 @@
-adatom_3_2
-H Kitaev timing={0.301729, {8192, 8192}}
-H Heisenberg timing={0.000017, {}}
-H Zeeman timing={0.04006, {8192, 8192}}
-H imp timing={0.019162, {8192, 8192}}
-H0 sum timing={0.048579, {8192, 8192}}
- 
-Loop timing={167.032336, Null}
-Write timing={0.007289, Null}
