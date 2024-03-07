@@ -24,15 +24,15 @@ anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = Range[0,1,.1];
-parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs(*, KondoCouplings,*)} ];
+KondoCouplings   = {0,1,.1};
+parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 20;
 
 HamCoupling="Kitaev_FM";
-
-dataName=Module[{i,f,\[Delta],k}, {i,f}=KondoCouplings[[{1,-1}]];\[Delta]=(f-i)/Length[KondoCouplings];
-{i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
-StringReplace["JK=Range[i,f,d]_k=K",{"i"->i,"f"->f,"d"->\[Delta],"K"->k}]  ];
+dataName=Module[{i,f,\[Delta],k}, 
+				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
+				StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
+KondoCouplings=Range@@KondoCouplings;
 
 
 (* ::Subsection:: *)
@@ -76,16 +76,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping to compute eigenvalues"]
 ];
-(*Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
-	Print["Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
-	JK=KondoCouplings[[j]];
-	Himp=H0+JK HI;
-	ev=Sort@Eigenvalues[N@ Himp,2 klevels];
-	AppendTo[eValues,{JK,ev}];
-],{j,1,Length@KondoCouplings}] ];
 
-Print["Write timing=",
-AbsoluteTiming@dataWrite[dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder],eValues]]; *)
 ];
 
 
@@ -98,7 +89,7 @@ Print["Computing Eigenvalues"];
 Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
 
@@ -108,18 +99,25 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info},
 	Print[" "];
 	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
-Print["Starting JK Loop"];
-Print["Loop timing=",AbsoluteTiming@Do[Module[{Himp,ev,JK },
-	JK=KondoCouplings[[j]];
-	Himp=N[1/(Lx Ly) (H0+JK HI)];
-	ev=Sort@Eigenvalues[Himp,2 klevels];
-	AppendTo[eValues,{JK,ev}];
-	Print["j=",j,"/",Length@KondoCouplings];
-	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
-],{j,1,Length@KondoCouplings}] ];
+	Print["Starting JK Loop"];
+	Print["Loop timing=",AbsoluteTiming[
+	
+	Do[Module[{Himp,ev,JK },
+		JK=KondoCouplings[[j]];
+		Himp=N[1/(Lx Ly) (H0+JK HI)];
+		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
+		ev=Sort@(-Eigenvalues[-Himp, klevels,
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-8(*, "Shift"->-.7*)}]);  ]];
+				
+		AppendTo[eValues,{JK,ev}];
+		Print["    j=",j,"/",Length@KondoCouplings];
+		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
+],{j,1,Length@KondoCouplings}]] ];
 
+datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
 Print["Write timing=",
-AbsoluteTiming@dataWrite[dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder],eValues]];
+AbsoluteTiming@dataWrite[datapath,eValues]];
+Print[datapath];
 
 ]
 

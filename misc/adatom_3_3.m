@@ -17,7 +17,7 @@ $FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
 Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
-systemDimensions = {{2,2}};
+systemDimensions = {{3,3}};
 kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0{1,1,1}};
@@ -89,7 +89,7 @@ Print["Computing Eigenvalues"];
 Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
 
@@ -100,24 +100,18 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
 	Print["Starting JK Loop"];
-	Print["Loop timing=",AbsoluteTiming[
-	
-	Do[Module[{Himp,ev,JK },
+	Print["Loop timing=",AbsoluteTiming@Do[
+	Module[{Himp,ev,JK },
 		JK=KondoCouplings[[j]];
 		Himp=N[1/(Lx Ly) (H0+JK HI)];
-		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
-		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-10(*, "Shift"->-.7*)}]);  ]];
-				
+		ev=Sort@Eigenvalues[Himp,2 klevels];
 		AppendTo[eValues,{JK,ev}];
-		Print["    j=",j,"/",Length@KondoCouplings];
+		Print["j=",j,"/",Length@KondoCouplings];
 		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
-],{j,1,Length@KondoCouplings}]] ];
+],{j,1,Length@KondoCouplings}] ];
 
-datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
 Print["Write timing=",
-AbsoluteTiming@dataWrite[datapath,eValues]];
-Print[datapath];
+AbsoluteTiming@dataWrite[dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder],eValues]];
 
 ]
 
