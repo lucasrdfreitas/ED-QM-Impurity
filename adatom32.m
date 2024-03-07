@@ -17,14 +17,14 @@ $FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
 Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
-systemDimensions = {{2,2}};
+systemDimensions = {{3,2}};
 kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = {0,1,.1};
+KondoCouplings   = {0,1,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 20;
 
@@ -92,6 +92,9 @@ Print[];
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
+	
+	datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
+	Print["Data path : ",datapath];
 
 	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
 	path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
@@ -105,19 +108,14 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 	Do[Module[{Himp,ev,JK },
 		JK=KondoCouplings[[j]];
 		Himp=N[1/(Lx Ly) (H0+JK HI)];
-		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
+		Print["    Eigenvalue timing=",AbsoluteTiming[
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-10(*, "Shift"->-.7*)}]);  ]];
-				
-		AppendTo[eValues,{JK,ev}];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-8(*, "Shift"->-.7*)}]);  ]];
+		
+		dataAppend[datapath,{JK,ev}];
 		Print["    j=",j,"/",Length@KondoCouplings];
 		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 ],{j,1,Length@KondoCouplings}]] ];
-
-datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
-Print["Write timing=",
-AbsoluteTiming@dataWrite[datapath,eValues]];
-Print[datapath];
 
 ]
 
