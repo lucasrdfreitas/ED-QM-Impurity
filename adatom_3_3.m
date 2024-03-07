@@ -92,6 +92,9 @@ Print[];
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
+	
+	datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
+	Print["Data path : ",datapath];
 
 	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
 	path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
@@ -108,16 +111,15 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-8(*, "Shift"->-.7*)}]);  ]];
-				
-		AppendTo[eValues,{JK,ev}];
+		
+		dataAppend[datapath,{JK,ev}];
+		(*AppendTo[eValues,{JK,ev}];*)
 		Print["    j=",j,"/",Length@KondoCouplings];
 		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 ],{j,1,Length@KondoCouplings}]] ];
 
-datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
-Print["Write timing=",
-AbsoluteTiming@dataWrite[datapath,eValues]];
-Print[datapath];
+(*AbsoluteTiming@dataWrite[datapath,eValues];*)
+
 
 ]
 

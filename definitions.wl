@@ -93,7 +93,7 @@ Module[ {auxStream,data},
 	Print[ datapath ]; Abort[] ];
 	data=ReadList[auxStream];
 	Close[auxStream];			
-	data[[-1]]
+	data
 ];
 
 
