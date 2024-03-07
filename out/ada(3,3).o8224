@@ -1,0 +1,38 @@
+adatom_3_3
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Uncompress time={140.321936, Null}
+ 
+    Memory in use:  0.564798696
+Starting JK Loop
+j=1/11
+    Memory in use:  1.06911496
+j=2/11
+    Memory in use:  1.069116152
+j=3/11
+    Memory in use:  1.069117256
+j=4/11
+    Memory in use:  1.06911836
+j=5/11
+    Memory in use:  1.069119464
+j=6/11
+    Memory in use:  1.069120568
+j=7/11
+    Memory in use:  1.069121672
+j=8/11
+    Memory in use:  1.069122776
+j=9/11
+    Memory in use:  1.06912388
+j=10/11
+    Memory in use:  1.069124984
+j=11/11
+    Memory in use:  1.069126072
+Loop timing={17362.719474, Null}
+Write timing={0.010017, Null}
+
+Closing Kernels

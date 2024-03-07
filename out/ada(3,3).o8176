@@ -1,0 +1,14 @@
+adatom_3_3
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+
+ExtractArchive::fnfnd: File "/home/rodrigues/ED-QM-Impurity/data/adatom_3_3/Kitaev_FM_size=(3,3)_2Simp=1/H0_simp=0.5_h=0.4.zip" not found.
+
+OpenRead::noopen: Cannot open /home/rodrigues/ED-QM-Impurity/data/adatom_3_3/Kitaev_FM_size=(3,3)_2Simp=1/H0_simp=0.5_h=0.4.
+Failed to OpenRead file at: 
+/home/rodrigues/ED-QM-Impurity/data/adatom_3_3/Kitaev_FM_size=(3,3)_2Simp=1/H0_simp=0.5_h=0.4
