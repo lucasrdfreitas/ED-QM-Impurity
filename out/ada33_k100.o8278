@@ -1,0 +1,51 @@
+adatom33
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/adatom33/Kitaev_FM_size=(3,3)_2Simp=2/JK=Range[0,1,0.05]_k=100
+Uncompress time={250.193504, Null}
+ 
+    Memory in use:  0.827022288
+Starting JK Loop
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 600, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+    Eigenvalue timing={3455.223826, Null}
+    j=1/21
+    Memory in use:  1.591417384
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 600, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+    Eigenvalue timing={3465.477799, Null}
+    j=2/21
+    Memory in use:  1.59141772
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 600, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+
+General::stop: Further output of Eigenvalues::maxit2 will be suppressed during this calculation.
+    Eigenvalue timing={3445.38444, Null}
+    j=3/21
+    Memory in use:  1.59141808
+    Eigenvalue timing={3366.428583, Null}
+    j=4/21
+    Memory in use:  1.591418088
+    Eigenvalue timing={3222.190784, Null}
+    j=5/21
+    Memory in use:  1.591418096
+    Eigenvalue timing={3164.79775, Null}
+    j=6/21
+    Memory in use:  1.591418192
+    Eigenvalue timing={3177.558838, Null}
+    j=7/21
+    Memory in use:  1.5914182
+    Eigenvalue timing={3147.350188, Null}
+    j=8/21
+    Memory in use:  1.591418208
+    Eigenvalue timing={3290.927325, Null}
+    j=9/21
+    Memory in use:  1.591418216
+    Eigenvalue timing={3164.452689, Null}
+    j=10/21
+    Memory in use:  1.591418224
