@@ -22,7 +22,7 @@ kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
-impuritySpin     = {1/2};
+impuritySpin     = {1};
 gs               = {1};
 KondoCouplings   = {0,1,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
@@ -110,7 +110,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		Himp=N[1/(Lx Ly) (H0+JK HI)];
 		Print["    Eigenvalue timing=",AbsoluteTiming[
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->1500,"Tolerance"->10^-7(*, "Shift"->-.7*)}]);  ]];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2500,"Tolerance"->10^-11(*, "Shift"->-.7*)}]);  ]];
 		
 		dataAppend[datapath,{JK,ev}];
 		Print["    j=",j,"/",Length@KondoCouplings];

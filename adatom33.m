@@ -123,14 +123,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-
 ]
-
-
-N[5773/60]
-
-
-5*21
 
 
 (* ::Subsection:: *)
