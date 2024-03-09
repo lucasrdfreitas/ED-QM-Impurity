@@ -22,17 +22,20 @@ kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
-impuritySpin     = {1/2};
+impuritySpin     = {1};
 gs               = {1};
 KondoCouplings   = {0,1,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
-klevels          = 20;
+klevels          = 100;
 
 HamCoupling="Kitaev_FM";
 dataName=Module[{i,f,\[Delta],k}, 
 				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
 				StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 KondoCouplings=Range@@KondoCouplings;
+
+
+(* klevels = 20 ~ 5 min per JK (Eigenvalue[]) *)
 
 
 (* ::Subsection:: *)
@@ -107,10 +110,10 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 	
 	Do[Module[{Himp,ev,JK },
 		JK=KondoCouplings[[j]];
-		Himp=N[1/(Lx Ly) (H0+JK HI)];
+		Himp=N[  (H0+JK HI)];
 		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->500,"Tolerance"->10^-8(*, "Shift"->-.7*)}]);  ]];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->600,"Tolerance"->10^-9(*, "Shift"->-.7*)}]);  ]];
 		
 		dataAppend[datapath,{JK,ev}];
 		(*AppendTo[eValues,{JK,ev}];*)
@@ -122,6 +125,12 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 
 
 ]
+
+
+N[5773/60]
+
+
+5*21
 
 
 (* ::Subsection:: *)
