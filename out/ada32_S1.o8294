@@ -1,0 +1,79 @@
+adatom32
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/adatom32/Kitaev_FM_size=(3,2)_2Simp=2/JK=Range[0,1,0.05]_k=100
+Uncompress time={3.844815, Null}
+ 
+    Memory in use:  0.0616468
+Starting JK Loop
+    Eigenvalue timing={51.333666, Null}
+    j=1/21
+    Memory in use:  0.075434528
+    Eigenvalue timing={54.442168, Null}
+    j=2/21
+    Memory in use:  0.07543464
+    Eigenvalue timing={45.478945, Null}
+    j=3/21
+    Memory in use:  0.075434648
+    Eigenvalue timing={49.519442, Null}
+    j=4/21
+    Memory in use:  0.075434656
+    Eigenvalue timing={46.783509, Null}
+    j=5/21
+    Memory in use:  0.075434664
+    Eigenvalue timing={55.077659, Null}
+    j=6/21
+    Memory in use:  0.075434672
+    Eigenvalue timing={46.151104, Null}
+    j=7/21
+    Memory in use:  0.07543468
+    Eigenvalue timing={54.739545, Null}
+    j=8/21
+    Memory in use:  0.075434688
+    Eigenvalue timing={52.764585, Null}
+    j=9/21
+    Memory in use:  0.075434696
+    Eigenvalue timing={45.0672, Null}
+    j=10/21
+    Memory in use:  0.075434704
+    Eigenvalue timing={47.298242, Null}
+    j=11/21
+    Memory in use:  0.075434712
+    Eigenvalue timing={49.488141, Null}
+    j=12/21
+    Memory in use:  0.07543472
+    Eigenvalue timing={49.375505, Null}
+    j=13/21
+    Memory in use:  0.075434728
+    Eigenvalue timing={57.327717, Null}
+    j=14/21
+    Memory in use:  0.075434736
+    Eigenvalue timing={51.405058, Null}
+    j=15/21
+    Memory in use:  0.075434744
+    Eigenvalue timing={48.871214, Null}
+    j=16/21
+    Memory in use:  0.075434752
+    Eigenvalue timing={52.168537, Null}
+    j=17/21
+    Memory in use:  0.07543476
+    Eigenvalue timing={48.038113, Null}
+    j=18/21
+    Memory in use:  0.075434768
+    Eigenvalue timing={43.667964, Null}
+    j=19/21
+    Memory in use:  0.075434776
+    Eigenvalue timing={49.950625, Null}
+    j=20/21
+    Memory in use:  0.075434784
+    Eigenvalue timing={46.332712, Null}
+    j=21/21
+    Memory in use:  0.075434776
+Loop timing={1045.711938, Null}
+
+Closing Kernels

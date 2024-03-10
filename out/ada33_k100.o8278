@@ -49,3 +49,39 @@ General::stop: Further output of Eigenvalues::maxit2 will be suppressed during t
     Eigenvalue timing={3164.452689, Null}
     j=10/21
     Memory in use:  1.591418224
+    Eigenvalue timing={3492.200814, Null}
+    j=11/21
+    Memory in use:  1.591418232
+    Eigenvalue timing={3358.078043, Null}
+    j=12/21
+    Memory in use:  1.59141824
+    Eigenvalue timing={3186.257623, Null}
+    j=13/21
+    Memory in use:  1.591418248
+    Eigenvalue timing={3392.019374, Null}
+    j=14/21
+    Memory in use:  1.591418256
+    Eigenvalue timing={3372.45841, Null}
+    j=15/21
+    Memory in use:  1.591418264
+    Eigenvalue timing={3348.587623, Null}
+    j=16/21
+    Memory in use:  1.591418272
+    Eigenvalue timing={3339.6877, Null}
+    j=17/21
+    Memory in use:  1.59141828
+    Eigenvalue timing={3344.57628, Null}
+    j=18/21
+    Memory in use:  1.591418288
+    Eigenvalue timing={3354.487311, Null}
+    j=19/21
+    Memory in use:  1.591418296
+    Eigenvalue timing={3216.138689, Null}
+    j=20/21
+    Memory in use:  1.591418304
+    Eigenvalue timing={2828.473449, Null}
+    j=21/21
+    Memory in use:  1.591418296
+Loop timing={69154.237062, Null}
+
+Closing Kernels
