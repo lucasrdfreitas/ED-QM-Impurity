@@ -111,7 +111,7 @@ cvec=1/Sqrt[3] {1,1,1};
 
 
 (* ::Text:: *)
-(*For impurity spin S we define spin components  *)
+(*For impurity spin S we define spin components *)
 
 
 spinmatrix[S_]:=Module[{n=Round[2S+1],S0,Sx,Sy,Sz}, If[FractionalPart[2 S]!=0.,Print["2(",S,")+1  is not an integer."];Abort[];];
@@ -119,14 +119,16 @@ S0=IdentityMatrix[n];
 Sx=1/2 SparseArray[{ {i_,j_}/;i-j==1 :>Sqrt[(S+1)(i+j-1)-i j], {i_,j_}/;i-j==-1 :>Sqrt[(S+1)(i+j-1)-i j]},{n,n},0];
 Sy=I/2 SparseArray[{ {i_,j_}/;i-j==1 :>Sqrt[(S+1)(i+j-1)-i j], {i_,j_}/;i-j==-1 :>-Sqrt[(S+1)(i+j-1)-i j] },{n,n},0];
 Sz=SparseArray[{ {i_,i_}:>(S+1-i)},{n,n},0];
-SparseArray/@N@{Sx,Sy,Sz,S0} ];
+SparseArray/@N@{S0,Sx,Sy,Sz} ];
 
 
 spinOp[Simp_,i_,N0_]:= 
 Module[{s,S},
 	s=spinmatrix[1/2]; 
 	S=spinmatrix[Simp];
-	Table[  KroneckerProduct@@Join[ Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1], {S[[4]]}  ]  ,{\[Alpha],1,3}]   ];
+	Table[
+	KroneckerProduct@@Join[ Insert[s[[\[Alpha]+1]],i]@Table[s[[1]],N0-1], {S[[1]]}  ] 
+	,{\[Alpha],1,3}] ];
 
 
 (* ::Subsection:: *)
@@ -153,16 +155,16 @@ AdatomKitaev[K,Simp,Lx,Ly]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]+AdatomZeema
 (* K=(Kx,Ky,Kz) Kitaev coupling  *)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Zeeman Hamiltonian*)
 
 
 (* ::Text:: *)
-(*bulk: position 1, ..., N  with spin 1/2,  and impurity spin Subscript[S, imp] at top of position 1 which is (chosen as) the first slot in the tensor product*)
+(*bulk: position 1, ..., 8  with spin 1/2,  and impurity spin Subscript[S, imp] at top of position 8 which is (chosen as) the 9th slot in the tensor product*)
 (*		> spin/bond index \[Alpha] = x,y,z = 1,2,3 *)
 (*		> bulk spins  bulk[[i,\[Alpha]]] for positions i=1, ..., 8 *)
-(*			Insert[ Subscript[s, \[Alpha]], i ] @Table[s[[4]],N0-1] creates a list with spin Subscript[s, \[Alpha]] at position i and identity Subscript[s, 0] elsewhere*)
-(*			 Use KroneckerProduct to perform the tensor product of the N+1 spin matrices*)
+(*			PadRight[ Subscript[s, \[Alpha]], 8, Subscript[s, 0], i-1 ] creates a list with spin Subscript[s, \[Alpha]] at position i and identity Subscript[s, 0] elsewhere*)
+(*			  Use KroneckerProduct to perform the tensor product of the 8+1 spin matrices*)
 (*		> impurity spin imp[[\[Alpha]]]*)
 (* [Most of the computational time goes in the KroneckerProduct. Using SparseArrays (i.e. spinmatrix) makes the computation 2 or 3 orders of magnitude faster.]*)
 
@@ -170,8 +172,8 @@ AdatomKitaev[K,Simp,Lx,Ly]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]+AdatomZeema
 AdatomZeeman[h_,Simp_,g_,N0_]:=Module[{s,S,bulk,imp}, 
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-bulk = Table[  KroneckerProduct@@Join[ {S[[4]]}, Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1]    ]  ,{i,1,N0},{\[Alpha],1,3}];
-imp  = Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[    s[[4]],   N0]               ]  ,{\[Alpha],1,3}];
+bulk = Table[  KroneckerProduct@@Join[PadRight[  {s[[\[Alpha]+1]]}, N0, {s[[1]]}, i-1], {S[[1]]}     ]  ,{i,1,N0},{\[Alpha],1,3}];
+imp  = Table[  KroneckerProduct@@Join[Table[     s[[1]],   N0],              {S[[\[Alpha]+1]]} ]  ,{\[Alpha],1,3}];
 
 Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,1,N0}]    ,{\[Alpha],1,3}]
 ];
@@ -189,8 +191,7 @@ AdatomImp[JK_,Simp_,N0_]:=Module[{s,S,sS},
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 
-sS=Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Insert[s[[\[Alpha]]],1]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3}]; 
-
+sS=Table[  KroneckerProduct@@Join[PadRight[ {s[[\[Alpha]+1]]} , N0, {s[[1]]}, N0-1] ,{ S[[\[Alpha]+1]] } ]  ,{\[Alpha],1,3}]; 
 JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 ]
 
@@ -202,7 +203,7 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Kitaev Hamiltonian*)
 
 
@@ -236,7 +237,7 @@ S=spinmatrix[Simp];
 bonds=Bonds[Lx,Ly];
 
 {Hx,Hy,Hz} = Table[  K[[\[Alpha]]] Sum[ 
-KroneckerProduct@@Join[{S[[4]]},  Insert[s[[\[Alpha]]],Max@bonds[[\[Alpha],r]] ]@Insert[s[[\[Alpha]]],Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]    ]  
+KroneckerProduct@@Join[ Insert[s[[\[Alpha]+1]],Max@bonds[[\[Alpha],r]] ]@Insert[s[[\[Alpha]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]}  ]  
 ,{r,1,Lx Ly}],{\[Alpha],1,3}];
 
 Hx+Hy+Hz
@@ -262,23 +263,23 @@ s=spinmatrix[1/2];
 S=spinmatrix[Simp];
 \[Lambda]=Norm[\[Lambda]n];
 n=\[Lambda]n/\[Lambda];
-sn=s[[1;;3]] . n;
+sn=s[[2;;4]] . n;
 bonds=Bonds[Lx,Ly];
 
-HJ = Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]}, Insert[s[[\[Beta]]],Max@bonds[[\[Alpha],r]][[2]]]@Insert[s[[\[Beta]]],Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
+HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[Insert[s[[\[Beta]+1]],Max@bonds[[\[Alpha],r]][[2]]]@Insert[s[[\[Beta]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
 ,{r,1,Lx Ly},{\[Beta],1,3},{\[Alpha],1,3}];
-H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@bonds[[\[Alpha],r]][[2]]]@Insert[sn,   Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
+H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[Insert[sn,Max@bonds[[\[Alpha],r]][[2]]]@Insert[sn,Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
 ,{r,1,Lx Ly},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Substitution Hamiltonian *)
 
 
 (* ::Text:: *)
-(*	Kitaev FM + AFM Kondo substitutional impurity with N=2LxLy bulk spins  *)
+(*	Kitaev FM + AFM Kondo adatom impurity with N0=2LxLy bulk spins  *)
 
 
 substitutionHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_]:=
@@ -286,7 +287,15 @@ substitutionKitaev[K,Simp,Lx,Ly]+substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]
 
 
 (* ::Text:: *)
-(*put the impurity where the bulk spin i=1 would  be*)
+(*Note on optimization - if one want to vary some parameter (e.g. JK, h) don't use this function,  rather*)
+(*first compute each Hamiltonian matrix and then sum them. To avoid compute the same matrix Hamiltonian over and over.*)
+
+
+(* ::Text:: *)
+(*Couplings -- K<0 = FM, K>0 AFM  (similarly for J, JK)*)
+(*J=(Jx,Jy,Jz) Isotropic NN Heisenberg *)
+(*\[Lambda]n=\[Lambda] (nx,ny,nz)  anisotropy \[Lambda] of Heisenberg coupling along the n direction*)
+(* K=(Kx,Ky,Kz) Kitaev coupling  *)
 
 
 (* ::Subsubsection::Closed:: *)
@@ -294,27 +303,32 @@ substitutionKitaev[K,Simp,Lx,Ly]+substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]
 
 
 (* ::Text:: *)
-(*	let N0=N-1 be the number of bulk spins *)
+(*bulk: position 1, ..., 8  with spin 1/2,  and impurity spin Subscript[S, imp] at top of position 8 which is (chosen as) the 9th slot in the tensor product*)
+(*		> spin/bond index \[Alpha] = x,y,z = 1,2,3 *)
+(*		> bulk spins  bulk[[i,\[Alpha]]] for positions i=1, ..., 8 *)
+(*			PadRight[ Subscript[s, \[Alpha]], 8, Subscript[s, 0], i-1 ] creates a list with spin Subscript[s, \[Alpha]] at position i and identity Subscript[s, 0] elsewhere*)
+(*			  Use KroneckerProduct to perform the tensor product of the 8+1 spin matrices*)
+(*		> impurity spin imp[[\[Alpha]]]*)
+(* [Most of the computational time goes in the KroneckerProduct. Using SparseArrays (i.e. spinmatrix) makes the computation 2 or 3 orders of magnitude faster.]*)
 
 
-substitutionZeeman[h_,Simp_,g_,N1_]:=Module[{s,S,bulk,imp,N0}, 
+substitutionZeeman[h_,Simp_,g_,N0_]:=Module[{s,S,bulk,imp}, 
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-N0=N1-1;
+bulk = Table[  KroneckerProduct@@Join[PadRight[  {s[[\[Alpha]+1]]}, N0-1, {s[[1]]}, i-1], {S[[1]]}     ]  ,{i,1,N0-1},{\[Alpha],1,3}];
+imp  = Table[  KroneckerProduct@@Join[Table[     s[[1]],   N0-1],              {S[[\[Alpha]+1]]} ]  ,{\[Alpha],1,3}];
 
-bulk = Table[  KroneckerProduct@@Join[ {S[[4]]}, Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1]    ]  ,{i,1,N0},{\[Alpha],1,3}];
-imp  = Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[ s[[4]],   N0]                  ]  ,{\[Alpha],1,3}]; 
-
-Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,1,N0}]    ,{\[Alpha],1,3}]
+Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,1,N0-1}]    ,{\[Alpha],1,3}]
 ];
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Kitaev Hamiltonian*)
 
 
 (* ::Text:: *)
 (*Bulk Kitaev Hamiltonian  - *)
+(**)
 
 
 substitutionBonds[Lx_,Ly_]:=Module[{bulkBonds,impBonds,bonds},
@@ -328,51 +342,44 @@ bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Al
 
 
 
+substitutionBonds[2,2]
+
+
 (* ::Text:: *)
-(*>  we need to subtract 1 in bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;  since the position will be shifted be +1 when add the impurity*)
-(*	e.g. the position (0,0,B) has index r=2, but it is the first position in the bulk (i.e. before inserting the impurity) *)
+(**)
 
 
-substitutionKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bulkBonds,Hx,Hy,Hz,N0},
-N0=2 Lx Ly-1;
+substitutionKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
+N0=2 Lx Ly;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
+bonds=Bonds[Lx,Ly];
 
 {Hx,Hy,Hz} = Table[  K[[\[Alpha]]] Sum[ 
-KroneckerProduct@@Join[{S[[4]]},  Insert[s[[\[Alpha]]],Max@bulkBonds[[\[Alpha],r]] ]@Insert[s[[\[Alpha]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]    ]  
-,{r,1,Length@bulkBonds}],{\[Alpha],1,3}];
+KroneckerProduct@@Join[ Insert[s[[\[Alpha]+1]],Max@bonds[[\[Alpha],r]] ]@Insert[s[[\[Alpha]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]}  ]  
+,{r,1,Lx Ly}],{\[Alpha],1,3}];
 
 Hx+Hy+Hz
 ]
+
+
+(*AbsoluteTiming@HKitaev[{1,1,1},1/2,3,3]*)
 
 
 (* ::Subsubsection:: *)
 (*Impurity Hamiltonian*)
 
 
-impBonds=substitutionBonds[2,2][[1]]-1
-
-
 (* ::Text:: *)
-(*The impurity Hamiltonian for the substitutional is obtained by summing  Subscript[s, i]^\[Beta] Subscript[s, j]^\[Beta] for ij in an \[Alpha]-bond,*)
-(*the positions for the bonds are in ImpBonds, where the impurity is at r=1 and each (one of the three) bulk spins are at Max@impBonds[[\[Alpha]]]*)
-(**)
-(*> impBonds has three entries, corresponding to x-, y-, and z- bonds,*)
-(*> impBonds[[\[Alpha]]] = { {1,r\[Alpha]} } gives the position of the impurity at 1 and the bulk spin connected to the impurity in an \[Alpha]-bond, and*)
-(*> Max@impBonds[[\[Alpha]]] gives r\[Alpha], which is the index of bulk spin (shifted by -1)*)
+(*Adatom impurity couples the 8th bulk spin to the impurity spin (the 9th slot in the tensor product) with AFM Heisenberg with coupling Subscript[J, K]*)
 
 
-substitutionImp[JK_,Simp_,Lx_,Ly_]:=Module[{s,S,sS,impBonds,N0}, 
-N0=2 Lx Ly-1;
+substitutionImp[JK_,Simp_,N0_]:=Module[{s,S,sS}, 
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-impBonds=substitutionBonds[Lx,Ly][[1]]-1; 
 
-sS=Sum[  KroneckerProduct@@Join[ {S[[\[Beta]]]}, Insert[s[[\[Beta]]],Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3},{\[Beta],1,3}]; 
-
-JK sS
-
+sS=Table[  KroneckerProduct@@Join[PadRight[ {s[[\[Alpha]+1]]} , N0-1, {s[[1]]}, N0-1-1] ,{ S[[\[Alpha]+1]] } ]  ,{\[Alpha],1,3}]; 
+JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 ]
 
 
@@ -383,22 +390,28 @@ JK sS
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Heisenberg Hamiltonian*)
 
 
-substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bulkBonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
-N0=2 Lx Ly-1;
+(* ::Text:: *)
+(*Bulk anisotropic Heisenberg Hamiltonian  - *)
+(*	> follows the same structure as the Kitaev Hamiltonian, but each Subscript[H, \[Alpha]] has a additional sum over spin indices *)
+(*	> we will also consider an anisotropy of strength \[Lambda] along the n axis *)
+
+
+substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
+N0=2 Lx Ly;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
 \[Lambda]=Norm[\[Lambda]n];
 n=\[Lambda]n/\[Lambda];
-sn=s[[1;;3]] . n; 
+sn=s[[2;;4]] . n;
+bonds=Bonds[Lx,Ly];
 
-HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]]]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ]  
-,{r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
-H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds[[\[Alpha],r]] ]@Insert[sn,Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
-,{r,1,Length@bulkBonds},{\[Alpha],1,3}];
+HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[Insert[s[[\[Beta]+1]],Max@bonds[[\[Alpha],r]][[2]]]@Insert[s[[\[Beta]+1]],Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
+,{r,1,Lx Ly},{\[Beta],1,3},{\[Alpha],1,3}];
+H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[Insert[sn,Max@bonds[[\[Alpha],r]][[2]]]@Insert[sn,Min@bonds[[\[Alpha],r]]]@Table[s[[1]],N0-2], {S[[1]]} ]  
+,{r,1,Lx Ly},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
