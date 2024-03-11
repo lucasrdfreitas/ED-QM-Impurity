@@ -77,7 +77,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
 	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HI}] ;]     ];
 	,
-	Print["Compressed data found - Skipping to compute eigenvalues"]
+	Print["Compressed data found - Skipping matrix calculation"]
 ];
 
 ];
