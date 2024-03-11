@@ -5,7 +5,7 @@
 (*	-compute eigenvalues for first "k" levels*)
 (*	-compute eigenvector for the ground state*)
 (*Coupling: Kitaev FM*)
-(*dataName: KondoCoupling ranging from 0 to 1 with spacing .1*)
+(*dataName: KondoCoupling Range & eigenvalues *)
 
 
 (* ::Subsection:: *)
@@ -113,7 +113,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		Himp=N[  (H0+JK HI)];
 		Print["    Eigenvalue timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->600,"Tolerance"->10^-9(*, "Shift"->-.7*)}]);  ]];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->1000,"Tolerance"->10^-9(*, "Shift"->-.7*)}]);  ]];
 		
 		dataAppend[datapath,{JK,ev}];
 		(*AppendTo[eValues,{JK,ev}];*)
