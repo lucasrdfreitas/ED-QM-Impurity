@@ -22,9 +22,9 @@ kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
-impuritySpin     = {1};
+impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = {0,.4,.01};
+KondoCouplings   = {0,1,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 100;
 
@@ -33,6 +33,9 @@ dataName=Module[{i,f,\[Delta],k},
 				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
 				StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 KondoCouplings=Range@@KondoCouplings;
+
+
+KondoCouplings={.225}
 
 
 (* ::Subsection:: *)
@@ -110,7 +113,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		Himp=N[(H0+JK HI)];
 		Print["    Eigenvalue timing=",AbsoluteTiming[
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->1000,"Tolerance"->10^-9}]);  ]];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-9}]);  ]];
 		
 		dataAppend[datapath,{JK,ev}];
 		Print["    j=",j,"/",Length@KondoCouplings];
