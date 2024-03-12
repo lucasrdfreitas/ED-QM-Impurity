@@ -351,9 +351,6 @@ Hx+Hy+Hz
 (*Impurity Hamiltonian*)
 
 
-impBonds=substitutionBonds[2,2][[1]]-1
-
-
 (* ::Text:: *)
 (*The impurity Hamiltonian for the substitutional is obtained by summing  Subscript[s, i]^\[Beta] Subscript[s, j]^\[Beta] for ij in an \[Alpha]-bond,*)
 (*the positions for the bonds are in ImpBonds, where the impurity is at r=1 and each (one of the three) bulk spins are at Max@impBonds[[\[Alpha]]]*)

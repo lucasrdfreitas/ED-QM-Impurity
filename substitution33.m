@@ -24,7 +24,7 @@ anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = {0,1,.05};
+KondoCouplings   = {0,.4,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 100;
 
