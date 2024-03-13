@@ -1,0 +1,428 @@
+substitution42
+Before Starting Kernels
+Starting Kernels
+
+Compressed data not found - Computing Hamiltonian matrix 
+
+    Memory in use:  0.051900216
+H Kitaev timing={0.07518, {65536, 65536}}
+H Heisenberg timing={0.000016, {}}
+H Zeeman timing={0.356734, {65536, 65536}}
+H imp timing={0.049848, {65536, 65536}}
+    Memory in use:  0.160589008
+Compress time={17.402383, Null}
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/substitution42/Kitaev_FM_size=(4,2)_2Simp=1/JK=Range[0,1,0.01]_k=50
+Uncompress time={13.347001, Null}
+ 
+    Memory in use:  0.097259528
+Starting JK Loop
+    Eigenvalues 2 timing={57.297555, Null}
+    Eigenvalues All timing={140.225948, Null}
+    j=1/101
+    Memory in use:  0.148067992
+    Eigenvalues 2 timing={80.243791, Null}
+    Eigenvalues All timing={124.777241, Null}
+    j=2/101
+    Memory in use:  0.148068008
+    Eigenvalues 2 timing={88.338258, Null}
+    Eigenvalues All timing={126.043667, Null}
+    j=3/101
+    Memory in use:  0.148068072
+    Eigenvalues 2 timing={66.27597, Null}
+    Eigenvalues All timing={152.969323, Null}
+    j=4/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={56.019224, Null}
+    Eigenvalues All timing={184.760452, Null}
+    j=5/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={42.41739, Null}
+    Eigenvalues All timing={154.43584, Null}
+    j=6/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={38.544241, Null}
+    Eigenvalues All timing={152.377498, Null}
+    j=7/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={34.34347, Null}
+    Eigenvalues All timing={147.742022, Null}
+    j=8/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={33.112766, Null}
+    Eigenvalues All timing={139.851744, Null}
+    j=9/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={28.893879, Null}
+    Eigenvalues All timing={138.1959, Null}
+    j=10/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={27.946923, Null}
+    Eigenvalues All timing={153.96461, Null}
+    j=11/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={22.648209, Null}
+    Eigenvalues All timing={154.734574, Null}
+    j=12/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={24.397857, Null}
+    Eigenvalues All timing={136.29006, Null}
+    j=13/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={23.531972, Null}
+    Eigenvalues All timing={125.747673, Null}
+    j=14/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.568131, Null}
+    Eigenvalues All timing={121.071586, Null}
+    j=15/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={21.084496, Null}
+    Eigenvalues All timing={138.3245, Null}
+    j=16/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={22.713451, Null}
+    Eigenvalues All timing={137.758823, Null}
+    j=17/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={22.042149, Null}
+    Eigenvalues All timing={166.612755, Null}
+    j=18/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.521918, Null}
+    Eigenvalues All timing={159.088192, Null}
+    j=19/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={22.338917, Null}
+    Eigenvalues All timing={165.400546, Null}
+    j=20/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.354401, Null}
+    Eigenvalues All timing={174.037583, Null}
+    j=21/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={18.694836, Null}
+    Eigenvalues All timing={172.533883, Null}
+    j=22/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={21.823806, Null}
+    Eigenvalues All timing={164.653094, Null}
+    j=23/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={24.549412, Null}
+    Eigenvalues All timing={155.829832, Null}
+    j=24/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.879367, Null}
+    Eigenvalues All timing={174.747082, Null}
+    j=25/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.122212, Null}
+    Eigenvalues All timing={160.128635, Null}
+    j=26/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={21.264227, Null}
+    Eigenvalues All timing={202.014723, Null}
+    j=27/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={19.963959, Null}
+    Eigenvalues All timing={149.673501, Null}
+    j=28/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={23.533987, Null}
+    Eigenvalues All timing={135.388915, Null}
+    j=29/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={20.484805, Null}
+    Eigenvalues All timing={129.886552, Null}
+    j=30/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={22.55707, Null}
+    Eigenvalues All timing={143.125277, Null}
+    j=31/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={24.816112, Null}
+    Eigenvalues All timing={124.848373, Null}
+    j=32/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={25.178476, Null}
+    Eigenvalues All timing={139.628027, Null}
+    j=33/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={26.525835, Null}
+    Eigenvalues All timing={157.066536, Null}
+    j=34/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={27.689533, Null}
+    Eigenvalues All timing={171.498734, Null}
+    j=35/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={29.139687, Null}
+    Eigenvalues All timing={173.323471, Null}
+    j=36/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={30.02481, Null}
+    Eigenvalues All timing={140.620999, Null}
+    j=37/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={34.548556, Null}
+    Eigenvalues All timing={142.230472, Null}
+    j=38/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={39.510096, Null}
+    Eigenvalues All timing={184.313308, Null}
+    j=39/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={52.063452, Null}
+    Eigenvalues All timing={120.130876, Null}
+    j=40/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={62.74037, Null}
+    Eigenvalues All timing={172.992758, Null}
+    j=41/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={73.949513, Null}
+    Eigenvalues All timing={170.55966, Null}
+    j=42/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={83.347707, Null}
+    Eigenvalues All timing={159.819871, Null}
+    j=43/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.109368, Null}
+    Eigenvalues All timing={165.731448, Null}
+    j=44/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.19436, Null}
+    Eigenvalues All timing={128.128554, Null}
+    j=45/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={79.187399, Null}
+    Eigenvalues All timing={165.160353, Null}
+    j=46/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={60.736936, Null}
+    Eigenvalues All timing={109.644901, Null}
+    j=47/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={74.688476, Null}
+    Eigenvalues All timing={120.781626, Null}
+    j=48/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={62.632216, Null}
+    Eigenvalues All timing={143.01728, Null}
+    j=49/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={59.418539, Null}
+    Eigenvalues All timing={135.785837, Null}
+    j=50/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.259205, Null}
+    Eigenvalues All timing={99.269229, Null}
+    j=51/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={68.63248, Null}
+    Eigenvalues All timing={116.050518, Null}
+    j=52/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={66.445019, Null}
+    Eigenvalues All timing={163.397565, Null}
+    j=53/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={62.645546, Null}
+    Eigenvalues All timing={131.202414, Null}
+    j=54/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={59.290756, Null}
+    Eigenvalues All timing={148.095677, Null}
+    j=55/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.355644, Null}
+    Eigenvalues All timing={154.713276, Null}
+    j=56/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={56.240806, Null}
+    Eigenvalues All timing={130.778197, Null}
+    j=57/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={59.252487, Null}
+    Eigenvalues All timing={137.320364, Null}
+    j=58/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={64.400508, Null}
+    Eigenvalues All timing={140.055789, Null}
+    j=59/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={64.989385, Null}
+    Eigenvalues All timing={151.716506, Null}
+    j=60/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={60.683934, Null}
+    Eigenvalues All timing={134.408225, Null}
+    j=61/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={62.1528, Null}
+    Eigenvalues All timing={131.293228, Null}
+    j=62/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={61.180284, Null}
+    Eigenvalues All timing={127.311757, Null}
+    j=63/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={70.552668, Null}
+    Eigenvalues All timing={171.443375, Null}
+    j=64/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={70.834182, Null}
+    Eigenvalues All timing={159.489451, Null}
+    j=65/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={66.167995, Null}
+    Eigenvalues All timing={162.963531, Null}
+    j=66/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={67.487045, Null}
+    Eigenvalues All timing={159.117395, Null}
+    j=67/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.309357, Null}
+    Eigenvalues All timing={156.363754, Null}
+    j=68/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={74.948541, Null}
+    Eigenvalues All timing={162.785574, Null}
+    j=69/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={73.031527, Null}
+    Eigenvalues All timing={142.651994, Null}
+    j=70/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={71.19306, Null}
+    Eigenvalues All timing={155.155652, Null}
+    j=71/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={80.016965, Null}
+    Eigenvalues All timing={157.172772, Null}
+    j=72/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.831458, Null}
+    Eigenvalues All timing={148.704123, Null}
+    j=73/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.497186, Null}
+    Eigenvalues All timing={133.629277, Null}
+    j=74/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={73.993251, Null}
+    Eigenvalues All timing={151.655585, Null}
+    j=75/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={78.128732, Null}
+    Eigenvalues All timing={134.960513, Null}
+    j=76/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={77.99692, Null}
+    Eigenvalues All timing={130.24396, Null}
+    j=77/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.13726, Null}
+    Eigenvalues All timing={128.910329, Null}
+    j=78/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={71.418008, Null}
+    Eigenvalues All timing={152.191435, Null}
+    j=79/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={70.193651, Null}
+    Eigenvalues All timing={157.403142, Null}
+    j=80/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.176449, Null}
+    Eigenvalues All timing={142.050445, Null}
+    j=81/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={66.683793, Null}
+    Eigenvalues All timing={148.741388, Null}
+    j=82/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={80.378784, Null}
+    Eigenvalues All timing={149.943939, Null}
+    j=83/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={69.070844, Null}
+    Eigenvalues All timing={127.027873, Null}
+    j=84/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={79.198745, Null}
+    Eigenvalues All timing={140.277054, Null}
+    j=85/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={78.956316, Null}
+    Eigenvalues All timing={137.084589, Null}
+    j=86/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={77.070607, Null}
+    Eigenvalues All timing={155.994744, Null}
+    j=87/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={68.781603, Null}
+    Eigenvalues All timing={150.821279, Null}
+    j=88/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={73.573201, Null}
+    Eigenvalues All timing={160.585948, Null}
+    j=89/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.866617, Null}
+    Eigenvalues All timing={147.808887, Null}
+    j=90/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={73.839049, Null}
+    Eigenvalues All timing={159.321222, Null}
+    j=91/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={76.780123, Null}
+    Eigenvalues All timing={175.617413, Null}
+    j=92/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={67.248803, Null}
+    Eigenvalues All timing={156.207742, Null}
+    j=93/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={77.36198, Null}
+    Eigenvalues All timing={153.228228, Null}
+    j=94/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={78.455143, Null}
+    Eigenvalues All timing={153.614857, Null}
+    j=95/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.757252, Null}
+    Eigenvalues All timing={157.447662, Null}
+    j=96/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={78.426642, Null}
+    Eigenvalues All timing={149.684691, Null}
+    j=97/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={70.759201, Null}
+    Eigenvalues All timing={152.715924, Null}
+    j=98/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={72.832373, Null}
+    Eigenvalues All timing={159.302226, Null}
+    j=99/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={80.389352, Null}
+    Eigenvalues All timing={176.595042, Null}
+    j=100/101
+    Memory in use:  0.148068128
+    Eigenvalues 2 timing={74.596437, Null}
+    Eigenvalues All timing={146.614959, Null}
+    j=101/101
+    Memory in use:  0.148068112
+Loop timing={20636.395255, Null}
+
+Closing Kernels

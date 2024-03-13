@@ -1,0 +1,147 @@
+substitution33
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/substitution33/Kitaev_FM_size=(3,3)_2Simp=2/JK=Range[0,0.4,0.01]_k=100
+Uncompress time={141.599857, Null}
+ 
+    Memory in use:  0.34254272
+Starting JK Loop
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 1000, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+    Eigenvalue timing={2100.493817, Null}
+    j=1/41
+    Memory in use:  0.631932896
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 1000, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+    Eigenvalue timing={2107.627366, Null}
+    j=2/41
+    Memory in use:  0.63193316
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 1000, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+
+General::stop: Further output of Eigenvalues::maxit2 will be suppressed during this calculation.
+    Eigenvalue timing={2082.710441, Null}
+    j=3/41
+    Memory in use:  0.631952784
+    Eigenvalue timing={2000.666554, Null}
+    j=4/41
+    Memory in use:  0.631952864
+    Eigenvalue timing={1649.497591, Null}
+    j=5/41
+    Memory in use:  0.631952872
+    Eigenvalue timing={1591.793792, Null}
+    j=6/41
+    Memory in use:  0.631952968
+    Eigenvalue timing={1611.640197, Null}
+    j=7/41
+    Memory in use:  0.631952976
+    Eigenvalue timing={1580.200538, Null}
+    j=8/41
+    Memory in use:  0.631952984
+    Eigenvalue timing={1588.358049, Null}
+    j=9/41
+    Memory in use:  0.631952992
+    Eigenvalue timing={1583.632328, Null}
+    j=10/41
+    Memory in use:  0.631953
+    Eigenvalue timing={1600.224236, Null}
+    j=11/41
+    Memory in use:  0.631953008
+    Eigenvalue timing={1787.81187, Null}
+    j=12/41
+    Memory in use:  0.631953016
+    Eigenvalue timing={1827.698668, Null}
+    j=13/41
+    Memory in use:  0.631953024
+    Eigenvalue timing={1741.043626, Null}
+    j=14/41
+    Memory in use:  0.631953032
+    Eigenvalue timing={1784.972163, Null}
+    j=15/41
+    Memory in use:  0.63195304
+    Eigenvalue timing={1794.581368, Null}
+    j=16/41
+    Memory in use:  0.631953048
+    Eigenvalue timing={1754.414309, Null}
+    j=17/41
+    Memory in use:  0.631953056
+    Eigenvalue timing={1778.021199, Null}
+    j=18/41
+    Memory in use:  0.631953064
+    Eigenvalue timing={1778.289816, Null}
+    j=19/41
+    Memory in use:  0.631953072
+    Eigenvalue timing={1747.40144, Null}
+    j=20/41
+    Memory in use:  0.63195308
+    Eigenvalue timing={1742.039072, Null}
+    j=21/41
+    Memory in use:  0.631953088
+    Eigenvalue timing={1757.315247, Null}
+    j=22/41
+    Memory in use:  0.631953096
+    Eigenvalue timing={1692.821551, Null}
+    j=23/41
+    Memory in use:  0.631953104
+    Eigenvalue timing={1611.018367, Null}
+    j=24/41
+    Memory in use:  0.631953112
+    Eigenvalue timing={1611.320413, Null}
+    j=25/41
+    Memory in use:  0.63195312
+    Eigenvalue timing={1560.038001, Null}
+    j=26/41
+    Memory in use:  0.631953128
+    Eigenvalue timing={1574.972827, Null}
+    j=27/41
+    Memory in use:  0.631953136
+    Eigenvalue timing={1621.906275, Null}
+    j=28/41
+    Memory in use:  0.631953144
+    Eigenvalue timing={1575.267165, Null}
+    j=29/41
+    Memory in use:  0.631953152
+    Eigenvalue timing={1606.301083, Null}
+    j=30/41
+    Memory in use:  0.63195316
+    Eigenvalue timing={1624.864394, Null}
+    j=31/41
+    Memory in use:  0.631953168
+    Eigenvalue timing={1584.441134, Null}
+    j=32/41
+    Memory in use:  0.631953176
+    Eigenvalue timing={1594.458695, Null}
+    j=33/41
+    Memory in use:  0.631953184
+    Eigenvalue timing={1602.061699, Null}
+    j=34/41
+    Memory in use:  0.631953192
+    Eigenvalue timing={1626.914537, Null}
+    j=35/41
+    Memory in use:  0.6319532
+    Eigenvalue timing={1622.782928, Null}
+    j=36/41
+    Memory in use:  0.631953208
+    Eigenvalue timing={1629.844538, Null}
+    j=37/41
+    Memory in use:  0.631953216
+    Eigenvalue timing={1596.8312, Null}
+    j=38/41
+    Memory in use:  0.631953224
+    Eigenvalue timing={1578.105754, Null}
+    j=39/41
+    Memory in use:  0.631953232
+    Eigenvalue timing={1590.815122, Null}
+    j=40/41
+    Memory in use:  0.63195324
+    Eigenvalue timing={1556.344915, Null}
+    j=41/41
+    Memory in use:  0.631953248
+Loop timing={69471.209871, Null}
+
+Closing Kernels
