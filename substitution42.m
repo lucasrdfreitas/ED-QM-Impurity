@@ -33,6 +33,7 @@ dataName=Module[{i,f,\[Delta],k},
 				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
 				StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 KondoCouplings=Range@@KondoCouplings;
+KondoCouplings={.21}
 
 
 (* ::Subsection:: *)
