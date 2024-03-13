@@ -1,0 +1,80 @@
+substitution42
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/substitution42/Kitaev_FM_size=(4,2)_2Simp=1/JK=Range[0,0.3,0.02]_k=75
+Uncompress time={12.394436, Null}
+ 
+    Memory in use:  0.09665508
+Starting JK Loop
+    Eigenvalues 2 timing={53.328999, Null}
+    Eigenvalues All timing={227.920513, Null}
+    j=1/16
+    Memory in use:  0.147464232
+    Eigenvalues 2 timing={71.97565, Null}
+    Eigenvalues All timing={182.515702, Null}
+    j=2/16
+    Memory in use:  0.147464344
+    Eigenvalues 2 timing={40.907858, Null}
+    Eigenvalues All timing={202.049358, Null}
+    j=3/16
+    Memory in use:  0.147464352
+    Eigenvalues 2 timing={29.8873, Null}
+    Eigenvalues All timing={188.041347, Null}
+    j=4/16
+    Memory in use:  0.14746448
+    Eigenvalues 2 timing={23.409842, Null}
+    Eigenvalues All timing={183.148012, Null}
+    j=5/16
+    Memory in use:  0.147464488
+    Eigenvalues 2 timing={20.876237, Null}
+    Eigenvalues All timing={193.416942, Null}
+    j=6/16
+    Memory in use:  0.147464496
+    Eigenvalues 2 timing={18.807053, Null}
+    Eigenvalues All timing={200.923073, Null}
+    j=7/16
+    Memory in use:  0.147464504
+    Eigenvalues 2 timing={17.657358, Null}
+    Eigenvalues All timing={239.695668, Null}
+    j=8/16
+    Memory in use:  0.147464512
+    Eigenvalues 2 timing={17.481894, Null}
+    Eigenvalues All timing={257.16449, Null}
+    j=9/16
+    Memory in use:  0.14746452
+    Eigenvalues 2 timing={18.001509, Null}
+    Eigenvalues All timing={265.194593, Null}
+    j=10/16
+    Memory in use:  0.147464528
+    Eigenvalues 2 timing={15.984269, Null}
+    Eigenvalues All timing={248.575163, Null}
+    j=11/16
+    Memory in use:  0.147464536
+    Eigenvalues 2 timing={17.343546, Null}
+    Eigenvalues All timing={245.18179, Null}
+    j=12/16
+    Memory in use:  0.147464544
+    Eigenvalues 2 timing={16.139158, Null}
+    Eigenvalues All timing={273.030094, Null}
+    j=13/16
+    Memory in use:  0.147464552
+    Eigenvalues 2 timing={17.406831, Null}
+    Eigenvalues All timing={240.504693, Null}
+    j=14/16
+    Memory in use:  0.14746456
+    Eigenvalues 2 timing={17.358063, Null}
+    Eigenvalues All timing={245.960187, Null}
+    j=15/16
+    Memory in use:  0.147464568
+    Eigenvalues 2 timing={19.459909, Null}
+    Eigenvalues All timing={222.111389, Null}
+    j=16/16
+    Memory in use:  0.147464576
+Loop timing={4032.207836, Null}
+
+Closing Kernels
