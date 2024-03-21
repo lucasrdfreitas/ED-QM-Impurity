@@ -1,0 +1,20 @@
+substitution42
+Before Starting Kernels
+Starting Kernels
+
+Compressed data found - Skipping to compute eigenvalues
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/substitution42/Kitaev_FM_size=(4,2)_2Simp=1/JK=Range[0,0.3,0.02]_k=75
+Uncompress time={12.129541, Null}
+ 
+    Memory in use:  0.096654912
+Starting JK Loop
+    Eigenvalues 2 timing={19.400542, Null}
+    Eigenvalues All timing={226.371249, Null}
+    j=1/1
+    Memory in use:  0.147464064
+Loop timing={245.814734, Null}
+
+Closing Kernels
