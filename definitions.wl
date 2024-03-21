@@ -122,14 +122,24 @@ Sz=SparseArray[{ {i_,i_}:>(S+1-i)},{n,n},0];
 SparseArray/@N@{Sx,Sy,Sz,S0} ];
 
 
+(* ::Text:: *)
+(*spin operators in Cartesian *)
+
+
 spinOp[Simp_,i_,N0_]:= 
 Module[{s,S},
 	s=spinmatrix[1/2]; 
 	S=spinmatrix[Simp];
-	Table[  KroneckerProduct@@Join[ Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1], {S[[4]]}  ]  ,{\[Alpha],1,3}]   ];
+	Table[  KroneckerProduct@@Join[{S[[4]]}, Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3}]   ];
+	
+spinImpOp[Simp_,N0_]:= 
+Module[{s,S},
+	s=spinmatrix[1/2]; 
+	S=spinmatrix[Simp];
+	Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[s[[4]],N0]  ]  ,{\[Alpha],1,3}]   ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Adatom Hamiltonian *)
 
 
@@ -273,7 +283,7 @@ H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@b
 HJ+H\[Lambda]]
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Substitution Hamiltonian *)
 
 
@@ -399,3 +409,7 @@ H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds
 ,{r,1,Length@bulkBonds},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
+
+
+(* ::Subsection:: *)
+(*Spin component*)
