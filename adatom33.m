@@ -24,7 +24,7 @@ anisotropy       = {0{1,1,1}};
 hfields          = {0.4 cvec};
 impuritySpin     = {1};
 gs               = {1};
-KondoCouplings   = {0,8,.05};
+KondoCouplings   = {0,1,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 100;
 
@@ -49,7 +49,7 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*code -- save matrices*)
 
 
@@ -81,7 +81,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 
@@ -128,17 +128,6 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 (*Code -- Spin projection*)
 
 
-Print[];
-Print["Computing Eigenvalues"];
-Print[];
-
-
-dataFolder
-
-
-
-
-
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
@@ -159,20 +148,22 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
 
 	Print["Starting JK Loop"];
-	Print["Loop timing=",AbsoluteTiming[
+	Print["Loop timing=",N[AbsoluteTiming[
 	
-	Do[Module[{Himp,evec,JK,simp,sneigh },
+	Do[Module[{Himp,evec,JK,simp,s1,s2 },
 		JK=KondoCouplings[[j]];
 		Himp=N[  (H0+JK HI)];
-		Print["    Eigenvector timing=",AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
+		Print["    Eigenvector timing=",N[AbsoluteTiming[(*ev=Sort@Eigenvalues[Himp,2 klevels];*)
 		evec=(-Eigensystem[-Himp, 1,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ]];
-		simp=Chop@Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
-		sneigh=Chop@Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
-		dataAppend[StringJoin[datapath,".txt"],{JK,{simp . avec,simp . bvec,simp . cvec},{sneigh . avec,sneigh . bvec,sneigh . cvec}}];
-		Print["    j=",j,"/",Length@KondoCouplings];
-		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
-],{j,1,Length@KondoCouplings}]] ];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60], " min ;   j=",j,"/",Length@KondoCouplings];
+		simp=Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
+		s1=Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		s2=Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		dataAppend[StringJoin[datapath,".txt"],
+		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
+		 
+		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];*)
+],{j,1,Length@KondoCouplings}]  ][[1]]/60], " min." ];
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
