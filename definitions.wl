@@ -34,9 +34,18 @@ createDirectory[path_] :=Module[ {l=Length@FileNames[path]},
 
 
 dataPath[dataName_,Ham_,Simp_,L_,dataFolder_:dataFolder]:= Module[{folderName,folderPath,dataPath},
-folderName=StringJoin[Ham,"_size=(",ToString@L[[1]],",",ToString@L[[2]],")_2Simp=",ToString@Round[2 Simp] ];
+folderName=StringJoin[Ham,"_size=(",ToString@L[[1]],",",ToString@L[[2]],")_Simp=",ToString@NumberForm[N[Simp],{\[Infinity],1}]   ];
 folderPath=FileNameJoin[{ dataFolder,folderName }];
 dataPath=FileNameJoin[{ folderPath, dataName }];   
+dataPath
+];
+
+
+dataPathTXT[dataName_,Ham_,Simp_,L_,dataFolder_:dataFolder]:= Module[{folderName,folderPath,dataPath,dataNametxt},
+folderName=StringJoin[Ham,"_size=(",ToString@L[[1]],",",ToString@L[[2]],")_Simp=",ToString@NumberForm[N[Simp],{\[Infinity],1}]   ];
+folderPath=FileNameJoin[{ dataFolder,folderName }];
+dataNametxt=If[FileExtension["file"]!="txt",StringJoin[dataName,".txt"]  ];
+dataPath=FileNameJoin[{ folderPath, dataNametxt }];   
 dataPath
 ];
 
@@ -97,7 +106,7 @@ Module[ {auxStream,data},
 ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Basic definitions *)
 
 
@@ -139,7 +148,7 @@ Module[{s,S},
 	Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[s[[4]],N0]  ]  ,{\[Alpha],1,3}]   ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Adatom Hamiltonian *)
 
 
@@ -212,7 +221,7 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Kitaev Hamiltonian*)
 
 
@@ -256,7 +265,7 @@ Hx+Hy+Hz
 (*AbsoluteTiming@HKitaev[{1,1,1},1/2,3,3]*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Heisenberg Hamiltonian*)
 
 
@@ -270,14 +279,14 @@ AdatomHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,HJ,H\[Lambda],
 N0=2 Lx Ly;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
-\[Lambda]=Norm[\[Lambda]n];
+\[Lambda]=-Norm[\[Lambda]n];   (*negative for FM*)
 n=\[Lambda]n/\[Lambda];
-sn=s[[1;;3]] . n;
+sn=n[[1]]s[[1]]+n[[2]]s[[2]]+n[[3]]s[[3]];
 bonds=Bonds[Lx,Ly];
 
-HJ = Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]}, Insert[s[[\[Beta]]],Max@bonds[[\[Alpha],r]][[2]]]@Insert[s[[\[Beta]]],Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
+HJ = Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]}, Insert[s[[\[Beta]]],Max@bonds[[\[Alpha],r]] ]@Insert[s[[\[Beta]]],Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
 ,{r,1,Lx Ly},{\[Beta],1,3},{\[Alpha],1,3}];
-H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@bonds[[\[Alpha],r]][[2]]]@Insert[sn,   Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
+H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@bonds[[\[Alpha],r]]  ]@Insert[sn,   Min@bonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
 ,{r,1,Lx Ly},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]

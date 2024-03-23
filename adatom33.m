@@ -18,19 +18,22 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
 systemDimensions = {{3,3}};
-kitaev           = {{-1,-1,-1}};
-heisenberg       = {0{1,1,1}};
-anisotropy       = {0{1,1,1}};
-hfields          = {0.4 cvec};
-impuritySpin     = {1};
+kitaev           = {0{-1,-1,-1}};
+heisenberg       = {-{1,1,1}};
+anisotropy       = {-.1{1,1,1}};
+hfields          = {0.5 cvec};
+impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = {0,1,.05};
+KondoCouplings   = {0,1,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 100;
 
-HamCoupling="Kitaev_FM";
-dataName=Module[{i,f,\[Delta],k}, {i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};		StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
+HamCoupling="XXZ_FM";
+dataName=Module[{i,f,\[Delta],k}, 
+				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
+				StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 KondoCouplings=Range@@KondoCouplings;
+Length@KondoCouplings
 
 
 (* klevels = 20 ~ 5 min per JK (Eigenvalue[]) *)
@@ -49,7 +52,7 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*code -- save matrices*)
 
 
@@ -81,7 +84,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- eigenvalues*)
 
 
@@ -94,7 +97,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
 	
-	datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
+	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
 	Print["Data path : ",datapath];
 
 	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
@@ -128,7 +131,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 (*Code -- Spin projection*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 	
@@ -167,7 +170,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]
+]*)
 
 
 (* ::Subsection:: *)

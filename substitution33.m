@@ -18,21 +18,21 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
 systemDimensions = {{3,3}};
-kitaev           = {{-1,-1,-1}};
-heisenberg       = {0{1,1,1}};
-anisotropy       = {0{1,1,1}};
-hfields          = {0.4 cvec};
-impuritySpin     = {1};
+kitaev           = {0{-1,-1,-1}};
+heisenberg       = {-{1,1,1}};
+anisotropy       = {-.1{1,1,1}};
+hfields          = {0.5 cvec};
+impuritySpin     = {1/2};
 gs               = {1};
 KondoCouplings   = {0,1,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 klevels          = 100;
 
-HamCoupling="Kitaev_FM";
+HamCoupling="XXZ_FM";
 dataName=Module[{i,f,\[Delta],k}, 
 				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
 				StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
-KondoCouplings=(Range@@KondoCouplings)[[27;;-1]];
+KondoCouplings=Range@@KondoCouplings;
 Length@KondoCouplings
 
 
