@@ -22,7 +22,7 @@ kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1{1,1,1}};
 hfields          = {0.5 cvec};
-impuritySpin     = {1/2};
+impuritySpin     = {3/2};
 gs               = {1};
 KondoCouplings   = {0,1,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
@@ -131,7 +131,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 (*Code -- Spin projection*)
 
 
-(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 	
@@ -161,7 +161,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60], " min ;   j=",j,"/",Length@KondoCouplings];
 		simp=Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
 		s1=Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
-		s2=Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		s2=Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];+
 		dataAppend[StringJoin[datapath,".txt"],
 		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
 		 
@@ -170,7 +170,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]*)
+]
 
 
 (* ::Subsection:: *)
