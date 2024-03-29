@@ -9,7 +9,7 @@
 (*	> we will focus mainly in two materials:  Subscript[RuCl, 3]  (e.g. 1706.06113 ) and Subscript[CrI, 3] (e.g. 1704.03849 )*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*System files*)
 
 
@@ -106,8 +106,11 @@ Module[ {auxStream,data},
 ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Basic definitions *)
+
+
+round[x_,f_:10^4]:=N[Round[x f]/f]; 
 
 
 (* ::Text:: *)
@@ -132,7 +135,9 @@ SparseArray/@N@{Sx,Sy,Sz,S0} ];
 
 
 (* ::Text:: *)
-(*spin operators in Cartesian *)
+(*spin operators in Cartesian basis -- *)
+(*	Adatom          N0 =  2 Lx Ly*)
+(*	Substitution N0 =  2 Lx Ly -1*)
 
 
 spinOp[Simp_,i_,N0_]:= 
@@ -148,7 +153,7 @@ Module[{s,S},
 	Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[s[[4]],N0]  ]  ,{\[Alpha],1,3}]   ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Adatom Hamiltonian *)
 
 
@@ -221,7 +226,7 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Kitaev Hamiltonian*)
 
 
@@ -265,7 +270,7 @@ Hx+Hy+Hz
 (*AbsoluteTiming@HKitaev[{1,1,1},1/2,3,3]*)
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Heisenberg Hamiltonian*)
 
 
@@ -366,7 +371,7 @@ Hx+Hy+Hz
 ]
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Impurity Hamiltonian*)
 
 
@@ -399,7 +404,7 @@ JK sS
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Heisenberg Hamiltonian*)
 
 
@@ -408,9 +413,9 @@ N0=2 Lx Ly-1;
 s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
-\[Lambda]=Norm[\[Lambda]n];
+\[Lambda]=-Norm[\[Lambda]n];   (*negative for FM*)
 n=\[Lambda]n/\[Lambda];
-sn=s[[1;;3]] . n; 
+sn=n[[1]]s[[1]]+n[[2]]s[[2]]+n[[3]]s[[3]];
 
 HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]]]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ]  
 ,{r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
@@ -418,7 +423,3 @@ H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds
 ,{r,1,Length@bulkBonds},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
-
-
-(* ::Subsection:: *)
-(*Spin component*)

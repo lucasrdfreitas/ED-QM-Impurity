@@ -1,9 +1,9 @@
 (* ::Package:: *)
 
 (* ::Text:: *)
-(*Adatom  -- varying Kondo coupling JK*)
-(*	-compute eigenvalues for first "k" levels*)
-(*	-compute eigenvector for the ground state*)
+(*Adatom  -- varying Kondo coupling JK, to compute*)
+(*	- the eigenvalues for first "k" levels*)
+(*	- the eigenvector for the ground state -> spin operator projection*)
 (*Coupling: Kitaev FM*)
 (*dataName: KondoCoupling Range & eigenvalues *)
 
@@ -39,8 +39,12 @@ Length@KondoCouplings
 (* klevels = 20 ~ 5 min per JK (Eigenvalue[]) *)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Launching Kernel *)
+
+
+(* ::Text:: *)
+(*if I am using the cluster, then I will use more Kernels*)
 
 
 If[ ($FrontEnd===Null),
@@ -53,10 +57,11 @@ If[ ($FrontEnd===Null),
 
 
 (* ::Subsection:: *)
-(*code -- save matrices*)
+(*Code -- save matrices*)
 
 
-Print[];
+(* ::Text:: *)
+(*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompressed}, 
@@ -88,9 +93,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 (*Code -- eigenvalues*)
 
 
-Print[];
-Print["Computing Eigenvalues"];
-Print[];
+Print[];Print["Computing Eigenvalues"];Print[];
 
 
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
@@ -104,7 +107,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 	path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
 	Print["Uncompress time=", AbsoluteTiming[ {H0,HI}=dataZipImport[path]; ]];
 	Print[" "];
-	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
+	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];
 
 	Print["Starting JK Loop"];
 	Print["Loop timing=",AbsoluteTiming[

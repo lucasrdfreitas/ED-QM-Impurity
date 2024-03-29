@@ -1,20 +1,31 @@
 (* ::Package:: *)
 
 (* ::Text:: *)
-(*Adatom  -- varying Kondo coupling JK*)
-(*	-compute eigenvalues for first "k" levels*)
-(*	-compute eigenvector for the ground state*)
-(*Coupling: Kitaev FM*)
-(*dataName: KondoCoupling Range & eigenvalues *)
+(*Adatom and Substitution *)
+(**)
+(*-- varying Kondo coupling JK, to compute*)
+(*	- the eigenvalues for first "k" levels*)
+(*	- the eigenvector for the ground state -> spin operator projection*)
+(*	*)
+(*Coupling:  XXZ*)
+(*dataName: KondoCoupling Range & eigenvalues k levels*)
 
 
 (* ::Subsection:: *)
 (*preamble*)
 
 
+(* ::Text:: *)
+(*load functions from "definitions.wl"  file*)
+
+
 If[ \[Not]($FrontEnd===Null), SetDirectory[NotebookDirectory[]] ];
 $FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
 Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
+
+
+(* ::Text:: *)
+(*couplings and parameters for the system *)
 
 
 systemDimensions = {{3,3}};
@@ -26,20 +37,20 @@ impuritySpin     = {1/2};
 gs               = {1};
 KondoCouplings   = {0,1,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
-klevels          = 100;
+
+(* klevels = number of eigenvalues to compute*)
+
+klevels          = 2;
+
+(* name to save the files : *)
 
 HamCoupling="XXZ_FM";
-dataName=Module[{i,f,\[Delta],k}, 
-				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};
-				StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
-KondoCouplings=Range@@KondoCouplings;
-Length@KondoCouplings
+dataName=Module[{i,f,\[Delta],k}, 				{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};				StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
+
+KondoCouplings=Range@@KondoCouplings;      Print["\!\(\*SubscriptBox[\(J\), \(K\)]\) couplings length= ",Length@KondoCouplings];
 
 
-(* klevels = 20 ~ 5 min per JK (Eigenvalue[]) *)
-
-
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Launching Kernel *)
 
 
@@ -56,10 +67,11 @@ If[ ($FrontEnd===Null),
 (*code -- save matrices*)
 
 
-Print[];
+(* ::Text:: *)
+(*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompressed}, 
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompressed}, 
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
@@ -81,34 +93,39 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
 
-];
+];*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- eigenvalues*)
 
 
-Print[];
-Print["Computing Eigenvalues"];
-Print[];
+Print[];Print["Computing Eigenvalues"];Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 {{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};eValues={};
 	
 	datapath=dataPath[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];
 	Print["Data path : ",datapath];
 
-	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
-	path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
-	Print["Uncompress time=", AbsoluteTiming[ {H0,HI}=dataZipImport[path]; ]];
-	Print[" "];
-	Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
-
-	Print["Starting JK Loop"];
-	Print["Loop timing=",AbsoluteTiming[
+	(* If the Hamiltonian matrix we already computed, then load it, otherwise compute it*)
+	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
 	
+	If[ Length@FileNames[pathToMatrices]!= 0,
+		Print["Loading matrices -- Uncompress time=",AbsoluteTiming[ 
+		{H0,HI}=dataZipImport[path]; ]               ];   
+	,
+		Print["Computing Hamiltonian matrices "]; 		
+		Print["H Kitaev timing=",     AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]]; Dimensions@HK ] ];
+		Print["H Heisenberg timing=", AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];Dimensions@HJ] ];
+		Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@AdatomZeeman[h,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
+		Print["H imp timing=",        AbsoluteTiming[HI=N@AdatomImp[1,Simp,2 Lx Ly]; Dimensions@HI] ];
+		H0=HK+HJ+HZ; Clear[HK,HJ,HZ];
+	]; Print[" "];Print["    Memory in use:  ",N[10^-9  MemoryInUse[]," GB" ]  ];
+	
+	Print["Starting JK Loop"];Print["Loop timing=",AbsoluteTiming[	
 	Do[Module[{Himp,ev,JK },
 		JK=KondoCouplings[[j]];
 		Himp=N[  (H0+JK HI)];
@@ -119,7 +136,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,path,info,datapath}
 		dataAppend[datapath,{JK,ev}];
 		(*AppendTo[eValues,{JK,ev}];*)
 		Print["    j=",j,"/",Length@KondoCouplings];
-		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ]  ];
+		Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];
 ],{j,1,Length@KondoCouplings}]] ];
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
