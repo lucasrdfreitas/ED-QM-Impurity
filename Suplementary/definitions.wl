@@ -9,7 +9,7 @@
 (*	> we will focus mainly in two materials:  Subscript[RuCl, 3]  (e.g. 1706.06113 ) and Subscript[CrI, 3] (e.g. 1704.03849 )*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*System files*)
 
 
@@ -106,7 +106,7 @@ Module[ {auxStream,data},
 ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Basic definitions *)
 
 
@@ -161,8 +161,8 @@ Module[{s,S},
 (*	Kitaev FM + AFM Kondo adatom impurity with N0=2LxLy bulk spins  *)
 
 
-AdatomHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_,Sbulk_:1/2]:=
-AdatomKitaev[K,Simp,Lx,Ly,Sbulk]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly,Sbulk]+AdatomZeeman[h,Simp,g,2Lx Ly,Sbulk]+AdatomImp[JK,Simp,2Lx Ly,Sbulk];
+AdatomHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_]:=
+AdatomKitaev[K,Simp,Lx,Ly]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]+AdatomZeeman[h,Simp,g,2Lx Ly]+AdatomImp[JK,Simp,2Lx Ly];
 
 
 (* ::Text:: *)
@@ -191,8 +191,8 @@ AdatomKitaev[K,Simp,Lx,Ly,Sbulk]+AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly,Sbulk]
 (* [Most of the computational time goes in the KroneckerProduct. Using SparseArrays (i.e. spinmatrix) makes the computation 2 or 3 orders of magnitude faster.]*)
 
 
-AdatomZeeman[h_,Simp_,g_,N0_,Sbulk_:1/2]:=Module[{s,S,bulk,imp}, 
-s=spinmatrix[Sbulk]; 
+AdatomZeeman[h_,Simp_,g_,N0_]:=Module[{s,S,bulk,imp}, 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bulk = Table[  KroneckerProduct@@Join[ {S[[4]]}, Insert[s[[\[Alpha]]],i]@Table[s[[4]],N0-1]    ]  ,{i,1,N0},{\[Alpha],1,3}];
 imp  = Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[    s[[4]],   N0]               ]  ,{\[Alpha],1,3}];
@@ -209,8 +209,8 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 (*Adatom impurity couples the 8th bulk spin to the impurity spin (the 9th slot in the tensor product) with AFM Heisenberg with coupling Subscript[J, K]*)
 
 
-AdatomImp[JK_,Simp_,N0_,Sbulk_:1/2]:=Module[{s,S,sS}, 
-s=spinmatrix[Sbulk]; 
+AdatomImp[JK_,Simp_,N0_]:=Module[{s,S,sS}, 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 
 sS=Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Insert[s[[\[Alpha]]],1]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3}]; 
@@ -253,9 +253,9 @@ Bonds[Lx_,Ly_]:=Transpose@Flatten[#,1]&@Table[
 (*Let us denote by Subscript[H, \[Alpha]]  the terms in the Kitaev Hamiltonian for \[Alpha]-bonds.*)
 
 
-AdatomKitaev[K_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
+AdatomKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,Hx,Hy,Hz,N0},
 N0=2 Lx Ly;
-s=spinmatrix[Sbulk]; 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bonds=Bonds[Lx,Ly];
 
@@ -280,9 +280,9 @@ Hx+Hy+Hz
 (*	> we will also consider an anisotropy of strength \[Lambda] along the n axis *)
 
 
-AdatomHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
+AdatomHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
 N0=2 Lx Ly;
-s=spinmatrix[Sbulk]; 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 \[Lambda]=-Norm[\[Lambda]n];   (*negative for FM*)
 n=\[Lambda]n/\[Lambda];
@@ -305,7 +305,7 @@ HJ+H\[Lambda]]
 (*	Kitaev FM + AFM Kondo substitutional impurity with N=2LxLy bulk spins  *)
 
 
-substitutionHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_,Sbulk_:1/2]:=
+substitutionHamiltonian[J_,\[Lambda]n_,K_,h_,JK_,Simp_,g_,Lx_,Ly_]:=
 substitutionKitaev[K,Simp,Lx,Ly]+substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]+substitutionZeeman[h,Simp,g,2Lx Ly]+substitutionImp[JK,Simp,2Lx Ly];
 
 
@@ -321,8 +321,8 @@ substitutionKitaev[K,Simp,Lx,Ly]+substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]
 (*	let N0=N-1 be the number of bulk spins *)
 
 
-substitutionZeeman[h_,Simp_,g_,N1_,Sbulk_:1/2]:=Module[{s,S,bulk,imp,N0}, 
-s=spinmatrix[Sbulk]; 
+substitutionZeeman[h_,Simp_,g_,N1_]:=Module[{s,S,bulk,imp,N0}, 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 N0=N1-1;
 
@@ -357,9 +357,9 @@ bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Al
 (*	e.g. the position (0,0,B) has index r=2, but it is the first position in the bulk (i.e. before inserting the impurity) *)
 
 
-substitutionKitaev[K_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bulkBonds,Hx,Hy,Hz,N0},
+substitutionKitaev[K_,Simp_,Lx_,Ly_]:=Module[{s,S,bulkBonds,Hx,Hy,Hz,N0},
 N0=2 Lx Ly-1;
-s=spinmatrix[Sbulk]; 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
 
@@ -384,9 +384,9 @@ Hx+Hy+Hz
 (*> Max@impBonds[[\[Alpha]]] gives r\[Alpha], which is the index of bulk spin (shifted by -1)*)
 
 
-substitutionImp[JK_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,sS,impBonds,N0}, 
+substitutionImp[JK_,Simp_,Lx_,Ly_]:=Module[{s,S,sS,impBonds,N0}, 
 N0=2 Lx Ly-1;
-s=spinmatrix[Sbulk]; 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 impBonds=substitutionBonds[Lx,Ly][[1]]-1; 
 
@@ -408,9 +408,9 @@ JK sS
 (*Heisenberg Hamiltonian*)
 
 
-substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bulkBonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
+substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_]:=Module[{s,S,bulkBonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
 N0=2 Lx Ly-1;
-s=spinmatrix[Sbulk]; 
+s=spinmatrix[1/2]; 
 S=spinmatrix[Simp];
 bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
 \[Lambda]=-Norm[\[Lambda]n];   (*negative for FM*)

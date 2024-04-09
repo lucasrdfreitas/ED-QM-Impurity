@@ -23,11 +23,10 @@
 
 
 (* ::Text:: *)
-(**)
 (*first load functions from "definitions.wl"  file*)
 
 
-(*Quit[]*)
+Quit[]
 
 
 If[ \[Not]($FrontEnd===Null), SetDirectory[NotebookDirectory[]] ];
@@ -65,19 +64,19 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}};
+systemDimensions = {{2,2}};
 kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec};
 hfields          = {0.5 cvec};
-impuritySpin     = {1};
+impuritySpin     = {1/2};
 gs               = {1};
-KondoCouplings   = {0,1,.01};
+KondoCouplings   = {0,2,.05};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
 
 (* klevels = number of eigenvalues to compute*)
 
-klevels          = 2;
+klevels          = 200;
 
 (* name to save the files : *)
 
@@ -85,12 +84,12 @@ HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k}, 	{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};				
 StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 dataName2=Module[{i,f,\[Delta],k}, 	{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};				
-StringReplace["JK=Range[i,f,d]_k", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
+StringReplace["JK=Range[i,f,d]", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
 
 KondoCouplings=Range@@KondoCouplings;      Print["JK couplings length= ",Length@KondoCouplings];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- save matrices*)
 
 
@@ -155,7 +154,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info
 		Himp=N[(H0+JK HI)];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->1000,"Tolerance"->10^-9}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@KondoCouplings, "; JK=",JK "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@KondoCouplings, "; JK=",JK "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{JK,ev}]; 
 		
 ],{j,1,Length@KondoCouplings}]  ][[1]]/60],{\[Infinity],3}]," min " ];
@@ -222,16 +221,16 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}};
+systemDimensions = {{2,2}};
 kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec};
 hfields          = {0.5 cvec};
-impuritySpin     = {1};
-gs               = {1};
-KondoCouplings   = {0,1,.01};
+impuritySpin     = {1/2};
+gs               = {0.57};
+KondoCouplings   = {0,.55,.1};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,hfields,impuritySpin,gs} ];
-klevels          = 2;
+klevels          = 256/2;
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k}, 	{i,f,\[Delta]}=KondoCouplings;  k=klevels;    {i,f,\[Delta],k}=ToString/@{i,f,\[Delta],k};				
 StringReplace["JK=Range[i,f,d]_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k}]  ];
@@ -283,7 +282,7 @@ Print[];Print["Computing Eigenvalues"];Print[];
 
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
-	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Savind data at the path : ",datapath];
+	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Saving data at the path : ",datapath];
 
 	(* If the Hamiltonian matrix were already computed then load it, otherwise compute it*)
 	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
@@ -315,7 +314,6 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info
 
 (* ::Subsection:: *)
 (*Code -- Spin projection*)
-
 
 
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
