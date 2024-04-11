@@ -26,9 +26,6 @@
 (*first load functions from "definitions.wl"  file*)
 
 
-Quit[]
-
-
 If[ \[Not]($FrontEnd===Null), SetDirectory[NotebookDirectory[]] ];
 $FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
 Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
