@@ -13,7 +13,7 @@
 (*	we compute once Himp, H0, and at each iteration of the JK loop we just compute the sum  H=H0+JK Himp (much more efficient).*)
 (**)
 (*Within each section of this file (Adatom or Substitution)  we specifically compute*)
-(*	- the eigenvalues for first "k" levels*)
+(*	- the eigenvalues for first "k" Subscript[levels, \[Placeholder]]*)
 (*	- the eigenvector for the lowest energy level  -> for computing spin operator projection in the ground state near the impurity*)
 (*	- the data  is stored in the folder "data" under the subfolder with the specific model (e.g. Kitaev or XXZ) and label by the parameters (e.g. JK values)*)
 (*	- to see how to load the data see the notebook "figure.nb"*)
@@ -47,11 +47,11 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Adatom*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Preamble*)
 
 
@@ -64,16 +64,16 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{2,2}};
+systemDimensions = {{3,3}};
 kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
 impuritySpin     = {1/2};
 gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,1.5,.03};
+hRange           = {0,1.5,1.5/20};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
-klevels          = 120; 
+klevels          = 10; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -116,14 +116,14 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 
 Print[];Print["Computing Eigenvalues"];Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
 	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
@@ -152,14 +152,14 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
-]
+]*)
 
 
 (* ::Subsection::Closed:: *)
 (*Code --  eigenvectors for   Spin projection*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};
 	
 	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
@@ -195,7 +195,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]
+]*)
 
 
 (* ::Section:: *)
@@ -215,16 +215,16 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{2,2}};
+systemDimensions = {{3,3}};
 kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
 impuritySpin     = {1/2};
 gs               = {0.57};
 KondoCoupling    = {.5};
-hRange           = {0,1.1,.03};
+hRange           = {0.015,3,0.03};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
-klevels          = 120; 
+klevels          = 30; 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -234,7 +234,7 @@ StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"-
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- save matrices*)
 
 
@@ -242,10 +242,10 @@ hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompressed}, 
-{{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
-info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
+info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
 path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
 
 If[ FindFile[StringJoin[path,".zip"]]===$Failed,
@@ -264,7 +264,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
 
-];*)
+];
 
 
 (* ::Subsection:: *)
@@ -279,16 +279,18 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
 	(* If the Hamiltonian matrix were already computed then load it, otherwise compute it*)
-	info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@JK]/1000]}];		pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
-	If[ Length@FileNames[pathToMatrices]!= 0,	
-		Print["Loading matrices -- Uncompress time=",AbsoluteTiming[ 
+	info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
+	pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
+	If[ \[Not](FindFile[StringJoin[pathToMatrices,".zip"]]===$Failed),	
+		Print["Loading matrices "]; 
+		Print["Uncompress time=",AbsoluteTiming[ 
 		{H0,HI}=dataZipImport[pathToMatrices]; ]];   	
 		,
 		Print["Computing Hamiltonian matrices "]; 		
-		Print["    H Kitaev timing      =  ",round@AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]] ][[1]]," sec" ];
-		Print["    H Heisenberg timing  = ", round@AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]]][[1]]," sec"  ];
-		Print["    H Zeeman timing      =  ",round@AbsoluteTiming[HZ=N@AdatomZeeman[cvec,Simp,g,2 Lx Ly]  ][[1]]," sec"  ];
-		Print["    H imp timing         =  ",round@AbsoluteTiming[HI=N@AdatomImp[JK,Simp,2 Lx Ly]][[1]]," sec"  ];
+		Print["    H Kitaev timing      =  ",round@AbsoluteTiming[HK=If[Norm[K]==0,0,N@substitutionKitaev[K,Simp,Lx,Ly]] ][[1]]," sec" ];
+		Print["    H Heisenberg timing  = ", round@AbsoluteTiming[HJ=If[Norm[J]==0,0,N@substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]]][[1]]," sec"  ];
+		Print["    H Zeeman timing      =  ",round@AbsoluteTiming[HZ=N@substitutionZeeman[cvec,Simp,g,2 Lx Ly]  ][[1]]," sec"  ];
+		Print["    H imp timing         =  ",round@AbsoluteTiming[HI=N@substitutionImp[JK,Simp, Lx, Ly]][[1]]," sec"  ];
 		H0=HK+HJ+HI; Clear[HK,HJ,HI];
 	]; Print[" "];Print["    Memory in use:  ",round@N[10^-9  MemoryInUse[]]," GB"  ]; Print[" "];
 	
@@ -300,8 +302,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
-		dataAppend[datapath,{Norm[h],ev}]; 
-		
+		dataAppend[datapath,{Norm[h],ev}];  
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
 ]
 
@@ -310,7 +311,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 (*Code -- Spin projection*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};
 	
 	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
@@ -346,7 +347,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]
+]*)
 
 
 (* ::Section::Closed:: *)

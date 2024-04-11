@@ -297,7 +297,7 @@ H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@b
 HJ+H\[Lambda]]
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Substitution Hamiltonian *)
 
 
