@@ -47,7 +47,7 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Adatom*)
 
 
@@ -69,12 +69,12 @@ kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
 bulkSpin         = {3/2};
-impuritySpin     = {3/2};
+impuritySpin     = {1/2};
 gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,2,.1};
+hRange           = {0,2,.2};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 10; 
+klevels          = 2; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -117,7 +117,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- eigenvalues*)
 
 
@@ -149,7 +149,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 		Himp=N[(H0+h HZ)];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h ,"; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
@@ -221,19 +221,24 @@ kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
 bulkSpin         = {3/2};
-impuritySpin     = {3/2};
-gs               = {0.57};
+impuritySpin     = {1/2};
+gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,2,.1};
+hRange           = {0,5,.5};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 10; 
+klevels          = 6; 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};				
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
-hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
+hRange=Range@@hRange;  
+(*hRange=Sort[hRange~Join~{3.65,3.7,3.75,4.85,3.9,3.95,4.05,4.1,4.15,4.25,4.3,4.35,4.5}];   *) 
+Print["h Range length= ",Length@hRange];
+
+
+
 
 
 (* ::Subsection::Closed:: *)

@@ -44,7 +44,7 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Adatom*)
 
 
@@ -80,7 +80,7 @@ StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"-
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- save matrices*)
 
 
@@ -88,10 +88,10 @@ hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,eValues,info,path,Huncompressed}, 
-{{Lx,Ly},K,J,\[Lambda]n,h,Simp,g}=parameters[[1]]; 
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
-info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];
+info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
 path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
 
 If[ FindFile[StringJoin[path,".zip"]]===$Failed,
@@ -100,12 +100,36 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
 	Print["H Kitaev timing=",     AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]]; Dimensions@HK ] ];
 	Print["H Heisenberg timing=", AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];Dimensions@HJ] ];
-	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@AdatomZeeman[h,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
-	Print["H imp timing=",        AbsoluteTiming[HI=N@AdatomImp[1,Simp,2 Lx Ly]; Dimensions@HI] ];
-	H0=HK+HJ+HZ;
+	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@AdatomZeeman[cvec,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
+	Print["H imp timing=",        AbsoluteTiming[HI=N@AdatomImp[JK,Simp,2 Lx Ly]; Dimensions@HI] ];
+	H0=HK+HJ+HI;
 	Clear[HK,HJ,HZ];
 	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
-	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HI}] ;]     ];
+	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HZ}] ;]     ];
+	,
+	Print["Compressed data found - Skipping matrix calculation"]
+];
+];
+
+(*
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g}=parameters[[1]]; 
+{Lx,Ly}=Round@{Lx,Ly};
+info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
+path=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}}); 
+
+If[ FindFile[StringJoin[path,".zip"]]===$Failed,
+	Print["Compressed data not found - Computing Hamiltonian matrix "];
+	Print[];
+	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
+	Print["H Kitaev timing=",     AbsoluteTiming[HK=If[Norm[K]==0,0,N@substitutionKitaev[K,Simp,Lx,Ly]]; Dimensions@HK ] ];
+	Print["H Heisenberg timing=", AbsoluteTiming[HJ=If[Norm[J]==0,0,N@substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];Dimensions@HJ] ];
+	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@substitutionZeeman[cvec,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
+	Print["H imp timing=",        AbsoluteTiming[HI=N@substitutionImp[JK,Simp,2 Lx Ly]; Dimensions@HI] ];
+	H0=HK+HJ+HI;
+	Clear[HK,HJ,HI];
+	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
+	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HZ}] ;]     ];
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
@@ -251,12 +275,12 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
 	Print["H Kitaev timing=",     AbsoluteTiming[HK=If[Norm[K]==0,0,N@substitutionKitaev[K,Simp,Lx,Ly]]; Dimensions@HK ] ];
 	Print["H Heisenberg timing=", AbsoluteTiming[HJ=If[Norm[J]==0,0,N@substitutionHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]];Dimensions@HJ] ];
-	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@substitutionZeeman[h,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
-	Print["H imp timing=",        AbsoluteTiming[HI=N@substitutionImp[1,Simp,2 Lx Ly]; Dimensions@HI] ];
-	H0=HK+HJ+HZ;
-	Clear[HK,HJ,HZ];
+	Print["H Zeeman timing=",     AbsoluteTiming[HZ=If[Norm[h]==0,0,N@substitutionZeeman[cvec,Simp,g,2 Lx Ly]];Dimensions@HZ] ];
+	Print["H imp timing=",        AbsoluteTiming[HI=N@substitutionImp[JK,Simp,2 Lx Ly]; Dimensions@HI] ];
+	H0=HK+HJ+HI;
+	Clear[HK,HJ,HI];
 	Print["    Memory in use:  ",     N[10^-9  MemoryInUse[] ]  ];
-	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HI}] ;]     ];
+	Print["Compress time=",       AbsoluteTiming[ dataZipExport[path,{H0,HZ}] ;]     ];
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];

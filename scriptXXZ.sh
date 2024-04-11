@@ -13,4 +13,4 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/sge/lib/lx-amd64
 export CLASSPATH=/opt/sge/lib/drmaa.jar:/opt/sge/lib/juti.jar:/opt/sge/lib/jgdi.jar
 #
-math -script XXZ-h.m
+math -script XXZ-h-S=1.5_S=0.5.m
