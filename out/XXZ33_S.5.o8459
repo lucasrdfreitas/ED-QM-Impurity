@@ -1,0 +1,21 @@
+XXZ-h
+Before Starting Kernels
+Starting Kernels
+XXZ-h
+h Range length= 21
+
+Computing Eigenvalues
+
+XXZ-h
+h Range length= 100
+Compressed data found - Skipping matrix calculation
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/XXZ-h/XXZ_FM_SUB_size=(3,3)_Simp=0.5/h=Range[0.015,3,0.03]_JK={0.5}_k=30.txt
+Loading matrices 
+Uncompress time={115.943374, Null}
+ 
+    Memory in use:  2.5166 GB
+ 
+Starting JK Loop

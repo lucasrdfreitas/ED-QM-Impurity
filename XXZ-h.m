@@ -221,7 +221,7 @@ gs               = {0.57};
 KondoCoupling    = {.5};
 hRange           = {0.015,3,0.03};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
-klevels          = 30; 
+klevels          = 20; 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -294,11 +294,13 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 	(* Loop for compute the k-first eigenvalues of H0+JK HI  *)
 	Print["Starting JK Loop"];Print["Loop timing=",NumberForm[round[AbsoluteTiming[	
 	Do[Module[{Himp,ev,h },
+		
 		h=hRange[[j]];
-		Himp=N[(H0+h HZ)];
+		Print[h];
+		Himp=SparseArray[  N[(H0+h HZ)]   ];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{Norm[h],ev}];  
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
 ]

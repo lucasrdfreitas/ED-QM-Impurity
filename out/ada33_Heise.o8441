@@ -109,3 +109,69 @@ General::stop: Further output of Eigenvalues::maxit2 will be suppressed during t
     Eigenvalue timing={3371.11985, Null}
     j=30/51
     Memory in use:  1.297080224
+    Eigenvalue timing={3312.535533, Null}
+    j=31/51
+    Memory in use:  1.297080232
+    Eigenvalue timing={3321.256293, Null}
+    j=32/51
+    Memory in use:  1.29708024
+    Eigenvalue timing={3337.300671, Null}
+    j=33/51
+    Memory in use:  1.297080248
+    Eigenvalue timing={3330.283284, Null}
+    j=34/51
+    Memory in use:  1.297080256
+    Eigenvalue timing={3376.641228, Null}
+    j=35/51
+    Memory in use:  1.297080264
+    Eigenvalue timing={3362.640989, Null}
+    j=36/51
+    Memory in use:  1.297080272
+    Eigenvalue timing={3359.105483, Null}
+    j=37/51
+    Memory in use:  1.29708028
+    Eigenvalue timing={3385.882074, Null}
+    j=38/51
+    Memory in use:  1.297080288
+    Eigenvalue timing={3370.997623, Null}
+    j=39/51
+    Memory in use:  1.297080296
+    Eigenvalue timing={3326.218026, Null}
+    j=40/51
+    Memory in use:  1.297080304
+    Eigenvalue timing={3342.423523, Null}
+    j=41/51
+    Memory in use:  1.297080312
+    Eigenvalue timing={3375.843791, Null}
+    j=42/51
+    Memory in use:  1.29708032
+    Eigenvalue timing={3348.715697, Null}
+    j=43/51
+    Memory in use:  1.297080328
+    Eigenvalue timing={3353.186864, Null}
+    j=44/51
+    Memory in use:  1.297080336
+    Eigenvalue timing={3380.526119, Null}
+    j=45/51
+    Memory in use:  1.297080344
+    Eigenvalue timing={3325.751072, Null}
+    j=46/51
+    Memory in use:  1.297080352
+    Eigenvalue timing={3364.826935, Null}
+    j=47/51
+    Memory in use:  1.29708036
+    Eigenvalue timing={3328.053784, Null}
+    j=48/51
+    Memory in use:  1.297080368
+    Eigenvalue timing={3305.014, Null}
+    j=49/51
+    Memory in use:  1.297080376
+    Eigenvalue timing={3348.316498, Null}
+    j=50/51
+    Memory in use:  1.297080384
+    Eigenvalue timing={3363.55053, Null}
+    j=51/51
+    Memory in use:  1.297080376
+Loop timing={170025.617968, Null}
+
+Closing Kernels
