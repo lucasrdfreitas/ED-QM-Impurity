@@ -1,0 +1,27 @@
+XXZ-h-S=0.5_Si=0.5-ADA
+Before Starting Kernels
+Starting Kernels
+XXZ-h-S=0.5_Si=0.5-ADA
+h Range length= 201
+Compressed data not found - Computing Hamiltonian matrix 
+
+    Memory in use:  0.051993336
+H Kitaev timing={0.003791, {}}
+H Heisenberg timing={22.366494, {524288, 524288}}
+H Zeeman timing={0.000053, {3}}
+H imp timing={0.151395, {524288, 524288}}
+    Memory in use:  2.189153392
+Compress time={274.171509, Null}
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/XXZ-h-S=0.5_Si=0.5-ADA/XXZ_FM_ADA_size=(3,3)_Simp=0.5/h=Range[0,2,0.01]_JK={0.50001}_k=3.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  0.0001 sec
+    H Heisenberg timing  = 21.4388 sec
+    H Zeeman timing      =  5.4642 sec
+    H imp timing         =  0.117 sec
+ 
+    Memory in use:  1.8338 GB
+ 
+Starting JK Loop
