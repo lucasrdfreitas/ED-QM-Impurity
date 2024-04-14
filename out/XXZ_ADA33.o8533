@@ -1,0 +1,22 @@
+XXZ-h-S=0.5_Si=0.5-ADA
+Before Starting Kernels
+Starting Kernels
+XXZ-h-S=0.5_Si=0.5-ADA
+h Range length= 201
+Compressed data found - Skipping matrix calculation
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/XXZ-h-S=0.5_Si=0.5-ADA/XXZ_FM_ADA_size=(3,3)_Simp=0.5/h=Range[0,2,0.01]_JK={0.5}_k=30.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  0.0023 sec
+    H Heisenberg timing  = 18.293 sec
+    H Zeeman timing      =  4.6618 sec
+    H imp timing         =  0.1217 sec
+ 
+    Memory in use:  1.8326 GB
+ 
+Starting JK Loop
+    Eigenvalue timing=NumberForm[34.0595, {Infinity, 3}] min -- saving data for  j=1/201; h=0.; 
+    Eigenvalue timing=NumberForm[24.9507, {Infinity, 3}] min -- saving data for  j=2/201; h=0.01; 
+    Eigenvalue timing=NumberForm[25.2823, {Infinity, 3}] min -- saving data for  j=3/201; h=0.02; 
