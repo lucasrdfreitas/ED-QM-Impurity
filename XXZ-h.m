@@ -48,7 +48,7 @@ If[ ($FrontEnd===Null),
 (*Adatom*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Preamble*)
 
 
@@ -68,9 +68,9 @@ anisotropy       = {-.1 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,1.5,1.5/20};
+hRange           = {0,3,3./20};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
-klevels          = 10; 
+klevels          = 3; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -80,7 +80,7 @@ StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"-
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
@@ -241,11 +241,11 @@ kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
 impuritySpin     = {1/2};
-gs               = {0.57};
+gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0.015,3,0.03};
+hRange           = {0,3,3./20};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
-klevels          = 20; 
+klevels          = 3; 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -255,7 +255,7 @@ StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"-
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
@@ -284,7 +284,6 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
-
 ];
 
 
@@ -302,7 +301,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 	(* If the Hamiltonian matrix were already computed then load it, otherwise compute it*)
 	info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
 	pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
-	If[ \[Not](FindFile[StringJoin[pathToMatrices,".zip"]]===$Failed),	
+	If[ ($FrontEnd===Null)\[And] \[Not](FindFile[StringJoin[pathToMatrices,".zip"]]===$Failed),	
 		Print["Loading matrices "]; 
 		Print["Uncompress time=",AbsoluteTiming[ 
 		{H0,HI}=dataZipImport[pathToMatrices]; ]];   	
@@ -320,7 +319,6 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 	Do[Module[{Himp,ev,h },
 		
 		h=hRange[[j]];
-		Print[h];
 		Himp=SparseArray[  N[(H0+h HZ)]   ];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
@@ -330,7 +328,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,inf
 ]
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- Spin projection*)
 
 
