@@ -43,3 +43,8 @@ Starting JK Loop
     Eigenvalue timing=NumberForm[32.2932, {Infinity, 3}] min -- saving data for  j=24/201; h=0.23; 
     Eigenvalue timing=NumberForm[31.0011, {Infinity, 3}] min -- saving data for  j=25/201; h=0.24; 
     Eigenvalue timing=NumberForm[30.8181, {Infinity, 3}] min -- saving data for  j=26/201; h=0.25; 
+    Eigenvalue timing=NumberForm[27.5722, {Infinity, 3}] min -- saving data for  j=27/201; h=0.26; 
+    Eigenvalue timing=NumberForm[26.6983, {Infinity, 3}] min -- saving data for  j=28/201; h=0.27; 
+    Eigenvalue timing=NumberForm[26.8376, {Infinity, 3}] min -- saving data for  j=29/201; h=0.28; 
+    Eigenvalue timing=NumberForm[26.5335, {Infinity, 3}] min -- saving data for  j=30/201; h=0.29; 
+    Eigenvalue timing=NumberForm[27.3227, {Infinity, 3}] min -- saving data for  j=31/201; h=0.3; 
