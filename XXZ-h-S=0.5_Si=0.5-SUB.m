@@ -301,7 +301,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
-],{j,142,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
+],{j,157,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
 ]
 
 

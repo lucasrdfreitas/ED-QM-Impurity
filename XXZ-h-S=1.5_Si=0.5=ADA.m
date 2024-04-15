@@ -1,8 +1,5 @@
 (* ::Package:: *)
 
-1
-
-
 (* ::Section:: *)
 (*Exact diagonalization for Quantum Magnets with an impurity in a honeycomb lattice *)
 
@@ -64,26 +61,24 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}};
+systemDimensions = {{2,2}};
 kitaev           = {0{-1,-1,-1}};
 heisenberg       = {-{1,1,1}};
 anisotropy       = {-.1 cvec}; 
-bulkSpin         = {1/2};
+bulkSpin         = {3/2};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCoupling    = {.5};
-hRange           = {0,2,.01};
+KondoCoupling    = {.8};
+hRange           = {0,4,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 3; 
+klevels          = 10; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};				
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
-hRange=Range@@hRange;  
-(*hRange= hRange[[40;;-1]];*)
-    Print["h Range length= ",Length@hRange];
+hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
 
 
 (* ::Subsection::Closed:: *)
@@ -94,7 +89,7 @@ hRange=Range@@hRange;
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
 {{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,Sbulk}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
@@ -114,7 +109,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
-];
+];*)
 
 
 (* ::Subsection:: *)
@@ -199,11 +194,11 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 ]*)
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Substitution*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Preamble*)
 
 
@@ -239,7 +234,7 @@ Print["h Range length= ",Length@hRange];
 
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
@@ -247,7 +242,7 @@ Print["h Range length= ",Length@hRange];
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
 {{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
@@ -268,10 +263,10 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
-];
+];*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 
