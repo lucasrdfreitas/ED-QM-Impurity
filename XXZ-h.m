@@ -68,7 +68,7 @@ anisotropy       = {-.1 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,3,3./20};
+hRange           = {0,2,2./20};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
 klevels          = 3; 
 HamCoupling="XXZ_FM_ADA";
@@ -137,14 +137,14 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- eigenvalues*)
 
 
 Print[];Print["Computing Eigenvalues"];Print[];
 
 
-(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
 	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
@@ -173,7 +173,7 @@ Print[];Print["Computing Eigenvalues"];Print[];
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
-]*)
+]
 
 
 (* ::Subsection::Closed:: *)
@@ -243,7 +243,7 @@ anisotropy       = {-.1 cvec};
 impuritySpin     = {1/2};
 gs               = {1};
 KondoCoupling    = {.5};
-hRange           = {0,3,3./20};
+hRange           = {.4,.52,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs} ]; 
 klevels          = 3; 
 HamCoupling="XXZ_FM_SUB";

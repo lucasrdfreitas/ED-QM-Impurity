@@ -71,7 +71,7 @@ anisotropy       = {-.1 cvec};
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCoupling    = {.50001};
+KondoCoupling    = {.5};
 hRange           = {0,2,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
 klevels          = 3; 
@@ -81,10 +81,12 @@ StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,
 dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};				
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
-hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
+hRange=Range@@hRange;  
+hRange= hRange[[40;;-1]];
+    Print["h Range length= ",Length@hRange];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
