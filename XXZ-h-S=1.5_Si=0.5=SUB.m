@@ -310,10 +310,9 @@ Print[];Print["Computing Eigenvalues"];Print[];
 
 
 Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath,bulkSpin},
-	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};
-	
-(*	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath]; 
-	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		
+	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};	
+	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath]; 
+(*	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		
 	pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});*)
 	
 	Print["Computing Hamiltonian matrices "]; 		
@@ -333,9 +332,9 @@ Do[Module[{Himp,evec,h,simp,s1,s2 },
 		Print["    Eigenvector timing=",NumberForm[round[AbsoluteTiming[
 		evec=(-Eigensystem[-Himp, 1,
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60],{\[Infinity],3}], " min ;   j=",j,"/",Length@hRange];
-		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly-1 ][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
-		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly -1][[\[Gamma]]] . evec,{\[Gamma],1,3}];
-		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly -1][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly-1 ,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
+		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
 		dataAppend[datapath,
 		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
 		 

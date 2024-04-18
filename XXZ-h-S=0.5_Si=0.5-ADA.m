@@ -94,7 +94,7 @@ hRange=Range@@hRange;
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
 {{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,Sbulk}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
@@ -114,17 +114,17 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
-];
+];*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 
 Print[];Print["Computing Eigenvalues"];Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
 	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
@@ -153,10 +153,10 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
-]
+]*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code --  eigenvectors for   Spin projection*)
 
 
@@ -199,6 +199,52 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 ]*)
 
 
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,bulkSpin,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
+	
+	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
+(*
+	(* If the Hamiltonian matrix we already computed, then load it, otherwise compute it*)
+	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		pathToMatrices=dataPath[#,HamCoupling,Simp,{Lx,Ly},dataFolder]&@(StringJoin@{{"Hmatrices_"},{info}});
+	
+	If[ Length@FileNames[pathToMatrices]!= 0,Print["Loading matrices -- Uncompress time=",AbsoluteTiming[ {H0,HI}=dataZipImport[pathToMatrices]; ]               ];   ,	Print["Computing Hamiltonian matrices "]; 		
+		Print["    H Kitaev timing      =  ",     round@AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly]] ][[1]]," sec" ];
+		Print["    H Heisenberg timing  = ", round@AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly]]][[1]]," sec"  ];
+		Print["    H Zeeman timing      =  ",     round@AbsoluteTiming[HZ=If[Norm[h]==0,0,N@AdatomZeeman[h,Simp,g,2 Lx Ly]]][[1]]," sec"  ];
+		Print["    H imp timing         =  ",        round@AbsoluteTiming[HI=N@AdatomImp[1,Simp,2 Lx Ly]][[1]]," sec"  ];
+		H0=HK+HJ+HZ; Clear[HK,HJ,HZ];
+	]; Print[" "];Print["    Memory in use:  ",round@N[10^-9  MemoryInUse[]]," GB"  ]; Print[" "];
+	*)
+		Print["Computing Hamiltonian matrices "]; 		
+		Print["    H Kitaev timing      =  ",round@AbsoluteTiming[HK=If[Norm[K]==0,0,N@AdatomKitaev[K,Simp,Lx,Ly,bulkSpin]] ][[1]]," sec" ];
+		Print["    H Heisenberg timing  = ", round@AbsoluteTiming[HJ=If[Norm[J]==0,0,N@AdatomHeisenberg[J,\[Lambda]n,Simp,Lx,Ly,bulkSpin]]][[1]]," sec"  ];
+		Print["    H Zeeman timing      =  ",round@AbsoluteTiming[HZ=N@AdatomZeeman[cvec,Simp,g,2 Lx Ly,bulkSpin]  ][[1]]," sec"  ];
+		Print["    H imp timing         =  ",round@AbsoluteTiming[HI=N@AdatomImp[JK,Simp,2 Lx Ly,bulkSpin]][[1]]," sec"  ];
+		H0=HK+HJ+HI; 
+		Clear[HK,HJ,HI];
+		
+	Print["Starting JK Loop"];
+	Print["Loop timing=",NumberForm[round[AbsoluteTiming[
+	
+	Do[Module[{Himp,evec,h,simp,s1,s2 },
+		h=hRange[[j]];
+		Himp=N[(H0+h HZ)];
+		Print["    Eigenvector timing=",NumberForm[round[AbsoluteTiming[
+		evec=(-Eigensystem[-Himp, 1,
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60],{\[Infinity],3}], " min ;   j=",j,"/",Length@hRange];
+		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
+		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly,bulkSpin ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly,bulkSpin ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		dataAppend[datapath,
+		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
+		 
+],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
+
+(*AbsoluteTiming@dataWrite[datapath,eValues];*)
+
+]
+
+
 (* ::Section:: *)
 (*Substitution*)
 
@@ -239,7 +285,7 @@ Print["h Range length= ",Length@hRange];
 
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
@@ -247,7 +293,7 @@ Print["h Range length= ",Length@hRange];
 (*to use the cluster in a older Mathematica version, I save the Hamiltonian matrices on my laptop*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,h,g,H0,HK,HJ,HZ,HI,JK,eValues,info,path,Huncompressed}, 
 {{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; 
 {Lx,Ly}=Round@{Lx,Ly};
 info=StringReplace["simp=X_JK=Y",{"X"->ToString@Simp,"Y"->ToString[JK]}];		
@@ -268,10 +314,10 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 	,
 	Print["Compressed data found - Skipping matrix calculation"]
 ];
-];
+];*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 

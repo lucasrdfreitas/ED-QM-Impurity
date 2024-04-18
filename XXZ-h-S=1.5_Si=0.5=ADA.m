@@ -188,9 +188,9 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,bulkSpin,g,H0,HJ,HI,HK,HZ,eValues,pathToMat
 		Print["    Eigenvector timing=",NumberForm[round[AbsoluteTiming[
 		evec=(-Eigensystem[-Himp, 1,
 		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60],{\[Infinity],3}], " min ;   j=",j,"/",Length@hRange];
-		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
-		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
-		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly ,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
+		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly,bulkSpin ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
+		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly,bulkSpin ][[\[Gamma]]] . evec,{\[Gamma],1,3}];
 		dataAppend[datapath,
 		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
 		 
