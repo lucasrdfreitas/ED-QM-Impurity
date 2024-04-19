@@ -202,9 +202,9 @@ Print[];Print["Computing Eigenvalues"];Print[];
 (*Preamble*)
 
 
-If[ \[Not]($FrontEnd===Null), SetDirectory[NotebookDirectory[]] ];
-$FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[] ];
-Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
+If[ \[Not]($FrontEnd===Null), SetDirectory[NotebookDirectory[]]             ];
+$FileName=If[$FrontEnd === Null, $InputFileName, NotebookFileName[]    ];
+Get[ FileNameJoin[{Directory[],"definitions.wl" }]                     ]; 
 
 
 (* ::Text:: *)
@@ -212,16 +212,17 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 
 
 systemDimensions = {{3,3}}; 
-kitaev           = {0{-1,-1,-1}};
-heisenberg       = {-{1.0002,1.,1.0001}};
-anisotropy       = {-.1 {1.002,1.005,1.}/Sqrt[3]  }; 
+kitaev           = {0.0001{-1,-1,-1}};
+heisenberg       = {-{1.,1.0001,1.}};
+anisotropy       = {-.1 cvec +.001 avec  }; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCoupling    = {.5001};
-hRange           = {0,1.5,.01};
+KondoCoupling    = {.49999};
+hRange           = {0.01,1.5,.02};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 40; 
+klevels          = 5;
+ 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -298,14 +299,14 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 		Himp=N[(H0+h HZ)];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-10}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
 ]
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- Spin projection*)
 
 

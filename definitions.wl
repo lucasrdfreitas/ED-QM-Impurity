@@ -106,7 +106,7 @@ Module[ {auxStream,data},
 ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Basic definitions *)
 
 
@@ -297,7 +297,7 @@ H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@b
 HJ+H\[Lambda]]
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Substitution Hamiltonian *)
 
 
@@ -333,7 +333,7 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 ];
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Kitaev Hamiltonian*)
 
 
@@ -349,7 +349,6 @@ impBonds= Table[ Select[ bonds[[\[Alpha]]] , (MemberQ[#,1])& ]  ,{\[Alpha],1,3}]
 bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Alpha],1,3}];
 {impBonds,bulkBonds}
 ];
-
 
 
 (* ::Text:: *)
@@ -371,7 +370,7 @@ Hx+Hy+Hz
 ]
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Impurity Hamiltonian*)
 
 
@@ -391,7 +390,6 @@ S=spinmatrix[Simp];
 impBonds=substitutionBonds[Lx,Ly][[1]]-1; 
 
 sS=Sum[  KroneckerProduct@@Join[ {S[[\[Beta]]]}, Insert[s[[\[Beta]]],Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3},{\[Beta],1,3}]; 
-
 JK sS
 
 ]
@@ -404,7 +402,7 @@ JK sS
 (*Do[Module[{himp}, Print@{N0+1,AbsoluteTiming[  himp=Himp[1,1/2,N0]; Dimensions@himp ], N[10^-9 ByteCount[himp]]  }  ] ,{N0,4,20}]*)
 
 
-(* ::Subsubsection::Closed:: *)
+(* ::Subsubsection:: *)
 (*Heisenberg Hamiltonian*)
 
 
