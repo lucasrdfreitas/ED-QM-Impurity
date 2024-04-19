@@ -44,7 +44,7 @@ If[ ($FrontEnd===Null),
 ];
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Adatom*)
 
 
@@ -211,17 +211,17 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}};
+systemDimensions = {{3,2}}; 
 kitaev           = {0{-1,-1,-1}};
-heisenberg       = {-{1,1,1}};
-anisotropy       = {-.1 cvec}; 
+heisenberg       = {-{1.0002,1.,1.0001}};
+anisotropy       = {-.1 {1.002,1.005,1.}/Sqrt[3]  }; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCoupling    = {.5};
-hRange           = {0,5,.02};
+KondoCoupling    = {.5001};
+hRange           = {0,1.5,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 3; 
+klevels          = 40; 
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -266,14 +266,14 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];*)
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Code -- eigenvalues*)
 
 
 Print[];Print["Computing Eigenvalues"];Print[];
 
 
-(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
 	datapath=dataPathTXT[dataName,HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
@@ -298,11 +298,11 @@ Print[];Print["Computing Eigenvalues"];Print[];
 		Himp=N[(H0+h HZ)];
 		Print["    Eigenvalue timing=",NumberForm[round[AbsoluteTiming[ 
 		ev=Sort@(-Eigenvalues[-Himp, klevels,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-8}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-10}]);  ][[1]]/60],{\[Infinity],3}]," min -- saving data for  j=",j,"/",Length@hRange, "; h=",h "; " ];		(*Print["    Memory in use:  ",N[10^-9  MemoryInUse[] ] ," GB" ];*)
 		dataAppend[datapath,{Norm[h],ev}]; 
 		
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
-]*)
+]
 
 
 (* ::Subsection:: *)
@@ -348,7 +348,7 @@ Print[];Print["Computing Eigenvalues"];Print[];
 ]*)
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath,bulkSpin},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath,bulkSpin},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};	
 	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath]; 
 (*	info=StringReplace["simp=X_h=Y",{"X"->ToString@Simp,"Y"->ToString@N[Round[1000 Norm@h]/1000]}];		
@@ -370,7 +370,7 @@ Do[Module[{Himp,evec,h,simp,s1,s2 },
 		Himp=N[(H0+h HZ)];
 		Print["    Eigenvector timing=",NumberForm[round[AbsoluteTiming[
 		evec=(-Eigensystem[-Himp, 1,
-		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->2000,"Tolerance"->10^-9}])[[2,1]];  ][[1]]/60],{\[Infinity],3}], " min ;   j=",j,"/",Length@hRange];
+		Method -> {"Arnoldi","Criteria"->"RealPart","MaxIterations"->3000,"Tolerance"->10^-10}])[[2,1]];  ][[1]]/60],{\[Infinity],3}], " min ;   j=",j,"/",Length@hRange];
 		simp = Table[Conjugate[evec] . spinImpOp[Simp,2 Lx Ly-1 ,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}]; 
 		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
 		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
@@ -381,7 +381,7 @@ Do[Module[{Himp,evec,h,simp,s1,s2 },
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]
+]*)
 
 
 (* ::Section::Closed:: *)
