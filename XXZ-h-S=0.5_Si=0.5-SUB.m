@@ -211,17 +211,17 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }]                     ];
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}}; 
-kitaev           = {0.0001{-1,-1,-1}};
-heisenberg       = {-{1.,1.0001,1.}};
-anisotropy       = {-.1 cvec +.001 avec  }; 
+systemDimensions = {{4,3}}; 
+kitaev           = {0.01{-1,-1,-1}};
+heisenberg       = {-{1.,1.001,1.}};
+anisotropy       = {-.1 cvec +.01 avec  }; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
 gs               = {1};
-KondoCoupling    = {.49999};
-hRange           = {0.01,1.5,.02};
+KondoCoupling    = {.5};
+hRange           = {0.01,1.5,.03};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 5;
+klevels          = 4;
  
 HamCoupling="XXZ_FM_SUB";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					

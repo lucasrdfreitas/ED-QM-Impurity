@@ -341,6 +341,9 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 (*Bulk Kitaev Hamiltonian  - *)
 
 
+MatrixForm/@substitutionBonds[3,2]
+
+
 substitutionBonds[Lx_,Ly_]:=Module[{bulkBonds,impBonds,bonds},
 bonds=Transpose@Flatten[#,1]&@Table[ 
 {   {2 (m+n Lx+1)-1, 2 (Mod[m+1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n+1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
