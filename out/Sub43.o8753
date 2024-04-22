@@ -1,0 +1,17 @@
+XXZ-h-S=0.5_Si=0.5-SUB
+Before Starting Kernels
+Starting Kernels
+XXZ-h-S=0.5_Si=0.5-SUB
+h Range length= 201
+
+Computing Eigenvalues
+
+XXZ-h-S=0.5_Si=0.5-SUB
+h Range length= 50
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/XXZ-h-S=0.5_Si=0.5-SUB/XXZ_FM_SUB_size=(4,3)_Simp=0.5/h=Range[0.01,1.5,0.03]_JK={0.5}_k=4.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  19.8825 sec
+    H Heisenberg timing  = 320.7695 sec

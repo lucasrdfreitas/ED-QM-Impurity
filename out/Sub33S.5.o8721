@@ -155,3 +155,23 @@ Starting JK Loop
     Eigenvalue timing=NumberForm[17.6227, {Infinity, 3}] min -- saving data for  j=132/151; h=1.31*; 
     Eigenvalue timing=NumberForm[15.9429, {Infinity, 3}] min -- saving data for  j=133/151; h=1.32*; 
     Eigenvalue timing=NumberForm[15.9193, {Infinity, 3}] min -- saving data for  j=134/151; h=1.33*; 
+    Eigenvalue timing=NumberForm[15.9257, {Infinity, 3}] min -- saving data for  j=135/151; h=1.34*; 
+    Eigenvalue timing=NumberForm[16.3881, {Infinity, 3}] min -- saving data for  j=136/151; h=1.35*; 
+    Eigenvalue timing=NumberForm[18.5688, {Infinity, 3}] min -- saving data for  j=137/151; h=1.36*; 
+    Eigenvalue timing=NumberForm[17.744, {Infinity, 3}] min -- saving data for  j=138/151; h=1.37*; 
+    Eigenvalue timing=NumberForm[17.841, {Infinity, 3}] min -- saving data for  j=139/151; h=1.3800000000000001*; 
+    Eigenvalue timing=NumberForm[16.1214, {Infinity, 3}] min -- saving data for  j=140/151; h=1.3900000000000001*; 
+    Eigenvalue timing=NumberForm[16.058, {Infinity, 3}] min -- saving data for  j=141/151; h=1.4000000000000001*; 
+    Eigenvalue timing=NumberForm[17.5392, {Infinity, 3}] min -- saving data for  j=142/151; h=1.41*; 
+    Eigenvalue timing=NumberForm[13.3262, {Infinity, 3}] min -- saving data for  j=143/151; h=1.42*; 
+    Eigenvalue timing=NumberForm[16.2547, {Infinity, 3}] min -- saving data for  j=144/151; h=1.43*; 
+    Eigenvalue timing=NumberForm[16.1162, {Infinity, 3}] min -- saving data for  j=145/151; h=1.44*; 
+    Eigenvalue timing=NumberForm[13.2006, {Infinity, 3}] min -- saving data for  j=146/151; h=1.45*; 
+    Eigenvalue timing=NumberForm[13.3306, {Infinity, 3}] min -- saving data for  j=147/151; h=1.46*; 
+    Eigenvalue timing=NumberForm[13.3042, {Infinity, 3}] min -- saving data for  j=148/151; h=1.47*; 
+    Eigenvalue timing=NumberForm[17.8217, {Infinity, 3}] min -- saving data for  j=149/151; h=1.48*; 
+    Eigenvalue timing=NumberForm[17.6853, {Infinity, 3}] min -- saving data for  j=150/151; h=1.49*; 
+    Eigenvalue timing=NumberForm[13.311, {Infinity, 3}] min -- saving data for  j=151/151; h=1.5*; 
+Loop timing=NumberForm[2309.7633, {Infinity, 3}] min 
+
+Closing Kernels
