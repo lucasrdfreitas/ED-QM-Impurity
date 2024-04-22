@@ -234,7 +234,7 @@ Print["h Range length= ",Length@hRange];
 
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- save matrices*)
 
 
@@ -266,7 +266,7 @@ If[ FindFile[StringJoin[path,".zip"]]===$Failed,
 ];*)
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Code -- eigenvalues*)
 
 
@@ -336,7 +336,7 @@ Do[Module[{Himp,evec,h,simp,s1,s2 },
 		s1   = Table[Conjugate[evec] . spinOp[Simp,1,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
 		s2   = Table[Conjugate[evec] . spinOp[Simp,2,2 Lx Ly -1,bulkSpin][[\[Gamma]]] . evec,{\[Gamma],1,3}];
 		dataAppend[datapath,
-		Chop@{JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
+		Chop@{h/JK,{simp . avec,simp . bvec,simp . cvec},{s1 . avec,s1 . bvec,s1 . cvec},{s2 . avec,s2 . bvec,s2 . cvec}}    ];
 		 
 ],{j,1,Length@hRange}]  ][[1]]/60],{\[Infinity],3}]," min " ];
 

@@ -409,6 +409,15 @@ JK sS
 (*Heisenberg Hamiltonian*)
 
 
+MatrixForm/@substitutionBonds[3,3]
+
+
+MatrixForm/@substitutionBonds[3,2]
+
+
+MatrixForm/@substitutionBonds[2,2]
+
+
 substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bulkBonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
 N0=2 Lx Ly-1;
 s=spinmatrix[Sbulk]; 
@@ -418,9 +427,7 @@ bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
 n=\[Lambda]n/\[Lambda];
 sn=n[[1]]s[[1]]+n[[2]]s[[2]]+n[[3]]s[[3]];
 
-HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]]]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ]  
-,{r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
-H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds[[\[Alpha],r]] ]@Insert[sn,Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]  
-,{r,1,Length@bulkBonds},{\[Alpha],1,3}];
+HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]]]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ] , {r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
+H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds[[\[Alpha],r]] ]@Insert[sn,Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]        , {r,1,Length@bulkBonds},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
