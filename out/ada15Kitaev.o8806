@@ -10,3 +10,29 @@ Computing Hamiltonian matrices
     H Zeeman timing      =  0.4301 sec
     H imp timing         =  0.0486 sec
 Starting JK Loop
+    Eigenvalue timing=NumberForm[7.9416, {Infinity, 3}] min -- saving data for  j=1/201; h=0.; 
+    Eigenvalue timing=NumberForm[13.8223, {Infinity, 3}] min -- saving data for  j=2/201; h=0.005; 
+    Eigenvalue timing=NumberForm[11.627, {Infinity, 3}] min -- saving data for  j=3/201; h=0.01; 
+    Eigenvalue timing=NumberForm[11.1108, {Infinity, 3}] min -- saving data for  j=4/201; h=0.015; 
+    Eigenvalue timing=NumberForm[9.1649, {Infinity, 3}] min -- saving data for  j=5/201; h=0.02; 
+    Eigenvalue timing=NumberForm[7.8254, {Infinity, 3}] min -- saving data for  j=6/201; h=0.025; 
+    Eigenvalue timing=NumberForm[7.5266, {Infinity, 3}] min -- saving data for  j=7/201; h=0.03; 
+    Eigenvalue timing=NumberForm[8.1732, {Infinity, 3}] min -- saving data for  j=8/201; h=0.035; 
+    Eigenvalue timing=NumberForm[6.9993, {Infinity, 3}] min -- saving data for  j=9/201; h=0.04; 
+    Eigenvalue timing=NumberForm[6.6194, {Infinity, 3}] min -- saving data for  j=10/201; h=0.045; 
+    Eigenvalue timing=NumberForm[6.9562, {Infinity, 3}] min -- saving data for  j=11/201; h=0.05; 
+    Eigenvalue timing=NumberForm[7.954, {Infinity, 3}] min -- saving data for  j=12/201; h=0.055; 
+    Eigenvalue timing=NumberForm[6.5211, {Infinity, 3}] min -- saving data for  j=13/201; h=0.06; 
+    Eigenvalue timing=NumberForm[6.7327, {Infinity, 3}] min -- saving data for  j=14/201; h=0.065; 
+    Eigenvalue timing=NumberForm[7.2087, {Infinity, 3}] min -- saving data for  j=15/201; h=0.07; 
+    Eigenvalue timing=NumberForm[7.1989, {Infinity, 3}] min -- saving data for  j=16/201; h=0.075; 
+    Eigenvalue timing=NumberForm[6.3141, {Infinity, 3}] min -- saving data for  j=17/201; h=0.08; 
+    Eigenvalue timing=NumberForm[5.8296, {Infinity, 3}] min -- saving data for  j=18/201; h=0.085; 
+    Eigenvalue timing=NumberForm[5.6301, {Infinity, 3}] min -- saving data for  j=19/201; h=0.09; 
+    Eigenvalue timing=NumberForm[5.7581, {Infinity, 3}] min -- saving data for  j=20/201; h=0.095; 
+    Eigenvalue timing=NumberForm[6.2793, {Infinity, 3}] min -- saving data for  j=21/201; h=0.1; 
+    Eigenvalue timing=NumberForm[6.5614, {Infinity, 3}] min -- saving data for  j=22/201; h=0.105; 
+    Eigenvalue timing=NumberForm[5.7694, {Infinity, 3}] min -- saving data for  j=23/201; h=0.11; 
+    Eigenvalue timing=NumberForm[5.9234, {Infinity, 3}] min -- saving data for  j=24/201; h=0.115; 
+    Eigenvalue timing=NumberForm[6.9488, {Infinity, 3}] min -- saving data for  j=25/201; h=0.12; 
+    Eigenvalue timing=NumberForm[6.1231, {Infinity, 3}] min -- saving data for  j=26/201; h=0.125; 
