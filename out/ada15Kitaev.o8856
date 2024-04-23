@@ -1,0 +1,468 @@
+Kitaev-S1.5_S0.5_ADA
+Before Starting Kernels
+Starting Kernels
+Kitaev-S1.5_S0.5_ADA
+h Range length= 221
+Data path : /home/rodrigues/ED-QM-Impurity/data/Kitaev-S1.5_S0.5_ADA/XXZ_FM_ADA_size=(2,2)_Simp=0.5/h=Range[0,2.2,0.01]_JK={0.5}_k=10.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  0.3043 sec
+    H Heisenberg timing  = 0. sec
+    H Zeeman timing      =  0.508 sec
+    H imp timing         =  0.0399 sec
+Starting JK Loop
+    Eigenvalue timing=NumberForm[14.9205, {Infinity, 3}] min -- saving data for  j=1/221; h=0.; 
+    Eigenvalue timing=NumberForm[8.2657, {Infinity, 3}] min -- saving data for  j=2/221; h=0.01; 
+    Eigenvalue timing=NumberForm[7.4369, {Infinity, 3}] min -- saving data for  j=3/221; h=0.02; 
+    Eigenvalue timing=NumberForm[6.4918, {Infinity, 3}] min -- saving data for  j=4/221; h=0.03; 
+    Eigenvalue timing=NumberForm[7.7142, {Infinity, 3}] min -- saving data for  j=5/221; h=0.04; 
+    Eigenvalue timing=NumberForm[10.374, {Infinity, 3}] min -- saving data for  j=6/221; h=0.05; 
+    Eigenvalue timing=NumberForm[8.4981, {Infinity, 3}] min -- saving data for  j=7/221; h=0.06; 
+    Eigenvalue timing=NumberForm[7.3919, {Infinity, 3}] min -- saving data for  j=8/221; h=0.07; 
+    Eigenvalue timing=NumberForm[7.7108, {Infinity, 3}] min -- saving data for  j=9/221; h=0.08; 
+    Eigenvalue timing=NumberForm[8.35, {Infinity, 3}] min -- saving data for  j=10/221; h=0.09; 
+    Eigenvalue timing=NumberForm[7.5637, {Infinity, 3}] min -- saving data for  j=11/221; h=0.1; 
+    Eigenvalue timing=NumberForm[7.7622, {Infinity, 3}] min -- saving data for  j=12/221; h=0.11; 
+    Eigenvalue timing=NumberForm[6.9415, {Infinity, 3}] min -- saving data for  j=13/221; h=0.12; 
+    Eigenvalue timing=NumberForm[5.6556, {Infinity, 3}] min -- saving data for  j=14/221; h=0.13; 
+    Eigenvalue timing=NumberForm[4.3218, {Infinity, 3}] min -- saving data for  j=15/221; h=0.14; 
+    Eigenvalue timing=NumberForm[4.3175, {Infinity, 3}] min -- saving data for  j=16/221; h=0.15; 
+    Eigenvalue timing=NumberForm[4.0386, {Infinity, 3}] min -- saving data for  j=17/221; h=0.16; 
+    Eigenvalue timing=NumberForm[3.8409, {Infinity, 3}] min -- saving data for  j=18/221; h=0.17; 
+    Eigenvalue timing=NumberForm[3.7239, {Infinity, 3}] min -- saving data for  j=19/221; h=0.18; 
+    Eigenvalue timing=NumberForm[3.6511, {Infinity, 3}] min -- saving data for  j=20/221; h=0.19; 
+    Eigenvalue timing=NumberForm[3.8021, {Infinity, 3}] min -- saving data for  j=21/221; h=0.2; 
+    Eigenvalue timing=NumberForm[3.8904, {Infinity, 3}] min -- saving data for  j=22/221; h=0.21; 
+    Eigenvalue timing=NumberForm[3.2961, {Infinity, 3}] min -- saving data for  j=23/221; h=0.22; 
+    Eigenvalue timing=NumberForm[3.0549, {Infinity, 3}] min -- saving data for  j=24/221; h=0.23; 
+    Eigenvalue timing=NumberForm[3.136, {Infinity, 3}] min -- saving data for  j=25/221; h=0.24; 
+    Eigenvalue timing=NumberForm[2.9655, {Infinity, 3}] min -- saving data for  j=26/221; h=0.25; 
+    Eigenvalue timing=NumberForm[3.0338, {Infinity, 3}] min -- saving data for  j=27/221; h=0.26; 
+    Eigenvalue timing=NumberForm[3.1485, {Infinity, 3}] min -- saving data for  j=28/221; h=0.27; 
+    Eigenvalue timing=NumberForm[2.6194, {Infinity, 3}] min -- saving data for  j=29/221; h=0.28; 
+    Eigenvalue timing=NumberForm[2.4174, {Infinity, 3}] min -- saving data for  j=30/221; h=0.29; 
+    Eigenvalue timing=NumberForm[2.3122, {Infinity, 3}] min -- saving data for  j=31/221; h=0.3; 
+    Eigenvalue timing=NumberForm[2.2515, {Infinity, 3}] min -- saving data for  j=32/221; h=0.31; 
+    Eigenvalue timing=NumberForm[2.2829, {Infinity, 3}] min -- saving data for  j=33/221; h=0.32; 
+    Eigenvalue timing=NumberForm[2.2252, {Infinity, 3}] min -- saving data for  j=34/221; h=0.33; 
+    Eigenvalue timing=NumberForm[2.1901, {Infinity, 3}] min -- saving data for  j=35/221; h=0.34; 
+    Eigenvalue timing=NumberForm[2.1282, {Infinity, 3}] min -- saving data for  j=36/221; h=0.35000000000000003; 
+    Eigenvalue timing=NumberForm[2.2614, {Infinity, 3}] min -- saving data for  j=37/221; h=0.36; 
+    Eigenvalue timing=NumberForm[2.1071, {Infinity, 3}] min -- saving data for  j=38/221; h=0.37; 
+    Eigenvalue timing=NumberForm[2.156, {Infinity, 3}] min -- saving data for  j=39/221; h=0.38; 
+    Eigenvalue timing=NumberForm[2.1924, {Infinity, 3}] min -- saving data for  j=40/221; h=0.39; 
+    Eigenvalue timing=NumberForm[2.1816, {Infinity, 3}] min -- saving data for  j=41/221; h=0.4; 
+    Eigenvalue timing=NumberForm[2.2249, {Infinity, 3}] min -- saving data for  j=42/221; h=0.41000000000000003; 
+    Eigenvalue timing=NumberForm[2.364, {Infinity, 3}] min -- saving data for  j=43/221; h=0.42; 
+    Eigenvalue timing=NumberForm[2.2651, {Infinity, 3}] min -- saving data for  j=44/221; h=0.43; 
+    Eigenvalue timing=NumberForm[2.2213, {Infinity, 3}] min -- saving data for  j=45/221; h=0.44; 
+    Eigenvalue timing=NumberForm[2.2144, {Infinity, 3}] min -- saving data for  j=46/221; h=0.45; 
+    Eigenvalue timing=NumberForm[2.5255, {Infinity, 3}] min -- saving data for  j=47/221; h=0.46; 
+    Eigenvalue timing=NumberForm[2.8053, {Infinity, 3}] min -- saving data for  j=48/221; h=0.47000000000000003; 
+    Eigenvalue timing=NumberForm[3.2149, {Infinity, 3}] min -- saving data for  j=49/221; h=0.48; 
+    Eigenvalue timing=NumberForm[3.4334, {Infinity, 3}] min -- saving data for  j=50/221; h=0.49; 
+    Eigenvalue timing=NumberForm[4.1871, {Infinity, 3}] min -- saving data for  j=51/221; h=0.5; 
+    Eigenvalue timing=NumberForm[4.2544, {Infinity, 3}] min -- saving data for  j=52/221; h=0.51; 
+    Eigenvalue timing=NumberForm[3.7878, {Infinity, 3}] min -- saving data for  j=53/221; h=0.52; 
+    Eigenvalue timing=NumberForm[3.4684, {Infinity, 3}] min -- saving data for  j=54/221; h=0.53; 
+    Eigenvalue timing=NumberForm[3.2602, {Infinity, 3}] min -- saving data for  j=55/221; h=0.54; 
+    Eigenvalue timing=NumberForm[2.945, {Infinity, 3}] min -- saving data for  j=56/221; h=0.55; 
+    Eigenvalue timing=NumberForm[2.8677, {Infinity, 3}] min -- saving data for  j=57/221; h=0.56; 
+    Eigenvalue timing=NumberForm[2.7732, {Infinity, 3}] min -- saving data for  j=58/221; h=0.5700000000000001; 
+    Eigenvalue timing=NumberForm[2.5333, {Infinity, 3}] min -- saving data for  j=59/221; h=0.58; 
+    Eigenvalue timing=NumberForm[2.4272, {Infinity, 3}] min -- saving data for  j=60/221; h=0.59; 
+    Eigenvalue timing=NumberForm[2.167, {Infinity, 3}] min -- saving data for  j=61/221; h=0.6; 
+    Eigenvalue timing=NumberForm[2.3284, {Infinity, 3}] min -- saving data for  j=62/221; h=0.61; 
+    Eigenvalue timing=NumberForm[2.221, {Infinity, 3}] min -- saving data for  j=63/221; h=0.62; 
+    Eigenvalue timing=NumberForm[2.2287, {Infinity, 3}] min -- saving data for  j=64/221; h=0.63; 
+    Eigenvalue timing=NumberForm[2.2133, {Infinity, 3}] min -- saving data for  j=65/221; h=0.64; 
+    Eigenvalue timing=NumberForm[2.1136, {Infinity, 3}] min -- saving data for  j=66/221; h=0.65; 
+    Eigenvalue timing=NumberForm[2.0222, {Infinity, 3}] min -- saving data for  j=67/221; h=0.66; 
+    Eigenvalue timing=NumberForm[2.0412, {Infinity, 3}] min -- saving data for  j=68/221; h=0.67; 
+    Eigenvalue timing=NumberForm[2.0061, {Infinity, 3}] min -- saving data for  j=69/221; h=0.68; 
+    Eigenvalue timing=NumberForm[1.9963, {Infinity, 3}] min -- saving data for  j=70/221; h=0.6900000000000001; 
+    Eigenvalue timing=NumberForm[1.9504, {Infinity, 3}] min -- saving data for  j=71/221; h=0.7000000000000001; 
+    Eigenvalue timing=NumberForm[1.9839, {Infinity, 3}] min -- saving data for  j=72/221; h=0.71; 
+    Eigenvalue timing=NumberForm[1.8591, {Infinity, 3}] min -- saving data for  j=73/221; h=0.72; 
+    Eigenvalue timing=NumberForm[1.9462, {Infinity, 3}] min -- saving data for  j=74/221; h=0.73; 
+    Eigenvalue timing=NumberForm[1.9454, {Infinity, 3}] min -- saving data for  j=75/221; h=0.74; 
+    Eigenvalue timing=NumberForm[1.9447, {Infinity, 3}] min -- saving data for  j=76/221; h=0.75; 
+    Eigenvalue timing=NumberForm[1.9485, {Infinity, 3}] min -- saving data for  j=77/221; h=0.76; 
+    Eigenvalue timing=NumberForm[1.9447, {Infinity, 3}] min -- saving data for  j=78/221; h=0.77; 
+    Eigenvalue timing=NumberForm[1.9413, {Infinity, 3}] min -- saving data for  j=79/221; h=0.78; 
+    Eigenvalue timing=NumberForm[2.1294, {Infinity, 3}] min -- saving data for  j=80/221; h=0.79; 
+    Eigenvalue timing=NumberForm[2.0398, {Infinity, 3}] min -- saving data for  j=81/221; h=0.8; 
+    Eigenvalue timing=NumberForm[1.9314, {Infinity, 3}] min -- saving data for  j=82/221; h=0.81; 
+    Eigenvalue timing=NumberForm[1.9731, {Infinity, 3}] min -- saving data for  j=83/221; h=0.8200000000000001; 
+    Eigenvalue timing=NumberForm[1.9286, {Infinity, 3}] min -- saving data for  j=84/221; h=0.8300000000000001; 
+    Eigenvalue timing=NumberForm[1.9397, {Infinity, 3}] min -- saving data for  j=85/221; h=0.84; 
+    Eigenvalue timing=NumberForm[1.9036, {Infinity, 3}] min -- saving data for  j=86/221; h=0.85; 
+    Eigenvalue timing=NumberForm[1.8961, {Infinity, 3}] min -- saving data for  j=87/221; h=0.86; 
+    Eigenvalue timing=NumberForm[1.8466, {Infinity, 3}] min -- saving data for  j=88/221; h=0.87; 
+    Eigenvalue timing=NumberForm[1.8387, {Infinity, 3}] min -- saving data for  j=89/221; h=0.88; 
+    Eigenvalue timing=NumberForm[1.8734, {Infinity, 3}] min -- saving data for  j=90/221; h=0.89; 
+    Eigenvalue timing=NumberForm[1.9258, {Infinity, 3}] min -- saving data for  j=91/221; h=0.9; 
+    Eigenvalue timing=NumberForm[2.013, {Infinity, 3}] min -- saving data for  j=92/221; h=0.91; 
+    Eigenvalue timing=NumberForm[1.9371, {Infinity, 3}] min -- saving data for  j=93/221; h=0.92; 
+    Eigenvalue timing=NumberForm[1.8764, {Infinity, 3}] min -- saving data for  j=94/221; h=0.93; 
+    Eigenvalue timing=NumberForm[1.8753, {Infinity, 3}] min -- saving data for  j=95/221; h=0.9400000000000001; 
+    Eigenvalue timing=NumberForm[1.8229, {Infinity, 3}] min -- saving data for  j=96/221; h=0.9500000000000001; 
+    Eigenvalue timing=NumberForm[1.8188, {Infinity, 3}] min -- saving data for  j=97/221; h=0.96; 
+    Eigenvalue timing=NumberForm[1.7607, {Infinity, 3}] min -- saving data for  j=98/221; h=0.97; 
+    Eigenvalue timing=NumberForm[1.8186, {Infinity, 3}] min -- saving data for  j=99/221; h=0.98; 
+    Eigenvalue timing=NumberForm[1.8125, {Infinity, 3}] min -- saving data for  j=100/221; h=0.99; 
+    Eigenvalue timing=NumberForm[1.8109, {Infinity, 3}] min -- saving data for  j=101/221; h=1.; 
+    Eigenvalue timing=NumberForm[1.767, {Infinity, 3}] min -- saving data for  j=102/221; h=1.01; 
+    Eigenvalue timing=NumberForm[1.8146, {Infinity, 3}] min -- saving data for  j=103/221; h=1.02; 
+    Eigenvalue timing=NumberForm[1.8094, {Infinity, 3}] min -- saving data for  j=104/221; h=1.03; 
+    Eigenvalue timing=NumberForm[1.8925, {Infinity, 3}] min -- saving data for  j=105/221; h=1.04; 
+    Eigenvalue timing=NumberForm[2.0279, {Infinity, 3}] min -- saving data for  j=106/221; h=1.05; 
+    Eigenvalue timing=NumberForm[1.8977, {Infinity, 3}] min -- saving data for  j=107/221; h=1.06; 
+    Eigenvalue timing=NumberForm[1.8429, {Infinity, 3}] min -- saving data for  j=108/221; h=1.07; 
+    Eigenvalue timing=NumberForm[1.8376, {Infinity, 3}] min -- saving data for  j=109/221; h=1.08; 
+    Eigenvalue timing=NumberForm[1.8396, {Infinity, 3}] min -- saving data for  j=110/221; h=1.09; 
+    Eigenvalue timing=NumberForm[1.8473, {Infinity, 3}] min -- saving data for  j=111/221; h=1.1; 
+    Eigenvalue timing=NumberForm[1.853, {Infinity, 3}] min -- saving data for  j=112/221; h=1.11; 
+    Eigenvalue timing=NumberForm[1.8538, {Infinity, 3}] min -- saving data for  j=113/221; h=1.12; 
+    Eigenvalue timing=NumberForm[1.8418, {Infinity, 3}] min -- saving data for  j=114/221; h=1.1300000000000001; 
+    Eigenvalue timing=NumberForm[1.8539, {Infinity, 3}] min -- saving data for  j=115/221; h=1.1400000000000001; 
+    Eigenvalue timing=NumberForm[1.8498, {Infinity, 3}] min -- saving data for  j=116/221; h=1.1500000000000001; 
+    Eigenvalue timing=NumberForm[1.8525, {Infinity, 3}] min -- saving data for  j=117/221; h=1.16; 
+    Eigenvalue timing=NumberForm[1.8438, {Infinity, 3}] min -- saving data for  j=118/221; h=1.17; 
+    Eigenvalue timing=NumberForm[1.846, {Infinity, 3}] min -- saving data for  j=119/221; h=1.18; 
+    Eigenvalue timing=NumberForm[1.8396, {Infinity, 3}] min -- saving data for  j=120/221; h=1.19; 
+    Eigenvalue timing=NumberForm[1.8495, {Infinity, 3}] min -- saving data for  j=121/221; h=1.2; 
+    Eigenvalue timing=NumberForm[1.8472, {Infinity, 3}] min -- saving data for  j=122/221; h=1.21; 
+    Eigenvalue timing=NumberForm[1.8999, {Infinity, 3}] min -- saving data for  j=123/221; h=1.22; 
+    Eigenvalue timing=NumberForm[1.896, {Infinity, 3}] min -- saving data for  j=124/221; h=1.23; 
+    Eigenvalue timing=NumberForm[1.891, {Infinity, 3}] min -- saving data for  j=125/221; h=1.24; 
+    Eigenvalue timing=NumberForm[1.8963, {Infinity, 3}] min -- saving data for  j=126/221; h=1.25; 
+    Eigenvalue timing=NumberForm[1.8982, {Infinity, 3}] min -- saving data for  j=127/221; h=1.26; 
+    Eigenvalue timing=NumberForm[1.9408, {Infinity, 3}] min -- saving data for  j=128/221; h=1.27; 
+    Eigenvalue timing=NumberForm[1.9051, {Infinity, 3}] min -- saving data for  j=129/221; h=1.28; 
+    Eigenvalue timing=NumberForm[1.9012, {Infinity, 3}] min -- saving data for  j=130/221; h=1.29; 
+    Eigenvalue timing=NumberForm[1.9002, {Infinity, 3}] min -- saving data for  j=131/221; h=1.3; 
+    Eigenvalue timing=NumberForm[1.8976, {Infinity, 3}] min -- saving data for  j=132/221; h=1.31; 
+    Eigenvalue timing=NumberForm[1.9026, {Infinity, 3}] min -- saving data for  j=133/221; h=1.32; 
+    Eigenvalue timing=NumberForm[1.8568, {Infinity, 3}] min -- saving data for  j=134/221; h=1.33; 
+    Eigenvalue timing=NumberForm[1.9413, {Infinity, 3}] min -- saving data for  j=135/221; h=1.34; 
+    Eigenvalue timing=NumberForm[1.8979, {Infinity, 3}] min -- saving data for  j=136/221; h=1.35; 
+    Eigenvalue timing=NumberForm[1.9022, {Infinity, 3}] min -- saving data for  j=137/221; h=1.36; 
+    Eigenvalue timing=NumberForm[1.8915, {Infinity, 3}] min -- saving data for  j=138/221; h=1.37; 
+    Eigenvalue timing=NumberForm[1.959, {Infinity, 3}] min -- saving data for  j=139/221; h=1.3800000000000001; 
+    Eigenvalue timing=NumberForm[2.0462, {Infinity, 3}] min -- saving data for  j=140/221; h=1.3900000000000001; 
+    Eigenvalue timing=NumberForm[2.0939, {Infinity, 3}] min -- saving data for  j=141/221; h=1.4000000000000001; 
+    Eigenvalue timing=NumberForm[2.1792, {Infinity, 3}] min -- saving data for  j=142/221; h=1.41; 
+    Eigenvalue timing=NumberForm[2.086, {Infinity, 3}] min -- saving data for  j=143/221; h=1.42; 
+    Eigenvalue timing=NumberForm[2.0876, {Infinity, 3}] min -- saving data for  j=144/221; h=1.43; 
+    Eigenvalue timing=NumberForm[2.0504, {Infinity, 3}] min -- saving data for  j=145/221; h=1.44; 
+    Eigenvalue timing=NumberForm[2.0469, {Infinity, 3}] min -- saving data for  j=146/221; h=1.45; 
+    Eigenvalue timing=NumberForm[2.0092, {Infinity, 3}] min -- saving data for  j=147/221; h=1.46; 
+    Eigenvalue timing=NumberForm[1.9991, {Infinity, 3}] min -- saving data for  j=148/221; h=1.47; 
+    Eigenvalue timing=NumberForm[1.9979, {Infinity, 3}] min -- saving data for  j=149/221; h=1.48; 
+    Eigenvalue timing=NumberForm[1.9521, {Infinity, 3}] min -- saving data for  j=150/221; h=1.49; 
+    Eigenvalue timing=NumberForm[1.9567, {Infinity, 3}] min -- saving data for  j=151/221; h=1.5; 
+    Eigenvalue timing=NumberForm[1.955, {Infinity, 3}] min -- saving data for  j=152/221; h=1.51; 
+    Eigenvalue timing=NumberForm[1.9548, {Infinity, 3}] min -- saving data for  j=153/221; h=1.52; 
+    Eigenvalue timing=NumberForm[1.9536, {Infinity, 3}] min -- saving data for  j=154/221; h=1.53; 
+    Eigenvalue timing=NumberForm[1.9573, {Infinity, 3}] min -- saving data for  j=155/221; h=1.54; 
+    Eigenvalue timing=NumberForm[2.0126, {Infinity, 3}] min -- saving data for  j=156/221; h=1.55; 
+    Eigenvalue timing=NumberForm[2.0278, {Infinity, 3}] min -- saving data for  j=157/221; h=1.56; 
+    Eigenvalue timing=NumberForm[2.0175, {Infinity, 3}] min -- saving data for  j=158/221; h=1.57; 
+    Eigenvalue timing=NumberForm[2.0255, {Infinity, 3}] min -- saving data for  j=159/221; h=1.58; 
+    Eigenvalue timing=NumberForm[2.0207, {Infinity, 3}] min -- saving data for  j=160/221; h=1.59; 
+    Eigenvalue timing=NumberForm[1.9841, {Infinity, 3}] min -- saving data for  j=161/221; h=1.6; 
+    Eigenvalue timing=NumberForm[2.0214, {Infinity, 3}] min -- saving data for  j=162/221; h=1.61; 
+    Eigenvalue timing=NumberForm[2.0269, {Infinity, 3}] min -- saving data for  j=163/221; h=1.62; 
+    Eigenvalue timing=NumberForm[2.0246, {Infinity, 3}] min -- saving data for  j=164/221; h=1.6300000000000001; 
+    Eigenvalue timing=NumberForm[2.0202, {Infinity, 3}] min -- saving data for  j=165/221; h=1.6400000000000001; 
+    Eigenvalue timing=NumberForm[2.0108, {Infinity, 3}] min -- saving data for  j=166/221; h=1.6500000000000001; 
+    Eigenvalue timing=NumberForm[2.0159, {Infinity, 3}] min -- saving data for  j=167/221; h=1.6600000000000001; 
+    Eigenvalue timing=NumberForm[2.0686, {Infinity, 3}] min -- saving data for  j=168/221; h=1.67; 
+    Eigenvalue timing=NumberForm[2.0624, {Infinity, 3}] min -- saving data for  j=169/221; h=1.68; 
+    Eigenvalue timing=NumberForm[2.0523, {Infinity, 3}] min -- saving data for  j=170/221; h=1.69; 
+    Eigenvalue timing=NumberForm[2.0563, {Infinity, 3}] min -- saving data for  j=171/221; h=1.7; 
+    Eigenvalue timing=NumberForm[2.0525, {Infinity, 3}] min -- saving data for  j=172/221; h=1.71; 
+    Eigenvalue timing=NumberForm[2.1016, {Infinity, 3}] min -- saving data for  j=173/221; h=1.72; 
+    Eigenvalue timing=NumberForm[2.1072, {Infinity, 3}] min -- saving data for  j=174/221; h=1.73; 
+    Eigenvalue timing=NumberForm[2.1548, {Infinity, 3}] min -- saving data for  j=175/221; h=1.74; 
+    Eigenvalue timing=NumberForm[2.1542, {Infinity, 3}] min -- saving data for  j=176/221; h=1.75; 
+    Eigenvalue timing=NumberForm[2.1443, {Infinity, 3}] min -- saving data for  j=177/221; h=1.76; 
+    Eigenvalue timing=NumberForm[2.2384, {Infinity, 3}] min -- saving data for  j=178/221; h=1.77; 
+    Eigenvalue timing=NumberForm[2.1831, {Infinity, 3}] min -- saving data for  j=179/221; h=1.78; 
+    Eigenvalue timing=NumberForm[2.1866, {Infinity, 3}] min -- saving data for  j=180/221; h=1.79; 
+    Eigenvalue timing=NumberForm[2.1893, {Infinity, 3}] min -- saving data for  j=181/221; h=1.8; 
+    Eigenvalue timing=NumberForm[2.23, {Infinity, 3}] min -- saving data for  j=182/221; h=1.81; 
+    Eigenvalue timing=NumberForm[2.2308, {Infinity, 3}] min -- saving data for  j=183/221; h=1.82; 
+    Eigenvalue timing=NumberForm[2.1787, {Infinity, 3}] min -- saving data for  j=184/221; h=1.83; 
+    Eigenvalue timing=NumberForm[2.188, {Infinity, 3}] min -- saving data for  j=185/221; h=1.84; 
+    Eigenvalue timing=NumberForm[2.2241, {Infinity, 3}] min -- saving data for  j=186/221; h=1.85; 
+    Eigenvalue timing=NumberForm[2.2791, {Infinity, 3}] min -- saving data for  j=187/221; h=1.86; 
+    Eigenvalue timing=NumberForm[2.227, {Infinity, 3}] min -- saving data for  j=188/221; h=1.87; 
+    Eigenvalue timing=NumberForm[2.1938, {Infinity, 3}] min -- saving data for  j=189/221; h=1.8800000000000001; 
+    Eigenvalue timing=NumberForm[2.3693, {Infinity, 3}] min -- saving data for  j=190/221; h=1.8900000000000001; 
+    Eigenvalue timing=NumberForm[2.379, {Infinity, 3}] min -- saving data for  j=191/221; h=1.9000000000000001; 
+    Eigenvalue timing=NumberForm[2.3707, {Infinity, 3}] min -- saving data for  j=192/221; h=1.9100000000000001; 
+    Eigenvalue timing=NumberForm[2.4206, {Infinity, 3}] min -- saving data for  j=193/221; h=1.92; 
+    Eigenvalue timing=NumberForm[2.4715, {Infinity, 3}] min -- saving data for  j=194/221; h=1.93; 
+    Eigenvalue timing=NumberForm[2.3233, {Infinity, 3}] min -- saving data for  j=195/221; h=1.94; 
+    Eigenvalue timing=NumberForm[2.2213, {Infinity, 3}] min -- saving data for  j=196/221; h=1.95; 
+    Eigenvalue timing=NumberForm[2.1858, {Infinity, 3}] min -- saving data for  j=197/221; h=1.96; 
+    Eigenvalue timing=NumberForm[2.1885, {Infinity, 3}] min -- saving data for  j=198/221; h=1.97; 
+    Eigenvalue timing=NumberForm[2.1823, {Infinity, 3}] min -- saving data for  j=199/221; h=1.98; 
+    Eigenvalue timing=NumberForm[2.1905, {Infinity, 3}] min -- saving data for  j=200/221; h=1.99; 
+    Eigenvalue timing=NumberForm[2.1997, {Infinity, 3}] min -- saving data for  j=201/221; h=2.; 
+    Eigenvalue timing=NumberForm[2.1302, {Infinity, 3}] min -- saving data for  j=202/221; h=2.0100000000000002; 
+    Eigenvalue timing=NumberForm[2.143, {Infinity, 3}] min -- saving data for  j=203/221; h=2.02; 
+    Eigenvalue timing=NumberForm[2.1328, {Infinity, 3}] min -- saving data for  j=204/221; h=2.0300000000000002; 
+    Eigenvalue timing=NumberForm[2.0873, {Infinity, 3}] min -- saving data for  j=205/221; h=2.04; 
+    Eigenvalue timing=NumberForm[2.0859, {Infinity, 3}] min -- saving data for  j=206/221; h=2.05; 
+    Eigenvalue timing=NumberForm[2.1354, {Infinity, 3}] min -- saving data for  j=207/221; h=2.06; 
+    Eigenvalue timing=NumberForm[2.1328, {Infinity, 3}] min -- saving data for  j=208/221; h=2.07; 
+    Eigenvalue timing=NumberForm[2.2472, {Infinity, 3}] min -- saving data for  j=209/221; h=2.08; 
+    Eigenvalue timing=NumberForm[2.1382, {Infinity, 3}] min -- saving data for  j=210/221; h=2.09; 
+    Eigenvalue timing=NumberForm[2.1453, {Infinity, 3}] min -- saving data for  j=211/221; h=2.1; 
+    Eigenvalue timing=NumberForm[2.0863, {Infinity, 3}] min -- saving data for  j=212/221; h=2.11; 
+    Eigenvalue timing=NumberForm[2.0866, {Infinity, 3}] min -- saving data for  j=213/221; h=2.12; 
+    Eigenvalue timing=NumberForm[2.0357, {Infinity, 3}] min -- saving data for  j=214/221; h=2.13; 
+    Eigenvalue timing=NumberForm[2.0004, {Infinity, 3}] min -- saving data for  j=215/221; h=2.14; 
+    Eigenvalue timing=NumberForm[1.9954, {Infinity, 3}] min -- saving data for  j=216/221; h=2.15; 
+    Eigenvalue timing=NumberForm[2.0026, {Infinity, 3}] min -- saving data for  j=217/221; h=2.16; 
+    Eigenvalue timing=NumberForm[1.947, {Infinity, 3}] min -- saving data for  j=218/221; h=2.17; 
+    Eigenvalue timing=NumberForm[1.9993, {Infinity, 3}] min -- saving data for  j=219/221; h=2.18; 
+    Eigenvalue timing=NumberForm[1.9481, {Infinity, 3}] min -- saving data for  j=220/221; h=2.19; 
+    Eigenvalue timing=NumberForm[1.8979, {Infinity, 3}] min -- saving data for  j=221/221; h=2.2; 
+Loop timing=NumberForm[578.8698, {Infinity, 3}] min 
+
+Computing Eigenvectors
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/Kitaev-S1.5_S0.5_ADA/XXZ_FM_ADA_size=(2,2)_Simp=0.5/h=Range[0,2.2,0.01]_JK={0.5}_spin_components.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  0.1646 sec
+    H Heisenberg timing  = 0. sec
+    H Zeeman timing      =  0.2782 sec
+    H imp timing         =  0.0318 sec
+Starting JK Loop
+    Eigenvector timing=NumberForm[1.353, {Infinity, 3}] min ;   j=1/221
+    Eigenvector timing=NumberForm[2.7712, {Infinity, 3}] min ;   j=2/221
+    Eigenvector timing=NumberForm[2.5282, {Infinity, 3}] min ;   j=3/221
+    Eigenvector timing=NumberForm[2.2528, {Infinity, 3}] min ;   j=4/221
+    Eigenvector timing=NumberForm[2.2403, {Infinity, 3}] min ;   j=5/221
+    Eigenvector timing=NumberForm[2.2471, {Infinity, 3}] min ;   j=6/221
+    Eigenvector timing=NumberForm[2.2954, {Infinity, 3}] min ;   j=7/221
+    Eigenvector timing=NumberForm[2.1271, {Infinity, 3}] min ;   j=8/221
+    Eigenvector timing=NumberForm[2.035, {Infinity, 3}] min ;   j=9/221
+    Eigenvector timing=NumberForm[2.3788, {Infinity, 3}] min ;   j=10/221
+    Eigenvector timing=NumberForm[2.9468, {Infinity, 3}] min ;   j=11/221
+    Eigenvector timing=NumberForm[2.234, {Infinity, 3}] min ;   j=12/221
+    Eigenvector timing=NumberForm[1.8928, {Infinity, 3}] min ;   j=13/221
+    Eigenvector timing=NumberForm[1.7304, {Infinity, 3}] min ;   j=14/221
+    Eigenvector timing=NumberForm[1.6981, {Infinity, 3}] min ;   j=15/221
+    Eigenvector timing=NumberForm[1.691, {Infinity, 3}] min ;   j=16/221
+    Eigenvector timing=NumberForm[1.5075, {Infinity, 3}] min ;   j=17/221
+    Eigenvector timing=NumberForm[1.3675, {Infinity, 3}] min ;   j=18/221
+    Eigenvector timing=NumberForm[1.2651, {Infinity, 3}] min ;   j=19/221
+    Eigenvector timing=NumberForm[1.2126, {Infinity, 3}] min ;   j=20/221
+    Eigenvector timing=NumberForm[1.1747, {Infinity, 3}] min ;   j=21/221
+    Eigenvector timing=NumberForm[1.1233, {Infinity, 3}] min ;   j=22/221
+    Eigenvector timing=NumberForm[1.0793, {Infinity, 3}] min ;   j=23/221
+    Eigenvector timing=NumberForm[1.0975, {Infinity, 3}] min ;   j=24/221
+    Eigenvector timing=NumberForm[1.0321, {Infinity, 3}] min ;   j=25/221
+    Eigenvector timing=NumberForm[1.4132, {Infinity, 3}] min ;   j=26/221
+    Eigenvector timing=NumberForm[1.4646, {Infinity, 3}] min ;   j=27/221
+    Eigenvector timing=NumberForm[1.3968, {Infinity, 3}] min ;   j=28/221
+    Eigenvector timing=NumberForm[1.3907, {Infinity, 3}] min ;   j=29/221
+    Eigenvector timing=NumberForm[0.9262, {Infinity, 3}] min ;   j=30/221
+    Eigenvector timing=NumberForm[0.8815, {Infinity, 3}] min ;   j=31/221
+    Eigenvector timing=NumberForm[0.8844, {Infinity, 3}] min ;   j=32/221
+    Eigenvector timing=NumberForm[0.8895, {Infinity, 3}] min ;   j=33/221
+    Eigenvector timing=NumberForm[0.8858, {Infinity, 3}] min ;   j=34/221
+    Eigenvector timing=NumberForm[0.899, {Infinity, 3}] min ;   j=35/221
+    Eigenvector timing=NumberForm[0.8426, {Infinity, 3}] min ;   j=36/221
+    Eigenvector timing=NumberForm[0.8438, {Infinity, 3}] min ;   j=37/221
+    Eigenvector timing=NumberForm[0.8447, {Infinity, 3}] min ;   j=38/221
+    Eigenvector timing=NumberForm[0.8459, {Infinity, 3}] min ;   j=39/221
+    Eigenvector timing=NumberForm[0.8434, {Infinity, 3}] min ;   j=40/221
+    Eigenvector timing=NumberForm[0.8464, {Infinity, 3}] min ;   j=41/221
+    Eigenvector timing=NumberForm[0.798, {Infinity, 3}] min ;   j=42/221
+    Eigenvector timing=NumberForm[0.7953, {Infinity, 3}] min ;   j=43/221
+    Eigenvector timing=NumberForm[0.8032, {Infinity, 3}] min ;   j=44/221
+    Eigenvector timing=NumberForm[0.8057, {Infinity, 3}] min ;   j=45/221
+    Eigenvector timing=NumberForm[0.8011, {Infinity, 3}] min ;   j=46/221
+    Eigenvector timing=NumberForm[0.7482, {Infinity, 3}] min ;   j=47/221
+    Eigenvector timing=NumberForm[0.7976, {Infinity, 3}] min ;   j=48/221
+    Eigenvector timing=NumberForm[0.7465, {Infinity, 3}] min ;   j=49/221
+    Eigenvector timing=NumberForm[0.8004, {Infinity, 3}] min ;   j=50/221
+    Eigenvector timing=NumberForm[0.7494, {Infinity, 3}] min ;   j=51/221
+    Eigenvector timing=NumberForm[0.7508, {Infinity, 3}] min ;   j=52/221
+    Eigenvector timing=NumberForm[0.7482, {Infinity, 3}] min ;   j=53/221
+    Eigenvector timing=NumberForm[0.753, {Infinity, 3}] min ;   j=54/221
+    Eigenvector timing=NumberForm[0.7574, {Infinity, 3}] min ;   j=55/221
+    Eigenvector timing=NumberForm[0.752, {Infinity, 3}] min ;   j=56/221
+    Eigenvector timing=NumberForm[0.7522, {Infinity, 3}] min ;   j=57/221
+    Eigenvector timing=NumberForm[0.7534, {Infinity, 3}] min ;   j=58/221
+    Eigenvector timing=NumberForm[0.756, {Infinity, 3}] min ;   j=59/221
+    Eigenvector timing=NumberForm[0.7503, {Infinity, 3}] min ;   j=60/221
+    Eigenvector timing=NumberForm[0.7451, {Infinity, 3}] min ;   j=61/221
+    Eigenvector timing=NumberForm[0.7434, {Infinity, 3}] min ;   j=62/221
+    Eigenvector timing=NumberForm[0.7482, {Infinity, 3}] min ;   j=63/221
+    Eigenvector timing=NumberForm[0.7486, {Infinity, 3}] min ;   j=64/221
+    Eigenvector timing=NumberForm[0.7491, {Infinity, 3}] min ;   j=65/221
+    Eigenvector timing=NumberForm[0.7477, {Infinity, 3}] min ;   j=66/221
+    Eigenvector timing=NumberForm[0.7521, {Infinity, 3}] min ;   j=67/221
+    Eigenvector timing=NumberForm[0.7507, {Infinity, 3}] min ;   j=68/221
+    Eigenvector timing=NumberForm[0.7489, {Infinity, 3}] min ;   j=69/221
+    Eigenvector timing=NumberForm[0.7461, {Infinity, 3}] min ;   j=70/221
+    Eigenvector timing=NumberForm[0.7497, {Infinity, 3}] min ;   j=71/221
+    Eigenvector timing=NumberForm[0.7598, {Infinity, 3}] min ;   j=72/221
+    Eigenvector timing=NumberForm[0.7539, {Infinity, 3}] min ;   j=73/221
+    Eigenvector timing=NumberForm[0.7561, {Infinity, 3}] min ;   j=74/221
+    Eigenvector timing=NumberForm[0.7489, {Infinity, 3}] min ;   j=75/221
+    Eigenvector timing=NumberForm[0.7591, {Infinity, 3}] min ;   j=76/221
+    Eigenvector timing=NumberForm[0.7505, {Infinity, 3}] min ;   j=77/221
+    Eigenvector timing=NumberForm[0.7537, {Infinity, 3}] min ;   j=78/221
+    Eigenvector timing=NumberForm[0.7466, {Infinity, 3}] min ;   j=79/221
+    Eigenvector timing=NumberForm[0.7548, {Infinity, 3}] min ;   j=80/221
+    Eigenvector timing=NumberForm[0.7594, {Infinity, 3}] min ;   j=81/221
+    Eigenvector timing=NumberForm[0.7621, {Infinity, 3}] min ;   j=82/221
+    Eigenvector timing=NumberForm[0.7823, {Infinity, 3}] min ;   j=83/221
+    Eigenvector timing=NumberForm[1.0486, {Infinity, 3}] min ;   j=84/221
+    Eigenvector timing=NumberForm[1.1251, {Infinity, 3}] min ;   j=85/221
+    Eigenvector timing=NumberForm[1.194, {Infinity, 3}] min ;   j=86/221
+    Eigenvector timing=NumberForm[1.1926, {Infinity, 3}] min ;   j=87/221
+    Eigenvector timing=NumberForm[0.8351, {Infinity, 3}] min ;   j=88/221
+    Eigenvector timing=NumberForm[0.8802, {Infinity, 3}] min ;   j=89/221
+    Eigenvector timing=NumberForm[1.0072, {Infinity, 3}] min ;   j=90/221
+    Eigenvector timing=NumberForm[1.202, {Infinity, 3}] min ;   j=91/221
+    Eigenvector timing=NumberForm[1.1151, {Infinity, 3}] min ;   j=92/221
+    Eigenvector timing=NumberForm[1.1103, {Infinity, 3}] min ;   j=93/221
+    Eigenvector timing=NumberForm[1.0507, {Infinity, 3}] min ;   j=94/221
+    Eigenvector timing=NumberForm[1.0389, {Infinity, 3}] min ;   j=95/221
+    Eigenvector timing=NumberForm[1.0511, {Infinity, 3}] min ;   j=96/221
+    Eigenvector timing=NumberForm[0.6918, {Infinity, 3}] min ;   j=97/221
+    Eigenvector timing=NumberForm[0.6926, {Infinity, 3}] min ;   j=98/221
+    Eigenvector timing=NumberForm[0.6994, {Infinity, 3}] min ;   j=99/221
+    Eigenvector timing=NumberForm[0.6977, {Infinity, 3}] min ;   j=100/221
+    Eigenvector timing=NumberForm[0.6971, {Infinity, 3}] min ;   j=101/221
+    Eigenvector timing=NumberForm[0.6546, {Infinity, 3}] min ;   j=102/221
+    Eigenvector timing=NumberForm[0.6502, {Infinity, 3}] min ;   j=103/221
+    Eigenvector timing=NumberForm[0.6516, {Infinity, 3}] min ;   j=104/221
+    Eigenvector timing=NumberForm[0.6532, {Infinity, 3}] min ;   j=105/221
+    Eigenvector timing=NumberForm[0.6544, {Infinity, 3}] min ;   j=106/221
+    Eigenvector timing=NumberForm[0.653, {Infinity, 3}] min ;   j=107/221
+    Eigenvector timing=NumberForm[0.6564, {Infinity, 3}] min ;   j=108/221
+    Eigenvector timing=NumberForm[0.6503, {Infinity, 3}] min ;   j=109/221
+    Eigenvector timing=NumberForm[0.6521, {Infinity, 3}] min ;   j=110/221
+    Eigenvector timing=NumberForm[0.6512, {Infinity, 3}] min ;   j=111/221
+    Eigenvector timing=NumberForm[0.6555, {Infinity, 3}] min ;   j=112/221
+    Eigenvector timing=NumberForm[0.6561, {Infinity, 3}] min ;   j=113/221
+    Eigenvector timing=NumberForm[0.6513, {Infinity, 3}] min ;   j=114/221
+    Eigenvector timing=NumberForm[0.6538, {Infinity, 3}] min ;   j=115/221
+    Eigenvector timing=NumberForm[0.6538, {Infinity, 3}] min ;   j=116/221
+    Eigenvector timing=NumberForm[0.6542, {Infinity, 3}] min ;   j=117/221
+    Eigenvector timing=NumberForm[0.6084, {Infinity, 3}] min ;   j=118/221
+    Eigenvector timing=NumberForm[0.6119, {Infinity, 3}] min ;   j=119/221
+    Eigenvector timing=NumberForm[0.6063, {Infinity, 3}] min ;   j=120/221
+    Eigenvector timing=NumberForm[0.6275, {Infinity, 3}] min ;   j=121/221
+    Eigenvector timing=NumberForm[0.6272, {Infinity, 3}] min ;   j=122/221
+    Eigenvector timing=NumberForm[0.6232, {Infinity, 3}] min ;   j=123/221
+    Eigenvector timing=NumberForm[0.6199, {Infinity, 3}] min ;   j=124/221
+    Eigenvector timing=NumberForm[0.6102, {Infinity, 3}] min ;   j=125/221
+    Eigenvector timing=NumberForm[0.6057, {Infinity, 3}] min ;   j=126/221
+    Eigenvector timing=NumberForm[0.6095, {Infinity, 3}] min ;   j=127/221
+    Eigenvector timing=NumberForm[0.6101, {Infinity, 3}] min ;   j=128/221
+    Eigenvector timing=NumberForm[0.6105, {Infinity, 3}] min ;   j=129/221
+    Eigenvector timing=NumberForm[0.6072, {Infinity, 3}] min ;   j=130/221
+    Eigenvector timing=NumberForm[0.6145, {Infinity, 3}] min ;   j=131/221
+    Eigenvector timing=NumberForm[0.6491, {Infinity, 3}] min ;   j=132/221
+    Eigenvector timing=NumberForm[0.6547, {Infinity, 3}] min ;   j=133/221
+    Eigenvector timing=NumberForm[0.655, {Infinity, 3}] min ;   j=134/221
+    Eigenvector timing=NumberForm[0.6584, {Infinity, 3}] min ;   j=135/221
+    Eigenvector timing=NumberForm[0.6582, {Infinity, 3}] min ;   j=136/221
+    Eigenvector timing=NumberForm[0.6549, {Infinity, 3}] min ;   j=137/221
+    Eigenvector timing=NumberForm[0.6001, {Infinity, 3}] min ;   j=138/221
+    Eigenvector timing=NumberForm[0.5902, {Infinity, 3}] min ;   j=139/221
+    Eigenvector timing=NumberForm[0.5785, {Infinity, 3}] min ;   j=140/221
+    Eigenvector timing=NumberForm[0.5804, {Infinity, 3}] min ;   j=141/221
+    Eigenvector timing=NumberForm[0.5799, {Infinity, 3}] min ;   j=142/221
+    Eigenvector timing=NumberForm[0.5797, {Infinity, 3}] min ;   j=143/221
+    Eigenvector timing=NumberForm[0.579, {Infinity, 3}] min ;   j=144/221
+    Eigenvector timing=NumberForm[0.5903, {Infinity, 3}] min ;   j=145/221
+    Eigenvector timing=NumberForm[0.5946, {Infinity, 3}] min ;   j=146/221
+    Eigenvector timing=NumberForm[0.594, {Infinity, 3}] min ;   j=147/221
+    Eigenvector timing=NumberForm[0.5829, {Infinity, 3}] min ;   j=148/221
+    Eigenvector timing=NumberForm[0.5826, {Infinity, 3}] min ;   j=149/221
+    Eigenvector timing=NumberForm[0.5826, {Infinity, 3}] min ;   j=150/221
+    Eigenvector timing=NumberForm[0.5904, {Infinity, 3}] min ;   j=151/221
+    Eigenvector timing=NumberForm[0.5776, {Infinity, 3}] min ;   j=152/221
+    Eigenvector timing=NumberForm[0.5783, {Infinity, 3}] min ;   j=153/221
+    Eigenvector timing=NumberForm[0.5787, {Infinity, 3}] min ;   j=154/221
+    Eigenvector timing=NumberForm[0.577, {Infinity, 3}] min ;   j=155/221
+    Eigenvector timing=NumberForm[0.58, {Infinity, 3}] min ;   j=156/221
+    Eigenvector timing=NumberForm[0.5806, {Infinity, 3}] min ;   j=157/221
+    Eigenvector timing=NumberForm[0.5819, {Infinity, 3}] min ;   j=158/221
+    Eigenvector timing=NumberForm[0.5844, {Infinity, 3}] min ;   j=159/221
+    Eigenvector timing=NumberForm[0.5812, {Infinity, 3}] min ;   j=160/221
+    Eigenvector timing=NumberForm[0.7954, {Infinity, 3}] min ;   j=161/221
+    Eigenvector timing=NumberForm[0.7874, {Infinity, 3}] min ;   j=162/221
+    Eigenvector timing=NumberForm[0.7906, {Infinity, 3}] min ;   j=163/221
+    Eigenvector timing=NumberForm[0.7787, {Infinity, 3}] min ;   j=164/221
+    Eigenvector timing=NumberForm[0.8036, {Infinity, 3}] min ;   j=165/221
+    Eigenvector timing=NumberForm[0.8288, {Infinity, 3}] min ;   j=166/221
+    Eigenvector timing=NumberForm[0.8305, {Infinity, 3}] min ;   j=167/221
+    Eigenvector timing=NumberForm[0.8172, {Infinity, 3}] min ;   j=168/221
+    Eigenvector timing=NumberForm[0.8035, {Infinity, 3}] min ;   j=169/221
+    Eigenvector timing=NumberForm[0.7036, {Infinity, 3}] min ;   j=170/221
+    Eigenvector timing=NumberForm[0.5314, {Infinity, 3}] min ;   j=171/221
+    Eigenvector timing=NumberForm[0.5384, {Infinity, 3}] min ;   j=172/221
+    Eigenvector timing=NumberForm[0.5339, {Infinity, 3}] min ;   j=173/221
+    Eigenvector timing=NumberForm[0.5463, {Infinity, 3}] min ;   j=174/221
+    Eigenvector timing=NumberForm[0.562, {Infinity, 3}] min ;   j=175/221
+    Eigenvector timing=NumberForm[0.5483, {Infinity, 3}] min ;   j=176/221
+    Eigenvector timing=NumberForm[0.5374, {Infinity, 3}] min ;   j=177/221
+    Eigenvector timing=NumberForm[0.5411, {Infinity, 3}] min ;   j=178/221
+    Eigenvector timing=NumberForm[0.5478, {Infinity, 3}] min ;   j=179/221
+    Eigenvector timing=NumberForm[0.563, {Infinity, 3}] min ;   j=180/221
+    Eigenvector timing=NumberForm[0.5603, {Infinity, 3}] min ;   j=181/221
+    Eigenvector timing=NumberForm[0.5635, {Infinity, 3}] min ;   j=182/221
+    Eigenvector timing=NumberForm[0.5476, {Infinity, 3}] min ;   j=183/221
+    Eigenvector timing=NumberForm[0.5324, {Infinity, 3}] min ;   j=184/221
+    Eigenvector timing=NumberForm[0.5569, {Infinity, 3}] min ;   j=185/221
+    Eigenvector timing=NumberForm[0.5613, {Infinity, 3}] min ;   j=186/221
+    Eigenvector timing=NumberForm[0.553, {Infinity, 3}] min ;   j=187/221
+    Eigenvector timing=NumberForm[0.5538, {Infinity, 3}] min ;   j=188/221
+    Eigenvector timing=NumberForm[0.5455, {Infinity, 3}] min ;   j=189/221
+    Eigenvector timing=NumberForm[0.5418, {Infinity, 3}] min ;   j=190/221
+    Eigenvector timing=NumberForm[0.5395, {Infinity, 3}] min ;   j=191/221
+    Eigenvector timing=NumberForm[0.5393, {Infinity, 3}] min ;   j=192/221
+    Eigenvector timing=NumberForm[0.5401, {Infinity, 3}] min ;   j=193/221
+    Eigenvector timing=NumberForm[0.5445, {Infinity, 3}] min ;   j=194/221
+    Eigenvector timing=NumberForm[0.5558, {Infinity, 3}] min ;   j=195/221
+    Eigenvector timing=NumberForm[0.5634, {Infinity, 3}] min ;   j=196/221
+    Eigenvector timing=NumberForm[0.5421, {Infinity, 3}] min ;   j=197/221
+    Eigenvector timing=NumberForm[0.5324, {Infinity, 3}] min ;   j=198/221
+    Eigenvector timing=NumberForm[0.5305, {Infinity, 3}] min ;   j=199/221
+    Eigenvector timing=NumberForm[0.5424, {Infinity, 3}] min ;   j=200/221
+    Eigenvector timing=NumberForm[0.542, {Infinity, 3}] min ;   j=201/221
+    Eigenvector timing=NumberForm[0.5411, {Infinity, 3}] min ;   j=202/221
+    Eigenvector timing=NumberForm[0.5317, {Infinity, 3}] min ;   j=203/221
+    Eigenvector timing=NumberForm[0.5316, {Infinity, 3}] min ;   j=204/221
+    Eigenvector timing=NumberForm[0.533, {Infinity, 3}] min ;   j=205/221
+    Eigenvector timing=NumberForm[0.534, {Infinity, 3}] min ;   j=206/221
+    Eigenvector timing=NumberForm[0.5321, {Infinity, 3}] min ;   j=207/221
+    Eigenvector timing=NumberForm[0.5332, {Infinity, 3}] min ;   j=208/221
+    Eigenvector timing=NumberForm[0.5367, {Infinity, 3}] min ;   j=209/221
+    Eigenvector timing=NumberForm[0.5323, {Infinity, 3}] min ;   j=210/221
+    Eigenvector timing=NumberForm[0.5313, {Infinity, 3}] min ;   j=211/221
+    Eigenvector timing=NumberForm[0.5321, {Infinity, 3}] min ;   j=212/221
+    Eigenvector timing=NumberForm[0.5331, {Infinity, 3}] min ;   j=213/221
+    Eigenvector timing=NumberForm[0.5564, {Infinity, 3}] min ;   j=214/221
+    Eigenvector timing=NumberForm[0.5543, {Infinity, 3}] min ;   j=215/221
+    Eigenvector timing=NumberForm[0.5643, {Infinity, 3}] min ;   j=216/221
+    Eigenvector timing=NumberForm[0.5625, {Infinity, 3}] min ;   j=217/221
+    Eigenvector timing=NumberForm[0.5494, {Infinity, 3}] min ;   j=218/221
+    Eigenvector timing=NumberForm[0.5665, {Infinity, 3}] min ;   j=219/221
+    Eigenvector timing=NumberForm[0.5668, {Infinity, 3}] min ;   j=220/221
+    Eigenvector timing=NumberForm[0.5432, {Infinity, 3}] min ;   j=221/221
+Loop timing=NumberForm[188.0126, {Infinity, 3}] min 
+
+Closing Kernels

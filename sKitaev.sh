@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #$ -l hostname=micro4.local 
-#$ -N sub15Kitaev
+#$ -N ada15Kitaev
 #$ -l h_rt=180:00:00                   #estimate max run time
 #$ -q all.q
 #$ -m ea
@@ -13,4 +13,4 @@
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/sge/lib/lx-amd64
 export CLASSPATH=/opt/sge/lib/drmaa.jar:/opt/sge/lib/juti.jar:/opt/sge/lib/jgdi.jar
 #
-math -script Kitaev-S1.5_S0.5_SUB.m
+math -script Kitaev-S1.5_S0.5_ADA.m
