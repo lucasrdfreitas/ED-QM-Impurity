@@ -16,3 +16,19 @@ Computing Hamiltonian matrices
     Memory in use:  0.447 GB
  
 Starting JK Loop
+    Eigenvalue timing=NumberForm[4.2178, {Infinity, 3}] min -- saving data for  j=1/201; h=0.
+    Eigenvalue timing=NumberForm[49.7826, {Infinity, 3}] min -- saving data for  j=2/201; h=0.005*; 
+    Eigenvalue timing=NumberForm[32.9318, {Infinity, 3}] min -- saving data for  j=3/201; h=0.01*; 
+    Eigenvalue timing=NumberForm[61.2498, {Infinity, 3}] min -- saving data for  j=4/201; h=0.015*; 
+    Eigenvalue timing=NumberForm[26.2982, {Infinity, 3}] min -- saving data for  j=5/201; h=0.02*; 
+    Eigenvalue timing=NumberForm[18.6091, {Infinity, 3}] min -- saving data for  j=6/201; h=0.025*; 
+    Eigenvalue timing=NumberForm[18.876, {Infinity, 3}] min -- saving data for  j=7/201; h=0.03*; 
+    Eigenvalue timing=NumberForm[15.9663, {Infinity, 3}] min -- saving data for  j=8/201; h=0.035*; 
+    Eigenvalue timing=NumberForm[15.1082, {Infinity, 3}] min -- saving data for  j=9/201; h=0.04*; 
+    Eigenvalue timing=NumberForm[15.7735, {Infinity, 3}] min -- saving data for  j=10/201; h=0.045*; 
+    Eigenvalue timing=NumberForm[14.4335, {Infinity, 3}] min -- saving data for  j=11/201; h=0.05*; 
+    Eigenvalue timing=NumberForm[14.3267, {Infinity, 3}] min -- saving data for  j=12/201; h=0.055*; 
+    Eigenvalue timing=NumberForm[12.6773, {Infinity, 3}] min -- saving data for  j=13/201; h=0.06*; 
+    Eigenvalue timing=NumberForm[12.6364, {Infinity, 3}] min -- saving data for  j=14/201; h=0.065*; 
+    Eigenvalue timing=NumberForm[12.1918, {Infinity, 3}] min -- saving data for  j=15/201; h=0.07*; 
+    Eigenvalue timing=NumberForm[10.7878, {Infinity, 3}] min -- saving data for  j=16/201; h=0.075*; 

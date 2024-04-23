@@ -17,3 +17,10 @@ Computing Hamiltonian matrices
  
 Starting JK Loop
     Eigenvalue timing=NumberForm[7.9582, {Infinity, 3}] min -- saving data for  j=1/201; h=0.
+
+Eigenvalues::maxit2: Warning: maximum number of iterations, 3000, has been reached by the Arnoldi algorithm without convergence to the specified tolerance, but the current best computed value has been returned. You can use method options with Method -> {Arnoldi, opts} to increase the size of basis vectors, the maximum number of iterations, reduce the tolerance, or use an estimate as a shift, any of which may help.
+    Eigenvalue timing=NumberForm[90.0313, {Infinity, 3}] min -- saving data for  j=2/201; h=0.005*; 
+    Eigenvalue timing=NumberForm[81.9657, {Infinity, 3}] min -- saving data for  j=3/201; h=0.01*; 
+    Eigenvalue timing=NumberForm[65.3265, {Infinity, 3}] min -- saving data for  j=4/201; h=0.015*; 
+    Eigenvalue timing=NumberForm[51.1449, {Infinity, 3}] min -- saving data for  j=5/201; h=0.02*; 
+    Eigenvalue timing=NumberForm[45.5888, {Infinity, 3}] min -- saving data for  j=6/201; h=0.025*; 
