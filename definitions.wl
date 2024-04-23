@@ -153,7 +153,7 @@ Module[{s,S},
 	Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[s[[4]],N0]  ]  ,{\[Alpha],1,3}]   ];
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Adatom Hamiltonian *)
 
 
@@ -242,7 +242,7 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 
 
 Bonds[Lx_,Ly_]:=Transpose@Flatten[#,1]&@Table[ 
-{   {2 (m+n Lx+1)-1, 2 (Mod[m+1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n+1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
+{   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n-1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
 ,{n,0,Ly-1},{m,0,Lx-1}];
 
 
@@ -341,17 +341,24 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 (*Bulk Kitaev Hamiltonian  - *)
 
 
-MatrixForm/@substitutionBonds[3,2]
-
-
 substitutionBonds[Lx_,Ly_]:=Module[{bulkBonds,impBonds,bonds},
+bonds=Transpose@Flatten[#,1]&@Table[ 
+{   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n-1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
+,{n,0,Ly-1},{m,0,Lx-1}];
+impBonds= Table[ Select[ bonds[[\[Alpha]]] , (MemberQ[#,1])& ]  ,{\[Alpha],1,3}];
+bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Alpha],1,3}];
+{impBonds,bulkBonds}
+];
+
+
+(*substitutionBonds[Lx_,Ly_]:=Module[{bulkBonds,impBonds,bonds},
 bonds=Transpose@Flatten[#,1]&@Table[ 
 {   {2 (m+n Lx+1)-1, 2 (Mod[m+1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n+1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
 ,{n,0,Ly-1},{m,0,Lx-1}];
 impBonds= Table[ Select[ bonds[[\[Alpha]]] , (MemberQ[#,1])& ]  ,{\[Alpha],1,3}];
 bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Alpha],1,3}];
 {impBonds,bulkBonds}
-];
+];*)
 
 
 (* ::Text:: *)
@@ -407,15 +414,6 @@ JK sS
 
 (* ::Subsubsection:: *)
 (*Heisenberg Hamiltonian*)
-
-
-MatrixForm/@substitutionBonds[3,3]
-
-
-MatrixForm/@substitutionBonds[3,2]
-
-
-MatrixForm/@substitutionBonds[2,2]
 
 
 substitutionHeisenberg[J_,\[Lambda]n_,Simp_,Lx_,Ly_,Sbulk_:1/2]:=Module[{s,S,bulkBonds,HJ,H\[Lambda],N0,n,\[Lambda],sn},
