@@ -1,0 +1,20 @@
+Kitaev-S0.5_S1_SUB
+Before Starting Kernels
+Starting Kernels
+Kitaev-S0.5_S1_SUB
+h Range length= 201
+
+Computing Eigenvalues
+
+Data path : /home/rodrigues/ED-QM-Impurity/data/Kitaev-S0.5_S1_SUB/XXZ_FM_SUB_size=(3,3)_Simp=1.0/h=Range[0,1,0.005]_JK={0.5}_k=20.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  0.4007 sec
+    H Heisenberg timing  = 0. sec
+    H Zeeman timing      =  3.3053 sec
+    H imp timing         =  0.5383 sec
+ 
+    Memory in use:  0.4469 GB
+ 
+Starting JK Loop
+    Eigenvalue timing=NumberForm[8.971, {Infinity, 3}] min -- saving data for  j=1/201; h=0.
+    Eigenvalue timing=NumberForm[33.2271, {Infinity, 3}] min -- saving data for  j=2/201; h=0.005*; 
