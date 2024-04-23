@@ -43,7 +43,7 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{2,2}};
+systemDimensions = {{3,3}};
 kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
