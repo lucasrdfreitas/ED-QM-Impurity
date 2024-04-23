@@ -6,7 +6,7 @@
 
 (* ::Text:: *)
 (*This script employs exact diagonalization to compute the magnon spectrum and spin expectation values in various Quantum Magnets featuring a magnetic impurity (adatom) coupled to a single site. These materials are effectively modeled by the JK\[CapitalGamma] extended Kitaev model.*)
-(*	> we will focus mainly in two materials:  Subscript[RuCl, 3]  (e.g. 1706.06113 ) and Subscript[CrI, 3] (e.g. 1704.03849 )*)
+(*	> we will focus mainly in two materials:  Subscript[RuCl, 3]  (e.g. 1706.06113 ) and Subscript[CrI, 3] (e.g. 1704.03849 ) *)
 
 
 (* ::Subsection::Closed:: *)
@@ -153,7 +153,7 @@ Module[{s,S},
 	Table[  KroneckerProduct@@Join[ {S[[\[Alpha]]]}, Table[s[[4]],N0]  ]  ,{\[Alpha],1,3}]   ];
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Adatom Hamiltonian *)
 
 
@@ -297,7 +297,7 @@ H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@b
 HJ+H\[Lambda]]
 
 
-(* ::Subsection:: *)
+(* ::Subsection::Closed:: *)
 (*Substitution Hamiltonian *)
 
 
