@@ -236,13 +236,30 @@ JK Sum[sS[[\[Alpha]]],{\[Alpha],1,3}]
 (*	> unit cell index  r=m + n Lx+1 for m =0, ...,Lx-1  and n =0, ..., Ly-1 *)
 (*	> position i = 2r-1 + \[Nu]   for sublattice label \[Nu]=0,1=A,B*)
 (*The Kitaev interactions happens between the positions  bonds[[\[Alpha],r]]  *)
-(*	> x-bonds:    (2r-1,2rx);         rx=Mod[ m+1,Lx]+ n Lx+1                                    e.g. for Lx=Ly=2:  (1,4), (3,2), (5,8), (7,6)*)
-(*	> y-bonds:    (2r-1,2ry);         ry=m+Mod[ n+1,Ly] Lx+1                                                                        (1,6), (3,8), (5,2), (7,4)*)
+(*	> x-bonds:    (2r-1,2rx);         rx=Mod[ m-1,Lx]+ n Lx+1                                    e.g. for Lx=Ly=2:  (1,4), (3,2), (5,8), (7,6)*)
+(*	> y-bonds:    (2r-1,2ry);         ry=m+Mod[ n-1,Ly] Lx+1                                                                        (1,6), (3,8), (5,2), (7,4)*)
 (*	> z-bonds:    (2r-1,2r );                                                                                                                                      (1,2), (3,4), (5,6), (7,8)*)
 
 
+BondsVec[Lx_,Ly_]:=Module[{n1,n2,\[Delta]z},n1={1/2,Sqrt[3]/2}; n2={-1/2,Sqrt[3]/2}; \[Delta]z={0,1/Sqrt[3]};
+	Transpose@Flatten[#,1]&@Table[ 
+{   {  (m n1+n n2), (  (m-1)n1+n n2)+\[Delta]z  },{(m n1+n n2), (m n1+(n-1) n2)+\[Delta]z },{(m n1+n n2),(m n1+n n2)+\[Delta]z}  }
+,{n,0,Ly-1},{m,0,Lx-1}]
+];
+
+
+(*Module[{Lx,Ly},	{Lx,Ly}={2,2};	Graphics[{ 		Darker@Red,   Line/@BondsVec[Lx,Ly][[1]] ,		Darker@Green, Line/@BondsVec[Lx,Ly][[2]] ,		Darker@Blue,  Line/@BondsVec[Lx,Ly][[3]]  	}]]*)
+
+
+(*Module[{Lx,Ly,bonds,graph}, 	{Lx,Ly}={2,2}; 	
+	bonds=Transpose@Flatten[#,1]&@Table[ 	{   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[(n-1),Ly]Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  },{n,0,Ly-1},{m,0,Lx-1}];
+	graph=Join[		Table[ Style[ bonds[[1]][[i,1]] \[UndirectedEdge] bonds[[1]][[i,2]] , Darker@Red],    {i,1,Length@bonds[[1]]}],		Table[ Style[ bonds[[2]][[i,1]] \[UndirectedEdge] bonds[[2]][[i,2]] , Darker@Green],  {i,1,Length@bonds[[2]]}],		Table[ Style[ bonds[[3]][[i,1]] \[UndirectedEdge] bonds[[3]][[i,2]] , Darker@Blue],   {i,1,Length@bonds[[3]]}] 	];
+	Graph[graph,  VertexLabels\[Rule]"Name"]
+]*)
+
+
 Bonds[Lx_,Ly_]:=Transpose@Flatten[#,1]&@Table[ 
-{   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n-1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
+{   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n-1,Ly]Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
 ,{n,0,Ly-1},{m,0,Lx-1}];
 
 
@@ -297,7 +314,7 @@ H\[Lambda] = Sum[\[Lambda] KroneckerProduct@@Join[   {S[[4]]}, Insert[sn,  Max@b
 HJ+H\[Lambda]]
 
 
-(* ::Subsection::Closed:: *)
+(* ::Subsection:: *)
 (*Substitution Hamiltonian *)
 
 
@@ -333,7 +350,7 @@ Sum[ -h[[\[Alpha]]] g imp[[\[Alpha]]] - h[[\[Alpha]]] Sum[bulk[[i,\[Alpha]]],{i,
 ];
 
 
-(* ::Subsubsection:: *)
+(* ::Subsubsection::Closed:: *)
 (*Kitaev Hamiltonian*)
 
 
@@ -345,8 +362,8 @@ substitutionBonds[Lx_,Ly_]:=Module[{bulkBonds,impBonds,bonds},
 bonds=Transpose@Flatten[#,1]&@Table[ 
 {   {2 (m+n Lx+1)-1, 2 (Mod[m-1,Lx]+n Lx+1) },{2 (m+n Lx+1)-1, 2 (m+Mod[n-1,Ly] Lx+1) },{2 (m+n Lx+1)-1, 2 (m+n Lx+1)}  }
 ,{n,0,Ly-1},{m,0,Lx-1}];
-impBonds= Table[ Select[ bonds[[\[Alpha]]] , (MemberQ[#,1])& ]  ,{\[Alpha],1,3}];
-bulkBonds= Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Alpha],1,3}];
+impBonds  = Table[ Select[ bonds[[\[Alpha]]] , (MemberQ[#,1])& ]  ,{\[Alpha],1,3}];
+bulkBonds = Table[ Complement[  bonds[[\[Alpha]]] , impBonds[[\[Alpha]]]]  ,{\[Alpha],1,3}];
 {impBonds,bulkBonds}
 ];
 
@@ -399,9 +416,23 @@ s=spinmatrix[Sbulk];
 S=spinmatrix[Simp];
 impBonds=substitutionBonds[Lx,Ly][[1]]-1; 
 
-sS=Sum[  KroneckerProduct@@Join[ {S[[\[Beta]]]}, Insert[s[[\[Beta]]],Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3},{\[Beta],1,3}]; 
-JK sS
+sS=Sum[  KroneckerProduct@@Join[ {S[[\[Beta]]]}, Insert[s[[\[Beta]]], Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3},{\[Beta],1,3}]; 
+(JK sS)
+]
 
+
+substitutionImp[JK_,Simp_,Lx_,Ly_,Sbulk_:1/2,\[Lambda]n_:(-0.1 cvec)]:=Module[{s,S,sS,impBonds,N0,sn,Sn,\[Lambda],n,H\[Lambda]}, 
+N0=2 Lx Ly-1;
+s=spinmatrix[Sbulk]; 
+S=spinmatrix[Simp];
+impBonds=substitutionBonds[Lx,Ly][[1]]-1; 
+
+\[Lambda]=-Norm[\[Lambda]n];  n=\[Lambda]n/\[Lambda]; sn=n[[1]]s[[1]]+n[[2]]s[[2]]+n[[3]]s[[3]]; Sn=n[[1]]S[[1]]+n[[2]]S[[2]]+n[[3]]S[[3]];
+
+sS=Sum[  KroneckerProduct@@Join[ {S[[\[Beta]]]}, Insert[s[[\[Beta]]], Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]  ,{\[Alpha],1,3},{\[Beta],1,3}]; 
+H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{Sn},    Insert[sn  , Max@impBonds[[\[Alpha]]]]@Table[s[[4]],N0-1]  ]    ,{\[Alpha],1,3}];
+
+(JK sS+H\[Lambda])
 ]
 
 
@@ -425,7 +456,7 @@ bulkBonds=substitutionBonds[Lx,Ly][[2]]-1;
 n=\[Lambda]n/\[Lambda];
 sn=n[[1]]s[[1]]+n[[2]]s[[2]]+n[[3]]s[[3]];
 
-HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]]]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ] , {r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
-H\[Lambda]=Sum[\[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[sn,Max@bulkBonds[[\[Alpha],r]] ]@Insert[sn,Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]        , {r,1,Length@bulkBonds},{\[Alpha],1,3}];
+HJ =Sum[J[[\[Alpha]]]KroneckerProduct@@Join[{S[[4]]},Insert[s[[\[Beta]]],Max@bulkBonds[[\[Alpha],r]] ]@Insert[s[[\[Beta]]],Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2] ] , {r,1,Length@bulkBonds},{\[Beta],1,3},{\[Alpha],1,3}];
+H\[Lambda] =Sum[   \[Lambda] KroneckerProduct@@Join[{S[[4]]},Insert[ sn,  Max@bulkBonds[[\[Alpha],r]] ]@Insert[sn, Min@bulkBonds[[\[Alpha],r]]]@Table[s[[4]],N0-2]  ]        , {r,1,Length@bulkBonds},{\[Alpha],1,3}];
 
 HJ+H\[Lambda]]
