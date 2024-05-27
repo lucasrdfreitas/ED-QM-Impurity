@@ -49,11 +49,11 @@ heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
-gs               = {1.54002};
+gs               = {1.54003};
 KondoCoupling    = {1.5};  (* 0.5*)
 hRange           = {0.0001,2.1,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 8; 
+klevels          = 32; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -61,6 +61,7 @@ dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=Ko
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
+hRange={hRange[[51]]}
 
 
 (* ::Subsection:: *)
@@ -101,7 +102,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,g,bulkSpin,H0,HJ,HI,HK,HZ,eValues,pathToMat
 Print[];Print["Computing Eigenvectors"];Print[];
 
 
-Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,bulkSpin,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
+(*Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,bulkSpin,g,H0,HJ,HI,HK,HZ,eValues,pathToMatrices,info,datapath},
 	{{Lx,Ly},K,J,\[Lambda]n,JK,Simp,g,bulkSpin}=parameters[[1]]; {Lx,Ly}=Round@{Lx,Ly};eValues={};	
 	datapath=dataPathTXT[StringJoin[dataName2,"_spin_components"],HamCoupling,Simp,{Lx,Ly},dataFolder];	Print["Data path : ",datapath];
 
@@ -133,7 +134,7 @@ Module[{Lx,Ly,J,\[Lambda]n,Simp,K,JK,bulkSpin,g,H0,HJ,HI,HK,HZ,eValues,pathToMat
 
 (*AbsoluteTiming@dataWrite[datapath,eValues];*)
 
-]
+]*)
 
 
 (* ::Section::Closed:: *)
