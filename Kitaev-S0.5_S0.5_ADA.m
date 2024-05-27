@@ -49,11 +49,11 @@ heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
-gs               = {1.54003};
+gs               = {1.54001};
 KondoCoupling    = {1.5};  (* 0.5*)
-hRange           = {0.0001,2.1,.01};
+hRange           = {0.0901,1.51,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 32; 
+klevels          = 30; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -61,7 +61,7 @@ dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=Ko
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
-hRange={hRange[[51]]}
+
 
 
 (* ::Subsection:: *)
