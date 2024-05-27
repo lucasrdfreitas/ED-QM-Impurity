@@ -1,0 +1,19 @@
+Kitaev-S0.5_S0.5_ADA
+Before Starting Kernels
+Starting Kernels
+Kitaev-S0.5_S0.5_ADA
+h Range length= 210
+Data path : /home/rodrigues/ED-QM-Impurity/data/Kitaev-S0.5_S0.5_ADA/XXZ_FM_ADA_size=(3,3)_Simp=0.5/h=Range[0.0001,2.1,0.01]_JK={1.5}_k=32.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  1.4997 sec
+    H Heisenberg timing  = 0. sec
+    H Zeeman timing      =  3.4038 sec
+    H imp timing         =  0.1643 sec
+Starting JK Loop
+    Eigenvalue timing=NumberForm[20.854, {Infinity, 3}] min -- saving data for  j=1/1; h=0.5001; 
+Loop timing=NumberForm[20.922, {Infinity, 3}] min 
+
+Computing Eigenvectors
+
+
+Closing Kernels

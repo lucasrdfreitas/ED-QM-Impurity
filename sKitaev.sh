@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 #$ -l hostname=micro4.local 
-#$ -N Kada0505
-#$ -l h_rt=180:00:00                   #estimate max run time
+#$ -N ada0505
+#$ -l h_rt=720:00:00                   #estimate max run time
 #$ -q all.q
 #$ -m ea
 #$ -M lucasrdf@fisica.ufrn.br
