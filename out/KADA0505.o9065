@@ -407,3 +407,46 @@ Eigensystem::maxit2: Warning: maximum number of iterations, 2000, has been reach
     Eigenvector timing=NumberForm[2.4919, {Infinity, 3}] min ;   j=168/210
     Eigenvector timing=NumberForm[2.5062, {Infinity, 3}] min ;   j=169/210
     Eigenvector timing=NumberForm[2.4947, {Infinity, 3}] min ;   j=170/210
+    Eigenvector timing=NumberForm[2.5154, {Infinity, 3}] min ;   j=171/210
+    Eigenvector timing=NumberForm[2.5285, {Infinity, 3}] min ;   j=172/210
+    Eigenvector timing=NumberForm[2.5126, {Infinity, 3}] min ;   j=173/210
+    Eigenvector timing=NumberForm[2.5088, {Infinity, 3}] min ;   j=174/210
+    Eigenvector timing=NumberForm[2.516, {Infinity, 3}] min ;   j=175/210
+    Eigenvector timing=NumberForm[2.5206, {Infinity, 3}] min ;   j=176/210
+    Eigenvector timing=NumberForm[2.5184, {Infinity, 3}] min ;   j=177/210
+    Eigenvector timing=NumberForm[2.5189, {Infinity, 3}] min ;   j=178/210
+    Eigenvector timing=NumberForm[2.5227, {Infinity, 3}] min ;   j=179/210
+    Eigenvector timing=NumberForm[2.5122, {Infinity, 3}] min ;   j=180/210
+    Eigenvector timing=NumberForm[2.5424, {Infinity, 3}] min ;   j=181/210
+    Eigenvector timing=NumberForm[2.5279, {Infinity, 3}] min ;   j=182/210
+    Eigenvector timing=NumberForm[2.5277, {Infinity, 3}] min ;   j=183/210
+    Eigenvector timing=NumberForm[2.5376, {Infinity, 3}] min ;   j=184/210
+    Eigenvector timing=NumberForm[2.5276, {Infinity, 3}] min ;   j=185/210
+    Eigenvector timing=NumberForm[2.5329, {Infinity, 3}] min ;   j=186/210
+    Eigenvector timing=NumberForm[2.5281, {Infinity, 3}] min ;   j=187/210
+    Eigenvector timing=NumberForm[2.5223, {Infinity, 3}] min ;   j=188/210
+    Eigenvector timing=NumberForm[2.5371, {Infinity, 3}] min ;   j=189/210
+    Eigenvector timing=NumberForm[2.5374, {Infinity, 3}] min ;   j=190/210
+    Eigenvector timing=NumberForm[2.5142, {Infinity, 3}] min ;   j=191/210
+    Eigenvector timing=NumberForm[2.5281, {Infinity, 3}] min ;   j=192/210
+    Eigenvector timing=NumberForm[2.5258, {Infinity, 3}] min ;   j=193/210
+    Eigenvector timing=NumberForm[2.5254, {Infinity, 3}] min ;   j=194/210
+    Eigenvector timing=NumberForm[2.5407, {Infinity, 3}] min ;   j=195/210
+    Eigenvector timing=NumberForm[2.5188, {Infinity, 3}] min ;   j=196/210
+    Eigenvector timing=NumberForm[2.5337, {Infinity, 3}] min ;   j=197/210
+    Eigenvector timing=NumberForm[2.5289, {Infinity, 3}] min ;   j=198/210
+    Eigenvector timing=NumberForm[2.5265, {Infinity, 3}] min ;   j=199/210
+    Eigenvector timing=NumberForm[2.5425, {Infinity, 3}] min ;   j=200/210
+    Eigenvector timing=NumberForm[2.5346, {Infinity, 3}] min ;   j=201/210
+    Eigenvector timing=NumberForm[2.5398, {Infinity, 3}] min ;   j=202/210
+    Eigenvector timing=NumberForm[2.5417, {Infinity, 3}] min ;   j=203/210
+    Eigenvector timing=NumberForm[2.5386, {Infinity, 3}] min ;   j=204/210
+    Eigenvector timing=NumberForm[2.5238, {Infinity, 3}] min ;   j=205/210
+    Eigenvector timing=NumberForm[2.5298, {Infinity, 3}] min ;   j=206/210
+    Eigenvector timing=NumberForm[2.5343, {Infinity, 3}] min ;   j=207/210
+    Eigenvector timing=NumberForm[2.5232, {Infinity, 3}] min ;   j=208/210
+    Eigenvector timing=NumberForm[2.5253, {Infinity, 3}] min ;   j=209/210
+    Eigenvector timing=NumberForm[2.5359, {Infinity, 3}] min ;   j=210/210
+Loop timing=NumberForm[823.5985, {Infinity, 3}] min 
+
+Closing Kernels
