@@ -49,8 +49,8 @@ heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
-gs               = {1.54001};
-KondoCoupling    = {1.5};  (* 0.5*)
+gs               = {1.54};
+KondoCoupling    = {1.50011};  (* 0.5*)
 hRange           = {0.0901,1.51,.01};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
 klevels          = 40; 
@@ -61,7 +61,8 @@ dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=Ko
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
-
+hRange=Take[ hRange[[61;;142;;4]] ,11 ]
+(*hRange=Take[ hRange[[61;;142;;4]] , -10 ]*)
 
 
 (* ::Subsection:: *)
