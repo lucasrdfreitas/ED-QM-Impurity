@@ -43,17 +43,17 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (*couplings and parameters for the system *)
 
 
-systemDimensions = {{3,3}};
+systemDimensions = {{3,2}};
 kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
 bulkSpin         = {1/2};
 impuritySpin     = {1/2};
-gs               = {1.54};
-KondoCoupling    = {1.50010};  (* 0.5*)
-hRange           = {0.0901,1.51,.01};
+gs               = {1.5};
+KondoCoupling    = {1.50011};  (* 0.5*)
+hRange           = {0.01,1.51,.04};
 parameters       = N@Tuples[{systemDimensions,kitaev,heisenberg,anisotropy,KondoCoupling,impuritySpin,gs,bulkSpin} ]; 
-klevels          = 40; 
+klevels          = 150; 
 HamCoupling="XXZ_FM_ADA";
 dataName=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;    jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};					
 StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
@@ -61,7 +61,11 @@ dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=Ko
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
 hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
-hRange=Take[ hRange[[61;;142;;4]] , -10 ]
+
+
+|
+
+
 
 
 (* ::Subsection:: *)
