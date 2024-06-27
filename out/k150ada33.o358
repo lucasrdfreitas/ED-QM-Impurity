@@ -1,0 +1,29 @@
+Kitaev-S0.5_S0.5_ADA
+Before Starting Kernels
+Starting Kernels
+Kitaev-S0.5_S0.5_ADA
+Mathematica version= 14.
+
+h Range length= 38
+Data path : /home/rodrigues/ED-QM-Impurity/data/Kitaev-S0.5_S0.5_ADA/XXZ_FM_ADA_size=(3,3)_Simp=0.5/h=Range[0.01,1.51,0.04]_JK={1.50011}_k=150.txt
+Computing Hamiltonian matrices 
+    H Kitaev timing      =  4.3418 sec
+    H Heisenberg timing  = 0. sec
+    H Zeeman timing      =  8.3376 sec
+    H imp timing         =  0.3759 sec
+Starting JK Loop
+    Eigenvalue timing=NumberForm[197.9039, {Infinity, 3}] min -- saving data for  j=1/38; h=0.01; 
+    Eigenvalue timing=NumberForm[133.5544, {Infinity, 3}] min -- saving data for  j=2/38; h=0.05; 
+    Eigenvalue timing=NumberForm[103.3207, {Infinity, 3}] min -- saving data for  j=3/38; h=0.09; 
+    Eigenvalue timing=NumberForm[91.2704, {Infinity, 3}] min -- saving data for  j=4/38; h=0.13; 
+    Eigenvalue timing=NumberForm[87.2239, {Infinity, 3}] min -- saving data for  j=5/38; h=0.17; 
+    Eigenvalue timing=NumberForm[79.3017, {Infinity, 3}] min -- saving data for  j=6/38; h=0.21000000000000002; 
+    Eigenvalue timing=NumberForm[75.0112, {Infinity, 3}] min -- saving data for  j=7/38; h=0.25; 
+    Eigenvalue timing=NumberForm[77.7984, {Infinity, 3}] min -- saving data for  j=8/38; h=0.29000000000000004; 
+    Eigenvalue timing=NumberForm[74.7792, {Infinity, 3}] min -- saving data for  j=9/38; h=0.33; 
+    Eigenvalue timing=NumberForm[71.0831, {Infinity, 3}] min -- saving data for  j=10/38; h=0.37; 
+    Eigenvalue timing=NumberForm[70.7107, {Infinity, 3}] min -- saving data for  j=11/38; h=0.41000000000000003; 
+    Eigenvalue timing=NumberForm[70.4361, {Infinity, 3}] min -- saving data for  j=12/38; h=0.45; 
+    Eigenvalue timing=NumberForm[71.1255, {Infinity, 3}] min -- saving data for  j=13/38; h=0.49; 
+    Eigenvalue timing=NumberForm[70.6904, {Infinity, 3}] min -- saving data for  j=14/38; h=0.53; 
+    Eigenvalue timing=NumberForm[70.2567, {Infinity, 3}] min -- saving data for  j=15/38; h=0.5700000000000001; 

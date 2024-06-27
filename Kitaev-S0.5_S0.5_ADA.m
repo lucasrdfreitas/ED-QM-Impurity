@@ -42,8 +42,9 @@ Get[ FileNameJoin[{Directory[],"definitions.wl" }] ]
 (* ::Text:: *)
 (*couplings and parameters for the system *)
 
+Print["Mathematica version= ",$VersionNumber]; Print[]; 
 
-systemDimensions = {{3,2}};
+systemDimensions = {{3,3}};
 kitaev           = {{-1,-1,-1}};
 heisenberg       = {0{1,1,1}};
 anisotropy       = {0 cvec}; 
@@ -60,10 +61,10 @@ StringReplace["h=Range[i,f,d]_JK=jk_k=k0", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,
 dataName2=Module[{i,f,\[Delta],k,jk}, 	{i,f,\[Delta]}=hRange;  k=klevels;  jk=KondoCoupling;  {i,f,\[Delta],k,jk}=ToString/@{i,f,\[Delta],k,jk};				
 StringReplace["h=Range[i,f,d]_JK=jk", {"i"->i,"f"->f,"d"->\[Delta],"k0"->k,"jk"->jk}]  ];
 
-hRange=Range@@hRange;      Print["h Range length= ",Length@hRange];
-
-
-|
+hRange=Range@@hRange;   
+hRange=hRange[[17;;-1]];
+Print[hRange];
+Print["h Range length= ",Length@hRange];
 
 
 
